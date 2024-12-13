@@ -58,10 +58,13 @@ body {
   padding-bottom: 20px;
 }
 
+.App-main--home{
+  min-height: calc(100dvh - 140px);
+}
+
 .App-main-title{
   margin: 15px;
   animation: trakingDown .5s .3s ease-in-out both, fundido .5s .3s ease-in-out both;
-  
 }
 
 .App-footer {

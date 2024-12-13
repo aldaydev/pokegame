@@ -62,7 +62,7 @@
 }
 
 .nav-pagesItem{
-    transition: background .2s ease-in-out;
+    transition: background .3s ease-in-out;
 }
 
 .nav-pagesItem:hover{
@@ -236,7 +236,7 @@
 }
 
 .nav-user{
-    width: 37px;
+    width: 36px;
 }
 
 .nav-login{

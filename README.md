@@ -1,4 +1,4 @@
-13/12/2024 - Develop clonado a auth
+13/12/2024 - Auth - Final de la clase
 
 # Getting Started with Create React App
 
