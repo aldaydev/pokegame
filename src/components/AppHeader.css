@@ -1,0 +1,251 @@
+
+
+.App-header > a {
+    height: 100%;
+    display: flex;
+    margin-right: 20px;
+}
+
+.App-logo {
+    width: 120px;
+    pointer-events: none;
+    transition: transform .6s ease-in-out;
+}
+
+.App-header > a:hover .App-logo{
+    transform: scale(1.1);
+    transition: transform .2s ease-in-out;
+}
+
+.App-nav{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-pagesList{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    /* gap: 10px; */
+    padding: 0;
+    margin: 0;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.nav-pagesItem--drop{
+    /* height: 80px; */
+    position: relative;
+    z-index: 999;
+    background-color: var(--color-yellow);
+}
+
+.pagesItem-dropTitle,
+.nav-pagesItem > a{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+/* .nav-pagesItem{
+    padding: 0 7px;
+} */
+
+.nav-pagesItem > a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-pagesItem{
+    transition: background .2s ease-in-out;
+}
+
+.nav-pagesItem:hover{
+    background-color: var(--color-yellow-light);
+}
+
+.pagesItem-dropList{
+    visibility: hidden;
+    opacity: 0;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    /* border: 2px solid black; */
+    /* border-top: none; */
+    background-color: var(--color-yellow);
+    z-index: 999;
+    text-align: right;
+    transition: opacity .3s ease-in-out;
+    box-shadow: 0 4px 6px var(--color-blue);
+
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+}
+
+.nav-pagesItem--drop:hover .pagesItem-dropList{
+    visibility:visible;
+    opacity: 1;
+    background-color: var(--color-yellow);
+}
+
+.pagesItem-dropItem{
+    display: flex;
+    justify-content: center;
+    transition: background .2s ease-in-out;
+}
+
+.pagesItem-dropItem > a{
+    width: 100%;
+    padding: 5px 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+}
+
+.pagesItem-dropItem:hover{
+    background-color: var(--color-yellow-light);
+}
+
+.nav-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+.nav-form-input{
+    padding: 2px 10px;
+    height: 35px;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-form-submit{
+    margin-left: 5px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-form-submit-icon{
+    width: 35px;
+    transition: transform .3s ease-in-out;
+}
+
+.nav-form-submit:hover .nav-form-submit-icon{
+    transform: scale(1.1);
+}
+
+.nav-form-submit:focus{
+    animation: search .5s ease-in-out;
+}
+
+@keyframes search {
+    from{
+        transform: rotate(0);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+.nav-form-error{
+
+    background-color: var(--color-red-dark);
+    width: 198px;
+    padding: 5px;
+    color: var(--color-white);
+
+    position: absolute;
+    top: 73px;
+    left: 0;
+    border-radius: 5px;
+    font-weight: 500;
+    opacity: 0;
+    animation: form-error .5s ease-in-out both;
+}
+
+@keyframes form-error {
+    from{
+        opacity: 0;
+        top: 23px;
+    }to{
+        opacity: 1;
+        top: 73px;
+    }
+    
+}
+
+.nav-form-error-hidden{
+    background-color: var(--color-red-dark);
+    width: 198px;
+    padding: 5px;
+    color: var(--color-white);
+
+    position: absolute;
+    top: 73px;
+    left: 0;
+    border-radius: 5px;
+    font-weight: 500;
+    opacity: 0;
+    animation: form-error-hidden .5s ease-in-out both;
+}
+
+@keyframes form-error-hidden {
+    0%{
+        opacity: 1;
+    }80%{
+        opacity: 0;
+    }100%{
+        display: none;
+    }
+    
+}
+
+.nav-userButtons{
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.nav-pokeballs,
+.nav-user,
+.nav-login{
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+}
+
+.nav-pokeballs:hover,
+.nav-user:hover,
+.nav-login:hover{
+    transform: rotate(-20deg) scale(1.2);
+}
+
+.nav-pokeballs{
+    width: 36px;
+    background-color: black;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.nav-user{
+    width: 37px;
+}
+
+.nav-login{
+    height: 36px;
+    
+    
+}
+
+
+
+
+
