@@ -1,4 +1,6 @@
 import './Loggin.css';
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/AuthContext";
 import FormInput from "./FormInput";
 import AppButton from '../../../../components/AppButton';
 import { useState } from 'react';
@@ -6,22 +8,32 @@ import { validateEmail, validatePass } from '../../../../utils/validations';
 
 const Login = ()=>{
 
+    const { loggedIn, signIn } = useContext(AuthContext);
+
     const [emailError, setEmailError] = useState([false, 'type', 'msg']);
     const [passError, setPassError] = useState([false, 'type', 'msg']);
 
-    const validateSignIn = (e)=>{
+    const validateSignIn = (e, type)=>{
         e.preventDefault();
-        console.log()
+
         const emailValue = e.target[0].value;
         const passValue = e.target[1].value;
-        
-        validateEmail(emailValue) 
-            ?  setEmailError([false, 'type', ''])
-            : setEmailError([true, 'signIn', 'Formato de email no válido'])
+        console.log(emailValue, passValue)
 
-        validatePass(passValue) 
+        const emailFormat = validateEmail(emailValue);
+        const passFormat = validatePass(passValue);
+        
+        emailFormat 
+            ?  setEmailError([false, 'type', ''])
+            : setEmailError([true, type, 'Formato de email no válido'])
+
+        passFormat
             ?  setPassError([false, 'type', ''])
-            : setPassError([true, 'signIn', 'La contraseña debe contener al menos una letra, un número, un caracter especial y 6 dígitos'])
+            : setPassError([true, type, 'La contraseña debe contener al menos una letra, un nº, un caracter especial y 6 dígitos'])
+        
+        emailFormat && passFormat && signIn(emailValue, passValue)
+
+        
     }
 
     const validateSignUp = (e)=>{
@@ -40,7 +52,7 @@ const Login = ()=>{
                 
                 <article className="signIn-article">
                     <h3 className="login-subtitle">ACCEDE CON TU EMAIL</h3>
-                    <form onSubmit={((e)=>{validateSignIn(e)})} className="signIn-form">
+                    <form onSubmit={((e)=>{validateSignIn(e, 'signIn')})} className="signIn-form">
                         <div className='form-emailContainer'>
                             <FormInput type='text' placeholder='Email' className='loginInput'/>
                             {emailError[0] && emailError[1] === 'signIn' && <span className='form-errorMsg'>{emailError[2]}</span>}
@@ -59,7 +71,7 @@ const Login = ()=>{
 
                 <article className="signUp-article">
                 <h3 className="login-subtitle">...O CREA TU CUENTA</h3>
-                    <form onSubmit={((e)=>{validateSignUp(e)})} className="signIn-form">
+                    <form onSubmit={((e)=>{validateSignIn(e, 'signUp')})} className="signIn-form">
                         <div className='form-emailContainer'>
                             <FormInput type='text' placeholder='Email' className='loginInput'/>
                             {emailError[0] && emailError[1] === 'signUp' && <span className='form-errorMsg'>{emailError[2]}</span>}
