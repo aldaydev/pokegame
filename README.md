@@ -1,4 +1,4 @@
-14/12/2024 - PokeHunt - Primera fase PokeHunt Finalizada
+14/12/2024 - PokeHunt - Primera fase PokeHunt Finalizada (merged from auth)
 
 # Getting Started with Create React App
 
