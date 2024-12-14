@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { PokeProvider } from './context/PokeContext';
+import { AuthProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
+
     <React.StrictMode>
-      <PokeProvider>
-        <App />
-      </PokeProvider>
+      <AuthProvider>
+        <PokeProvider>
+          <App />
+        </PokeProvider>
+      </AuthProvider>
     </React.StrictMode>
 );
 

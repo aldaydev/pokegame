@@ -2,19 +2,16 @@ import { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { PokeContext } from './context/PokeContext';
-import AppHeader from './components/AppHeader';
+import AppHeader from './components/AppHeader/AppHeader';
 import ShowPokemon from './pages/ShowPokemon/ShowPokemon';
+import User from './pages/User/User';
 import Home from './pages/Home';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AppFooter from './components/AppFooter';
 
 
 function App() {
 
-  // const { pokemons, typeList } = useContext(GlobalContext);
-  // const [setTypeId, searchType] = useTypeList();
-  const { setTypeId, searchType, pokemons, typeList } = useContext(PokeContext);
-
+  const { typeList } = useContext(PokeContext);
 
 
   return (
@@ -42,9 +39,10 @@ function App() {
                 name='TODOS LOS POKEMON' 
                 show='all'/> 
               />
+              <Route path='/account' element=<User/> />
+              
               </Routes>
               <AppFooter/>
-              {/* <MainContent/> */}
           </div>
       </Router>
           

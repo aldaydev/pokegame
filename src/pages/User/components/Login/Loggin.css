@@ -1,0 +1,119 @@
+.login-section{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.signIn-article,
+.signUp-article{
+    flex-basis: 45%;
+    max-width: 500px;
+    /* background-color: var(--color-yellow-light); */
+    /* border: 2px solid black; */
+    padding: 30px;
+    border-radius: 15px;
+    gap: 20px;
+    /* box-shadow: 1px 1px 3px #9c9c9c; */
+    position: relative;
+    animation: trackingUp .5s ease-in-out, fundido .5s ease-in-out;
+}
+
+@keyframes trackingUp {
+    from{
+        transform: translateY(30px);
+    }to{
+        transform: translateY(0px);
+    }
+}
+
+.signIn-article::after{
+    content: '';
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+
+.login-subtitle{
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+.signIn-form,
+.signUp-form{
+    margin: 20px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-emailContainer{
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.form-passContainer{
+    margin-bottom: 60px;
+    position: relative;
+}   
+
+.loginInput{
+    width: 100%;
+    padding: 5px 15px;
+    font-size: 1.2rem;
+    border-radius: 7px;
+    border: 1px solid black;
+    position: relative;
+    z-index: 20;
+    box-shadow: 1px 1px 3px #9c9c9c;
+}
+
+.form-errorMsg{
+    color: var(--color-red-dark);
+    display: inline-block;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    animation: errorMsg .3s ease-in-out;
+}
+
+@keyframes errorMsg {
+    from{
+        top: -2px;
+    }to{
+
+    }
+}
+
+.loginSubmit{
+    background-color: var(--color-yellow);
+    width: 50%;
+    align-self: center;
+}
+
+.login-footer{
+    margin: 70px 100px 50px 100px;
+}
+
+.login-warningContainer{
+    border: 2px solid black;
+    padding: 50px;
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 3px #9c9c9c;
+}
+
+.warningContainer-text{
+    font-size: 1.5rem;
+    text-wrap: pretty;
+}

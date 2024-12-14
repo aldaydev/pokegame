@@ -1,4 +1,3 @@
-
 import { useContext, useEffect } from "react";
 import { PokeContext } from "../../../context/PokeContext";
 import { useLocation } from "react-router-dom";
@@ -7,12 +6,9 @@ const PokeList = ({show, name})=>{
 
     const { searchType, setTypeId, pokemons, setMainPokemon, showAllPoke, setShowAllPoke } = useContext(PokeContext);
 
-    // const [currentPokeList, setCurrentPokeList] = useContext([]);
-
     const location = useLocation();
 
     useEffect(()=>{
-      console.log(location.pathname)
       if(show === 'type'){
         switch(location.pathname){
           case '/normal': setTypeId('normal');
@@ -51,64 +47,9 @@ const PokeList = ({show, name})=>{
           break;
           default: setTypeId('normal');
         }
-        // switch(name){
-        //   case 'NORMAL':
-        //     setTypeId(1);
-        //     break;
-        //   case 'LUCHA':
-        //     setTypeId(2);
-        //     break;
-        //   case 'VOLADOR':
-        //     setTypeId(3);
-        //     break;
-        //   case 'VENENO':
-        //     setTypeId(4);
-        //     break;
-        //   case 'TIERRA':
-        //     setTypeId(5);
-        //     break;
-        //   case 'ROCA':
-        //     setTypeId(6);
-        //     break;
-        //   case 'BICHO':
-        //     setTypeId(7);
-        //     break;
-        //   case 'FANTASMA':
-        //     setTypeId(8);
-        //     break;
-        //   case 'ACERO':
-        //     setTypeId(9);
-        //     break;
-        //   case 'FUEGO':
-        //     setTypeId(10);
-        //     break;
-        //   case 'AGUA':
-        //     setTypeId(1);
-        //     break;
-        //   case 'PLANTA':
-        //     setTypeId(12);
-        //     break;
-        //   case 'ELÉTRICO':
-        //     setTypeId(13);
-        //     break;
-        //   case 'PSÍQUICO':
-        //     setTypeId(14);
-        //     break;
-        //   case 'HIELO':
-        //     setTypeId(15);
-        //     break;
-        //   case 'DRAGON':
-        //     setTypeId(16);
-        //     break;
-        //   case 'HADA':
-        //     setTypeId(17);
-        //     break;
-        //   default:
-        // }
       }else if( show === 'all'){
         setShowAllPoke(showAllPoke === true ? false : true)
       }
-      
     }, [])
 
     return(

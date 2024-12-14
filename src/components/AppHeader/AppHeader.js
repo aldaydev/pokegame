@@ -1,22 +1,17 @@
 import './AppHeader.css';
-import { useContext, useState, useEffect } from "react";
-import { PokeContext } from "../context/PokeContext";
+import { useContext } from "react";
+import { PokeContext } from "../../context/PokeContext";
 import { Link } from "react-router-dom";
-import pokemon_logo from '../assets/img/pokemon_logo.svg'
-import pokeball_icon from '../assets/img/pokeball_icon.svg'
-import user_icon from '../assets/img/user_icon.svg'
-import login_icon from '../assets/img/login_icon.svg'
+import pokemon_logo from '../../assets/img/pokemon_logo.svg'
+import pokeball2_icon from '../../assets/img/pokeball2_icon.svg'
+import pokes_icon from '../../assets/img/pokes_icon.svg'
+import user_icon from '../../assets/img/pokeuser_icon.svg'
 import SearchForm from './SearchForm';
 
 
 const AppHeader = ()=>{
 
-    const { setTypeId, typeList, showAllPoke, setShowAllPoke, setSearchPoke, searchError, setSearchError } = useContext(PokeContext);
-
-
-    
-
-
+    const { setTypeId, typeList, showAllPoke, setShowAllPoke } = useContext(PokeContext);
 
     return(
         <header className="App-header">
@@ -31,7 +26,6 @@ const AppHeader = ()=>{
                         <div className="pagesItem-dropTitle">TIPOS</div>
                         <ul className="pagesItem-dropList">
                             {typeList.map((type, i)=>{
-                                // console.log(type.id)
                                 return (
                                     <li key={i}
                                         onClick={()=>setTypeId(type.id)}
@@ -56,9 +50,23 @@ const AppHeader = ()=>{
                 <SearchForm/>
 
                 <div className='nav-userButtons'>
-                    <img src={pokeball_icon} alt='Pokeball icon' className='nav-pokeballs'/>
-                    <img src={user_icon} alt='Poke User icon' className='nav-user'/>
-                    <img src={login_icon} alt='Poke User icon' className='nav-login'/>
+
+                    <Link>
+                        <img src={pokeball2_icon} className='nav-pokeball' alt='Pokeball icon'/>
+                    </Link>
+                    <div className='nav-pokeballContainer'>
+                        
+                    </div>
+
+                    <Link>
+                        <img src={pokes_icon} className='nav-pokemons' alt='Pokemon icon'/>
+                    </Link>
+                    
+                    <Link to='/account'>
+                        <img src={user_icon} className='nav-user' alt='User icon'/>
+                    </Link>
+                    
+
                 </div>
                 
             </nav>

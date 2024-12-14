@@ -1,21 +1,40 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PokeContext } from "../../../context/PokeContext";
 import loading_spinner from '../../../assets/img/loading_spinner.svg'
+import AppButton from "../../../components/AppButton";
+import pokeball2_icon from '../../../assets/img/pokeball2_icon.svg'
+import pokeuser_icon from '../../../assets/img/pokeuser_icon.svg'
+import { AuthContext } from "../../../context/AuthContext";
+import { Link } from "react-router-dom";
+import useHunt from "../../../hooks/useHunt";
 
 const MainPoke = (show, name)=>{
 
-    const { showMainPoke } = useContext(PokeContext);
+    const { showMainPoke, pokeProb } = useContext(PokeContext);
+    const { loggedIn } = useContext(AuthContext);
+    const [ setTryHunt, huntResult ] = useHunt();
+    const [ startHunt, setStartHunt] = useState(null);
+    const [ huntMsg, setHuntMsg] = useState(null);
 
-    // useEffect(()=>{
-    //     showAllPoke === true ? false : true
-    // },[])
-    // useEffect(()=>{
-    //     setMainPokemon(()=>(searchType[0].id))
-    // }, [searchType])
+    useEffect(()=>{
+        if(startHunt !== null){
+            const timeOut = ()=>setTimeout(()=>{
+                console.log('Pasa una vez');
+                huntResult 
+                    ? setHuntMsg(['¡POKEMON ATRAPADO!', 'huntMsg huntMsgWin'])
+                    : setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'huntMsg huntMsgLoose']);
+                setStartHunt(false);
+                const timeOut2 = ()=>{
+                    setTimeout(()=>{
+                        setHuntMsg(null);
+                    }, 5000)
+                }
+                timeOut2();
+            },5000)
+            timeOut();
+        }
+    },[startHunt])
 
-    // useEffect(()=>{
-    //     setMainPokemon(()=>(pokemons[0].id))
-    // }, [pokemons])
 
     return(
         <article className="showPoke-mainPoke">
@@ -33,10 +52,24 @@ const MainPoke = (show, name)=>{
                         <div className="mainPoke-imgContainer">
                             <img src={showMainPoke.img} alt={`Imagen de ${showMainPoke.name}`} className="mainPoke-img"/>
                             <span className="mainPoke-id">{`#${showMainPoke.id}`}</span>
+                            
+                            {startHunt && 
+                            <div className="hunt-pokeballContainer">
+                                <img src={pokeball2_icon} alt="Pokeball icon" className="hunt-pokeball"/>
+                            </div>}
+                            
+                            
                         </div>
 
+                        {huntResult && huntMsg && 
+                            <div className='huntMsgContainer'>
+                                <h2 className={huntMsg[1]}>{huntMsg[0]}</h2>
+                                <p></p>
+                            </div>
+                        }
+
                         <div className="mainPoke-statsContainer">
-                            <h2>Estadísticas</h2>
+                            <h2 className="mainPoke-statsTitle">Estadísticas</h2>
                             {showMainPoke.stats.map((stat, i)=>{
                                 return (
                                     <div key={i}>
@@ -85,7 +118,27 @@ const MainPoke = (show, name)=>{
                         
                 </section>
                 
-
+                <section className="mainPoke-huntSection">
+                    {
+                        loggedIn 
+                        ? 
+                        <AppButton text='LANZAR POKEBALL' 
+                        className='huntBtn' 
+                        img={pokeball2_icon} 
+                        imgClass='huntBtn-img'
+                        onClick={()=>{
+                            setTryHunt(pokeProb);
+                            setStartHunt(true);
+                        }}
+                        />
+                        :
+                        <Link to='/account'>
+                            <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
+                        </Link>
+                        
+                    }
+                    
+                </section>
 
             </div>
         }

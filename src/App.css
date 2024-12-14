@@ -5,11 +5,12 @@
   --color-white-dark: #E6E9ED;
   --color-red: 	#ff0000;
   --color-blue: 	#3b4cca;
-  --color-red-dark: #ED5564;
+  --color-blue-dark: 	#1b2eba;
+  --color-red-dark: #EF402E;
 }
 
-/*Amarillo inicial -> #ffde00*/
-/*Amarillo ligh inicial -> #fff197*/
+/*Amarillo ANTERIOR -> #ffde00*/
+/*Amarillo ligh ANTERIOR -> #fff197*/
 
 *{
   margin: 0;
@@ -32,7 +33,6 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100dvh;
-  /* position: relative; */
   background-color: var(--color-white);
 }
 
@@ -58,18 +58,45 @@ body {
   padding-bottom: 20px;
 }
 
-.App-main--home{
+.App-main--short{
   min-height: calc(100dvh - 140px);
 }
 
 .App-main-title{
-  margin: 15px;
-  animation: trakingDown .5s .3s ease-in-out both, fundido .5s .3s ease-in-out both;
+  margin: 10px;
+  margin-top: 20px;
+  font-size: 2rem;
+  animation: trackingDown .5s .2s ease-in-out both, fundido .5s .3s ease-in-out both;
+}
+
+.App-main-sutitle{
+  font-size: 1.2rem;
+  animation: trackingDown .5s .2s ease-in-out both, fundido .5s .3s ease-in-out both;
+}
+
+.AppButton{
+  background-color: var(--color-yellow);
+  padding: 6px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px #9c9c9c;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+.AppButton:hover{
+  background-color: var(--color-yellow-light);
+}
+
+.AppButton-img{
+  max-width: 150px;
 }
 
 .App-footer {
   height: 60px;
   background-color: var(--color-yellow);
+  box-shadow: -1px -1px 3px #9c9c9c;
 }
 
 @keyframes fundido {
@@ -80,7 +107,7 @@ body {
   }
 }
 
-@keyframes trakingDown {
+@keyframes trackingDown {
   from{
       transform: translateY(-10px);
   }to{

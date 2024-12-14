@@ -1,4 +1,4 @@
-13/12/2024 - Auth - Final de la clase
+14/12/2024 - PokeHunt - Final madrugada
 
 # Getting Started with Create React App
 

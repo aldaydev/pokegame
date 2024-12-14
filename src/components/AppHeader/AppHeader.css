@@ -1,5 +1,3 @@
-
-
 .App-header > a {
     height: 100%;
     display: flex;
@@ -27,7 +25,6 @@
     list-style: none;
     display: flex;
     align-items: center;
-    /* gap: 10px; */
     padding: 0;
     margin: 0;
 
@@ -36,7 +33,6 @@
 }
 
 .nav-pagesItem--drop{
-    /* height: 80px; */
     position: relative;
     z-index: 999;
     background-color: var(--color-yellow);
@@ -51,10 +47,6 @@
     cursor: pointer;
     padding: 0 10px;
 }
-
-/* .nav-pagesItem{
-    padding: 0 7px;
-} */
 
 .nav-pagesItem > a{
     text-decoration: none;
@@ -76,8 +68,7 @@
     padding: 0;
     position: absolute;
     right: 0;
-    /* border: 2px solid black; */
-    /* border-top: none; */
+
     background-color: var(--color-yellow);
     z-index: 999;
     text-align: right;
@@ -86,10 +77,10 @@
 
     display: flex;
     flex-direction: column;
-    /* gap: 5px; */
 }
 
-.nav-pagesItem--drop:hover .pagesItem-dropList{
+.nav-pagesItem--drop:hover
+.pagesItem-dropList{
     visibility:visible;
     opacity: 1;
     background-color: var(--color-yellow);
@@ -159,7 +150,7 @@
 .nav-form-error{
 
     background-color: var(--color-red-dark);
-    width: 198px;
+    width: 192px;
     padding: 5px;
     color: var(--color-white);
 
@@ -168,6 +159,7 @@
     left: 0;
     border-radius: 5px;
     font-weight: 500;
+    font-size: 1rem;
     opacity: 0;
     animation: form-error .5s ease-in-out both;
 }
@@ -185,7 +177,7 @@
 
 .nav-form-error-hidden{
     background-color: var(--color-red-dark);
-    width: 198px;
+    width: 192px;
     padding: 5px;
     color: var(--color-white);
 
@@ -194,6 +186,7 @@
     left: 0;
     border-radius: 5px;
     font-weight: 500;
+    font-size: 1rem;
     opacity: 0;
     animation: form-error-hidden .5s ease-in-out both;
 }
@@ -211,39 +204,74 @@
 
 .nav-userButtons{
     display: flex;
-    gap: 10px;
     margin-left: 10px;
 }
 
-.nav-pokeballs,
+/* .nav-pokeballContainer{
+    width: 55px;
+    height: 60px;
+    object-fit: cover;
+    overflow: hidden;
+    position: relative;
+} */
+
+
+.nav-userButtons > a{
+    display: block;
+    width: 55px;
+    height: 60px;
+    object-fit: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.nav-pokeball{
+    filter: drop-shadow(-1px -1px 0 black) 
+    drop-shadow(1px -1px 0 black) 
+    drop-shadow(-1px 1px 0 black) 
+    drop-shadow(1px 1px 0 black);
+
+    width: 52px;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+}
+
+.nav-pokemons{
+    margin-top: 8px;
+    width: 45px;
+    max-height: 38px;
+    filter: drop-shadow(-1px -1px 0 black) 
+    drop-shadow(1px -1px 0 black) 
+    drop-shadow(-1px 1px 0 black) 
+    drop-shadow(1px 1px 0 black);
+}
+
+.nav-user{
+    margin-top: 7px;
+    width: 45px;
+    max-height: 40px;
+    filter: drop-shadow(-1px -1px 0 black) 
+    drop-shadow(1px -1px 0 black) 
+    drop-shadow(-1px 1px 0 black) 
+    drop-shadow(1px 1px 0 black);
+    
+}
+
 .nav-user,
-.nav-login{
+.nav-pokeball,
+.nav-pokemons{
     cursor: pointer;
     transition: transform .3s ease-in-out;
 }
 
-.nav-pokeballs:hover,
 .nav-user:hover,
-.nav-login:hover{
-    transform: rotate(-20deg) scale(1.2);
+.nav-pokeball:hover,
+.nav-pokemons:hover{
+    transform: scale(1.1);
 }
 
-.nav-pokeballs{
-    width: 36px;
-    background-color: black;
-    padding: 2px;
-    border-radius: 50%;
-}
 
-.nav-user{
-    width: 36px;
-}
-
-.nav-login{
-    height: 36px;
-    
-    
-}
 
 
 

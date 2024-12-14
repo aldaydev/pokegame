@@ -7,10 +7,15 @@ export const PokeProvider = ({ children }) => {
 
   const [searchType, setSearchType] = useState([]);
   const [typeId, setTypeId] = useState(null);
-  // const[typeName, setTypeName] = useState('Normal');
 
   const [mainPokemon, setMainPokemon] = useState(null);
   const [showMainPoke, setShowMainPoke] = useState([]);
+
+  const [pokemons, setPokemons] = useState([]);
+  const [showAllPoke, setShowAllPoke] = useState(null);
+  const [typeList, setTypeList] = useState([]);
+
+  const [pokeProb, setPokeProb] = useState(null);
 
   //OBTENER POKEMONS DE UN TIPO
   useEffect(() => {
@@ -22,13 +27,12 @@ export const PokeProvider = ({ children }) => {
         );
         const data = await response.json();
         const typePokeList = data.pokemon;
+
         const allPokeType = await Promise.all(
           typePokeList.map(async (pokemon, index) => {
             const response = await fetch(pokemon.pokemon.url);
             const poke = await response.json();
             if (poke.id < 152) {
-              // console.log(poke.id);
-              // index === 0 && await getMainPokemon(poke.id);
               index === 0 && setMainPokemon(poke.id);
 
               return {
@@ -48,23 +52,18 @@ export const PokeProvider = ({ children }) => {
     }
   }, [typeId]);
 
-  const [pokemons, setPokemons] = useState([]);
-  const [showAllPoke, setShowAllPoke] = useState(null);
-  const [typeList, setTypeList] = useState([]);
-
   //OBTENER EL LISTADO DE TIPOS
   useEffect(() => {
     const getTypes = async () => {
       const response = await fetch("https://pokeapi.co/api/v2/type/");
       const typesList = await response.json();
       const { results } = typesList;
-      // console.log('typesList', results);
 
       const typesData = await Promise.all(
         results.map(async (type) => {
           const response = await fetch(type.url);
           const eachType = await response.json();
-          // console.log("Eachtype", eachType);
+          
           if (
             eachType.name !== "unknown" &&
             eachType.name !== "stellar" &&
@@ -95,14 +94,12 @@ export const PokeProvider = ({ children }) => {
         );
         const pokemonesList = await response.json();
         const { results } = pokemonesList;
-        // console.log(pokemonesList);
   
         const newPokemones = results.map(async (pokemon, index) => {
           const response = await fetch(pokemon.url);
           const poke = await response.json();
-          //   console.log(poke);
+
           if (index === 0) {
-            // await getMainPokemon(poke.id);
             setMainPokemon(poke.id);
           }
           return {
@@ -133,8 +130,7 @@ export const PokeProvider = ({ children }) => {
             const getAbilities = async () => {
               const response = await fetch(curr.ability.url);
               const abilityData = await response.json();
-              // console.log(await abilityData.names[5].name);
-              // console.log(await abilityData);
+
               return await abilityData.names[5].name;
             };
             const ability = getAbilities();
@@ -149,26 +145,19 @@ export const PokeProvider = ({ children }) => {
             let statName = curr.stat.name;
   
             switch (statName) {
-              case "hp":
-                statName = "Resistencia";
+              case "hp": statName = "Resistencia";
                 break;
-              case "attack":
-                statName = "Ataque";
+              case "attack": statName = "Ataque";
                 break;
-              case "defense":
-                statName = "Defensa";
+              case "defense": statName = "Defensa";
                 break;
-              case "special-attack":
-                statName = "Ataque especial";
+              case "special-attack": statName = "Ataque especial";
                 break;
-              case "special-defense":
-                statName = "Defensa especial";
+              case "special-defense": statName = "Defensa especial";
                 break;
-              case "speed":
-                statName = "Velocidad";
+              case "speed": statName = "Velocidad";
                 break;
-              default:
-                statName = "";
+              default: statName = "";
             }
   
             const statObject = {
@@ -180,65 +169,47 @@ export const PokeProvider = ({ children }) => {
           }, [])
         );
 
-        /*-------------------------------- */
         const typesList = await pokeData.types;
         const types = Promise.all(
           typesList.reduce((acc, curr) => {
             let typeName = curr.type.name;
   
             switch(typeName){
-              case 'normal':
-                typeName = 'NORMAL'
+              case 'normal': typeName = 'NORMAL';
                 break;
-              case 'fighting':
-                typeName = 'LUCHA'
+              case 'fighting': typeName = 'LUCHA';
                 break;
-              case 'flying':
-                typeName = 'VOLADOR'
+              case 'flying': typeName = 'VOLADOR';
                 break;
-              case 'poison':
-                typeName = 'VENENO'
+              case 'poison': typeName = 'VENENO';
                 break;
-              case 'ground':
-                typeName = 'TIERRA'
+              case 'ground': typeName = 'TIERRA';
                 break;
-              case 'rock':
-                typeName = 'ROCA'
+              case 'rock': typeName = 'ROCA';
                 break;
-              case 'bug':
-                typeName = 'BICHO'
+              case 'bug': typeName = 'BICHO';
                 break;
-              case 'ghost':
-                typeName = 'FANTASMA'
+              case 'ghost': typeName = 'FANTASMA';
                 break;
-              case 'steel':
-                typeName = 'ACERO'
+              case 'steel': typeName = 'ACERO';
                 break;
-              case 'fire':
-                typeName = 'FUEGO'
+              case 'fire': typeName = 'FUEGO';
                 break;
-              case 'water':
-                typeName = 'AGUA'
+              case 'water': typeName = 'AGUA';
                 break;
-              case 'grass':
-                typeName = 'PLANTA'
+              case 'grass': typeName = 'PLANTA';
                 break;
-              case 'electric':
-                typeName = 'ELÉTRICO'
+              case 'electric': typeName = 'ELÉTRICO';
                 break;
-              case 'psychic':
-                typeName = 'PSÍQUICO'
+              case 'psychic': typeName = 'PSÍQUICO';
                 break;
-              case 'ice':
-                typeName = 'HIELO'
+              case 'ice': typeName = 'HIELO';
                 break;
-              case 'dragon':
-                typeName = 'DRAGON';
+              case 'dragon': typeName = 'DRAGON';
                 break;
-              case 'fairy':
-                typeName = 'HADA'
+              case 'fairy': typeName = 'HADA';
                 break;
-              default:
+              default: typeName = '';
             }
             acc.push(typeName);
             return acc;
@@ -256,11 +227,9 @@ export const PokeProvider = ({ children }) => {
           stats: await stats,
           types: await types
         };
-        /*-------------------------------- */
   
+        setPokeProb(parseInt(100 - (pokeData.base_experience / 400) * 100));
         setShowMainPoke(mainPokeObject);
-  
-        console.log(mainPokeObject);
       };
   
       getMainPokemon();
@@ -272,10 +241,10 @@ export const PokeProvider = ({ children }) => {
   const [searchError, setSearchError] = useState(null);
 
 
-  //Buscar pokemon por nombre
+  //BUSCAR POKEMON POR NOMBRE
   useEffect(()=>{
     if(searchPoke !== null){
-      // console.log(pokemons);
+      
       const setSearch = searchPoke.toLowerCase();
 
       const getPokemones = async () => {
@@ -284,7 +253,6 @@ export const PokeProvider = ({ children }) => {
         );
         const pokemonesList = await response.json();
         const { results } = pokemonesList;
-        // console.log('Pokemon', results);
 
         const testPokemon = await results.find(poke => poke.name === setSearch);
 
@@ -294,86 +262,12 @@ export const PokeProvider = ({ children }) => {
           setMainPokemon(testPokemon.name);
           setSearchError(null);
         }
-
-        // console.log (testPokemon);
       }
       getPokemones();
-      
-      // console.log('llega aquí', searchPoke)
-      // window.location.href = `/all`;
     }
   }, [searchPoke])
 
-  // const getMainPokemon = async (mainPokemon)=>{
-  //   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${mainPokemon}`);
-  //   const pokeData = await response.json();
-
-  //   const abilitiesList = await pokeData.abilities;
-  //   const abilities = Promise.all(abilitiesList.reduce((acc, curr)=>{
-  //     const getAbilities = async () =>{
-  //       const response = await fetch(curr.ability.url);
-  //       const abilityData = await response.json();
-  //       // console.log(await abilityData.names[5].name);
-  //       // console.log(await abilityData);
-  //       return await abilityData.names[5].name
-  //     }
-  //     const ability = getAbilities();
-  //     acc.push(ability);
-  //     return acc;
-  //   },[]))
-
-  //   const statsList = await pokeData.stats;
-  //   const stats = Promise.all(statsList.reduce((acc, curr)=>{
-
-  //     let statName = curr.stat.name;
-
-  //     switch(statName){
-  //       case 'hp':
-  //         statName = 'Resistencia';
-  //         break;
-  //       case 'attack':
-  //         statName = 'Ataque';
-  //         break;
-  //       case 'defense':
-  //         statName = 'Defensa';
-  //         break;
-  //       case 'special-attack':
-  //         statName = 'Ataque especial';
-  //         break;
-  //       case 'special-defense':
-  //         statName = 'Defensa especial';
-  //         break;
-  //       case 'speed':
-  //         statName = 'Velocidad';
-  //         break;
-  //       default:
-  //         statName = ''
-  //     }
-
-  //     const statObject = {
-  //       name: statName,
-  //       value: curr.base_stat
-  //     }
-  //     acc.push(statObject);
-  //     return acc;
-  //   },[]))
-
-  //   const mainPokeObject = {
-  //     name: (pokeData.name).toUpperCase(),
-  //     weight: pokeData.weight,
-  //     height: pokeData.height,
-  //     experience: pokeData.base_experience,
-  //     id: pokeData.id,
-  //     img: pokeData.sprites.other.dream_world.front_default,
-  //     abilities: await abilities,
-  //     stats: await stats
-  //   }
-
-  //   setShowMainPoke(mainPokeObject);
-
-  //   console.log(mainPokeObject);
-
-  // }
+  
 
   return (
     <PokeContext.Provider
@@ -392,7 +286,8 @@ export const PokeProvider = ({ children }) => {
         searchPoke,
         setSearchPoke,
         searchError,
-        setSearchError
+        setSearchError,
+        pokeProb
       }}
     >
       {children}
