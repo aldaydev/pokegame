@@ -6,31 +6,62 @@ import pokeball2_icon from '../../../assets/img/pokeball2_icon.svg'
 import pokeuser_icon from '../../../assets/img/pokeuser_icon.svg'
 import { AuthContext } from "../../../context/AuthContext";
 import { Link } from "react-router-dom";
-import useHunt from "../../../hooks/useHunt";
 
 const MainPoke = (show, name)=>{
 
     const { showMainPoke, pokeProb } = useContext(PokeContext);
     const { loggedIn } = useContext(AuthContext);
-    const [ setTryHunt, huntResult ] = useHunt();
-    const [ startHunt, setStartHunt] = useState(null);
-    const [ huntMsg, setHuntMsg] = useState(null);
+
+    const [ huntResult, setHuntResult ] = useState('initial');
+    const [ startHunt, setStartHunt ] = useState(null);
+    const [ huntMsg, setHuntMsg ] = useState(null);
+    const [ resetHunt, setResetHunt ] = useState(true);
 
     useEffect(()=>{
+            if(pokeProb){
+                console.log('----- CALCULA SI SERÁ CAZADO -------');
+                console.log('POKEMON:',showMainPoke.name )
+                console.log('Prob de ser cazado', pokeProb);
+                const randomNumber = parseInt(Math.random()*100);
+                console.log('RandomNumber', randomNumber);
+
+                if(randomNumber <= pokeProb){
+                    console.log('Será cazado')
+                    setHuntResult(true);
+
+                }else if(randomNumber > pokeProb){
+                    console.log('NO será cazado')
+                    setHuntResult(false);
+                }
+            }
+            
+    },[showMainPoke ,resetHunt])
+    
+    useEffect(()=>{
+
         if(startHunt !== null){
+            console.log('----- PROCESO DE CAZADO-----')
             const timeOut = ()=>setTimeout(()=>{
-                console.log('Pasa una vez');
-                huntResult 
-                    ? setHuntMsg(['¡POKEMON ATRAPADO!', 'huntMsg huntMsgWin'])
-                    : setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'huntMsg huntMsgLoose']);
-                setStartHunt(false);
+                if(huntResult === true){
+                    console.log('Mensaje de ATRAPADO')
+                    setHuntMsg(['¡POKEMON ATRAPADO!', 'Se ha añadido a tu Pokedex' ,'huntMsgWin'])
+                }else if(huntResult === false){
+                    console.log('Mensaje de ESCAPADO')
+                    setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose']);
+                }
+                
                 const timeOut2 = ()=>{
+                    console.log('Entra segundo timeOut');
                     setTimeout(()=>{
                         setHuntMsg(null);
-                    }, 5000)
+                        setStartHunt(null);
+                        setResetHunt(resetHunt === true ? false : true);
+                    }, 4000)
                 }
+                console.log('Entra segundo timeOut');
                 timeOut2();
             },5000)
+            console.log('Entra primer timeOut');
             timeOut();
         }
     },[startHunt])
@@ -61,10 +92,12 @@ const MainPoke = (show, name)=>{
                             
                         </div>
 
-                        {huntResult && huntMsg && 
-                            <div className='huntMsgContainer'>
-                                <h2 className={huntMsg[1]}>{huntMsg[0]}</h2>
-                                <p></p>
+                        {(startHunt && huntMsg) && 
+                            <div className='huntMsgPosition'>
+                                <div className={`huntMsgContainer ${huntMsg[2]}`}>
+                                    <h2 className='huntMsg'>{huntMsg[0]}</h2>
+                                    <p>{huntMsg[1]}</p>
+                                </div>
                             </div>
                         }
 
@@ -73,7 +106,11 @@ const MainPoke = (show, name)=>{
                             {showMainPoke.stats.map((stat, i)=>{
                                 return (
                                     <div key={i}>
-                                        <p className="mainPoke-statTitle">{`${stat.name}: ${stat.value}/255`}</p>
+                                        
+                                        <p className="mainPoke-statTitle">
+                                            <span>{stat.name}</span>
+                                            <span>{`: ${stat.value}/255`}</span>
+                                        </p>
                                         <div key={i} className="mainPoke-statContainer">
                                             <div className="mainPoke-statProgres" style={{width: `${(stat.value / 255) * 100}%`} }></div>
                                         </div>
@@ -83,8 +120,6 @@ const MainPoke = (show, name)=>{
                             })}
                     </div>
 
-
-
                 </section>
 
                 <section className="mainPoke-lowerSec">
@@ -93,7 +128,7 @@ const MainPoke = (show, name)=>{
                             <h3 className="mainPoke-itemTitle mainPoke-typeTitle">TIPO: </h3>
                             {showMainPoke.types.map((type, i)=>{
                                 return (
-                                    <p key={i} className="mainPoke-itemText">{`${type}`}</p>
+                                    <p key={i} className="mainPoke-itemText">{`(${type})`}</p>
                                 )
                             })}
                         </div>
@@ -108,7 +143,7 @@ const MainPoke = (show, name)=>{
                             <h3 className="mainPoke-itemTitle">HABILIDADES: </h3>
                             {showMainPoke.abilities.map((ability, i)=>{
                                 return (
-                                    <p key={i} className="mainPoke-itemText">{`${ability.toUpperCase()}`}</p>
+                                    <p key={i} className="mainPoke-itemText">{`(${ability.toUpperCase()})`}</p>
                                 )
                             })}
                         </div>
@@ -127,7 +162,6 @@ const MainPoke = (show, name)=>{
                         img={pokeball2_icon} 
                         imgClass='huntBtn-img'
                         onClick={()=>{
-                            setTryHunt(pokeProb);
                             setStartHunt(true);
                         }}
                         />

@@ -31,8 +31,11 @@ const Login = ()=>{
 
     return(
         <main className="App-main App-main--short">
-            <h1 className="App-main-title">ACCEDE</h1>
-            <h2 className="App-main-sutitle">¡PODRÁS CAZAR POKEMONS Y GUARDARLOS EN TU POKEDEX!</h2>
+            <hgroup>
+                <h1 className="App-main-title">ACCEDE</h1>
+                <h2 className="App-main-sutitle">¡PODRÁS CAZAR POKEMONS Y GUARDARLOS EN TU POKEDEX!</h2>
+            </hgroup>
+            
             <section className="login-section">
                 
                 <article className="signIn-article">

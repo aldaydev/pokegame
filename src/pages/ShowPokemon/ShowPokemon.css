@@ -1,8 +1,8 @@
 .showPoke-section{
-    height: calc(100dvh - 158px);
+    max-height: calc(100dvh - 180px);
     display: grid;
     grid-template-columns: 3fr 5fr;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 /*---------- ESTILOS POKE LIST ----------*/
@@ -25,7 +25,6 @@
 .pokeList-item{
     cursor: pointer;
     padding: 5px;
-    /* background-color: var(--color-white-dark); */
     min-width: 200px;
     min-height: 200px;
     display: flex;
@@ -99,10 +98,9 @@
 }
 
 .mainPoke-container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 40px;
+    display: grid;
+    grid-template-rows: auto;
+    margin-top: 20px;
     animation: fundido .5s ease-in-out;
 }
 
@@ -174,6 +172,7 @@
     font-size: 1.3rem;
     position: relative;
     z-index: 10;
+    text-wrap: nowrap;
 }
 
 .mainPoke-statProgres{
@@ -194,6 +193,7 @@
     flex-wrap: wrap;
     row-gap: 10px;
     justify-content: center;
+    align-items: center;
     margin-top: 20PX;
 }
 
@@ -219,6 +219,15 @@
     font-weight: 500;
     padding: 3px 15px;
     border-radius: 15px;
+}
+
+.mainPoke-charsContainer .mainPoke-itemTitle{
+    box-shadow: var(--box-shadow);
+}
+
+.mainPoke-itemContainer:first-child,
+.mainPoke-itemContainer:last-child{
+    box-shadow: var(--box-shadow);
 }
 
 .mainPoke-typeTitle{
@@ -258,18 +267,24 @@
 
 .huntBtn{
     padding: 10px 40px;
-    height: 100px;
+    max-height: 90px;
     width: 100%;
+    max-width: 600px;
     margin: 0 auto;
+    margin-top: 20px;
     background-color: var(--color-blue);
     border-radius: 15px;
     color: var(--color-white);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-wrap:  nowrap;
+}
+
+.huntBtn > span{
+    margin-right: 40px;
 }
 
 .huntBtn:hover{
@@ -277,11 +292,15 @@
 }
 
 .huntBtn-img{
-    transform: scale(0.8);
+    transform: scale(0.75) translateX(20px);
+    filter: drop-shadow(-1px -1px 0 white) 
+    drop-shadow(1px -1px 0 white) 
+    drop-shadow(-1px 1px 0 white) 
+    drop-shadow(1px 1px 0 white);
 }
 
 .huntBtn-img-loggin{
-    height: 80px;
+    height: 70px;
     filter: drop-shadow(-1px -1px 0 white) 
     drop-shadow(1px -1px 0 white) 
     drop-shadow(-1px 1px 0 white) 
@@ -331,13 +350,13 @@
     }55%{
         transform: scale(1);
     }60%{
-        transform: scale(1.2);
+        transform: scale(1.3);
     }65%{
         transform: scale(1);
     }70%{
         transform: scale(1);
     }75%{
-        transform: scale(1.2);
+        transform: scale(1.4);
     }80%{
         transform: scale(1);
     }85%{
@@ -349,7 +368,7 @@
     }
 }
 
-.huntMsgContainer{
+.huntMsgPosition{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -357,15 +376,49 @@
     
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.huntMsg{
-    padding: 30px;
-    font-size: 1.8rem;
-    background-color: var(--color-red);
+.huntMsgContainer{
+    padding: 30px 40px;
+    background-color: var(--color-red-dark);
     border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    border: 3px solid black;
+    animation: huntMsg 4s ease-in-out both;
+}
+
+.huntMsgContainer > p{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.huntMsg{
+    font-size: 1.8rem;
+}
+
+.huntMsgWin{
+    background-color: #54a666;
+}
+
+@keyframes huntMsg {
+    0%{
+        transform: scale(0);
+    }5%{
+        transform: scale(1.2);
+    }10%{
+        transform: scale(0.9);
+    }15%{
+        transform: scale(1);
+    }90%{
+        transform: scale(1);
+    }95%{
+        transform: scale(1.2);
+    }100%{
+        transform: scale(0);
+    }
 }
 
 

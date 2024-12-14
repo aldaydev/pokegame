@@ -8,8 +8,8 @@ const ShowPokemon = ({name, show})=>{
         <main className="App-main App-main--showPoke">
             <h1 className="App-main-title  showPoke-title">{name.toUpperCase()}</h1>
             <section className="showPoke-section">
-              <PokeList show={show} name={name}/>
-              <MainPoke show={show} name={name}/>
+                <PokeList show={show} name={name}/>
+                <MainPoke show={show} name={name}/>
             </section>
         </main>
     )

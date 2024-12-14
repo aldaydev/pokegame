@@ -7,7 +7,7 @@ const Account = ()=>{
             <header>
                 <ul>
                     <li>
-                        <img src={pokeuser_icon} alt='User icon'/>
+                        {/* <img src={pokeuser_icon} alt='User icon'/> */}
                         <h3>TU CUENTA</h3>
                     </li>
                 </ul>

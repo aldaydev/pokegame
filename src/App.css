@@ -7,6 +7,8 @@
   --color-blue: 	#3b4cca;
   --color-blue-dark: 	#1b2eba;
   --color-red-dark: #EF402E;
+
+  --box-shadow: 1px 1px 3px #9c9c9c;
 }
 
 /*Amarillo ANTERIOR -> #ffde00*/
@@ -26,13 +28,14 @@ body {
   font-size: 62.5%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 .App {
   text-align: center;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 100dvh;
+  min-height: 100dvh;
   background-color: var(--color-white);
 }
 
@@ -55,7 +58,9 @@ body {
   min-height: calc(100dvh - 80px);
   width: 95%;
   margin: 0 auto;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .App-main--short{
@@ -80,7 +85,7 @@ body {
   font-size: 1.2rem;
   border: none;
   border-radius: 7px;
-  box-shadow: 1px 1px 3px #9c9c9c;
+  box-shadow: var(--box-shadow);
   cursor: pointer;
   transition: background .2s ease-in-out;
 }
