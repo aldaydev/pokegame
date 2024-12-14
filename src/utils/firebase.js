@@ -14,7 +14,7 @@ export const initFireBase = async ()=>{
         };
         console.log('Llega aquí');
         const app = initializeApp(firebaseConfig);
-        return getAuth(app);
+        const auth = getAuth(app);
     }catch(error){
         alert(error)
     }
