@@ -17,6 +17,24 @@ export const PokeProvider = ({ children }) => {
 
   const [pokeProb, setPokeProb] = useState(null);
 
+  const [testPoke, setTestPoke] = useState(false);
+
+
+  async function testingPoke(mainPoke){
+    if(localStorage.user && JSON.parse(localStorage.user).data.pokemons){
+      const userPokes = JSON.parse(localStorage.user).data.pokemons;
+      const testing = await userPokes.some((userPoke)=>{
+      console.log('CLG USERPOKE',userPoke.name.toLowerCase());
+      console.log('---MAINPOKE---', mainPoke.toLowerCase());
+      return userPoke.name.toLowerCase() === mainPoke.toLowerCase()
+    })
+    setTestPoke(testing);
+    }
+    
+    // console.log('---USERPOKES---', userPokes)
+    // console.log('---MAINPOKE---', mainPoke)
+  }
+
   //OBTENER POKEMONS DE UN TIPO
   useEffect(() => {
     
@@ -228,6 +246,8 @@ export const PokeProvider = ({ children }) => {
           types: await types
         };
   
+        testingPoke(pokeData.name);
+
         setPokeProb(parseInt(100 - (pokeData.base_experience / 400) * 100));
         setShowMainPoke(mainPokeObject);
       };
@@ -287,7 +307,8 @@ export const PokeProvider = ({ children }) => {
         setSearchPoke,
         searchError,
         setSearchError,
-        pokeProb
+        pokeProb,
+        testPoke
       }}
     >
       {children}

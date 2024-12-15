@@ -265,7 +265,8 @@
     
 }
 
-.huntBtn{
+.huntBtn,
+.huntBtn-pokedex{
     padding: 10px 40px;
     max-height: 90px;
     width: 100%;
@@ -305,6 +306,14 @@
     drop-shadow(1px -1px 0 white) 
     drop-shadow(-1px 1px 0 white) 
     drop-shadow(1px 1px 0 white);
+}
+
+.huntBtn-pokedex{
+    background-color: var(--color-green);
+}
+
+.huntBtn-pokedex:hover{
+    background-color: var(--color-green-dark);
 }
 
 .mainPoke-huntSection > a {
@@ -387,7 +396,7 @@
     border-radius: 15px;
     box-shadow: var(--box-shadow);
     border: 3px solid black;
-    animation: huntMsg 4s ease-in-out both;
+    animation: huntMsg 3s ease-in-out both;
 }
 
 .huntMsgContainer > p{
@@ -400,7 +409,7 @@
 }
 
 .huntMsgWin{
-    background-color: #54a666;
+    background-color: var(--color-green);
 }
 
 @keyframes huntMsg {

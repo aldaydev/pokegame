@@ -8,7 +8,7 @@ import { validateEmail, validatePass } from '../../../../utils/validations';
 
 const Login = ()=>{
 
-    const { loggedIn, signIn } = useContext(AuthContext);
+    const { loggedIn, signIn, loginError, signUp } = useContext(AuthContext);
 
     const [emailError, setEmailError] = useState([false, 'type', 'msg']);
     const [passError, setPassError] = useState([false, 'type', 'msg']);
@@ -31,14 +31,13 @@ const Login = ()=>{
             ?  setPassError([false, 'type', ''])
             : setPassError([true, type, 'La contraseña debe contener al menos una letra, un nº, un caracter especial y 6 dígitos'])
         
-        emailFormat && passFormat && signIn(emailValue, passValue)
-
-        
-    }
-
-    const validateSignUp = (e)=>{
-        e.preventDefault();
-
+        if(emailFormat && passFormat){
+            if(type === 'signIn'){
+            signIn(emailValue, passValue);
+            }else if(type === 'signUp'){
+            signUp(emailValue, passValue);
+            }
+        }
     }
 
     return(
@@ -56,6 +55,7 @@ const Login = ()=>{
                         <div className='form-emailContainer'>
                             <FormInput type='text' placeholder='Email' className='loginInput'/>
                             {emailError[0] && emailError[1] === 'signIn' && <span className='form-errorMsg'>{emailError[2]}</span>}
+                            {loginError[0] && loginError[1] === 'signIn' && <span className='form-errorMsg'>{loginError[2]}</span>}
                         </div>
                         <div className='form-passContainer'>
                             <FormInput type='password' placeholder='Contraseña' className='loginInput'/>
