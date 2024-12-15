@@ -13,8 +13,46 @@ export const AuthProvider = ({ children }) => {
   const [userPokeballs, setUserPokeballs] = useState(null);
   const [userPokemons, setUserPokemons] = useState(null);
   const [userPokeCount, setUserPokeCount] = useState(null);
-
   
+  const [ showCountDown, setShowCountDown ] = useState(null)
+  const [startGlobalHunt, setStartGlobalHunt] = useState(null);
+  
+  function setCountDown(){
+    
+    const countProcess = ()=>{
+      let currentCount = 11;
+
+      const eachSecond = setInterval(()=>{
+            currentCount -= 1;
+            console.log('CUENTA ATRÁS', currentCount)
+            setShowCountDown(currentCount);
+        },1000)
+
+      setTimeout(()=>{
+        console.log('Deja de contar');
+        clearInterval(eachSecond);
+        setUserPokeballs(3);
+        setShowCountDown(null);
+      },12000)
+  
+    }
+
+    setTimeout(()=>{
+      countProcess();
+    },5600)
+
+  }
+
+  useEffect(()=>{
+    if(loggedIn && userPokeballs === 0){
+      // setIsCounting(true)
+      setTimeout(()=>{
+        setCountDown();
+      },1000)
+    }
+  },[loggedIn, userPokeballs])
+
+
   
   useEffect(()=>{
 
@@ -31,23 +69,14 @@ export const AuthProvider = ({ children }) => {
 
   },[userPokemons])
 
+
+  
   useEffect(()=>{
 
-    if(loggedIn && userPokeballs === null){
+    if(loggedIn && userPokeballs === null && userPokeballs !== 0){
       setUserPokeballs(JSON.parse(localStorage.user).data.pokeballs);
       setUserPokeCount(JSON.parse(localStorage.user).data.pokeCount);
       setUserPokemons(JSON.parse(localStorage.user).data.pokemons);
-    }
-
-    if(userPokeballs === 0){
-      const topCount = 30;
-      let initCount = 0;
-      const countingDown = setInterval(()=>{
-        while(initCount >= topCount){
-          initCount += 1;
-          console.log('CUENTA ATRÁS', initCount)
-        }
-      },1000)
     }
 
     localStorage.user && JSON.parse(localStorage.user).connected === true && setLoggedIn(true);
@@ -55,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
 
   useEffect(()=>{
-    if(localStorage.user && userPokeballs){
+    if(localStorage.user && userPokeballs !== null){
       
       const previousLS = JSON.parse(localStorage.user);
       const previousLSData = JSON.parse(localStorage.user).data;
@@ -66,12 +95,11 @@ export const AuthProvider = ({ children }) => {
       localStorage.user = JSON.stringify(newLS);
       updateData(newLSData);
 
-    // let nuewLSData = {...previousLSData, pokeballs: 10}
-    
-    console.log('PreviousPokeballs', newLSData)
     }
     
   }, [userPokeballs])
+
+  
 
   const signIn = async (email, password) => {
     try {
@@ -120,7 +148,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={ { loggedIn, signIn, loginError, signUp, deleteAccount, removedMsg, userPokeballs, setUserPokeballs, userPokemons, setUserPokemons, userPokeCount, setUserPokeCount } }>
+    <AuthContext.Provider value={ { loggedIn, signIn, loginError, signUp, deleteAccount, removedMsg, userPokeballs, setUserPokeballs, userPokemons, setUserPokemons, userPokeCount, setUserPokeCount, setCountDown, showCountDown, startGlobalHunt, setStartGlobalHunt } }>
       {children}
     </AuthContext.Provider>
   );

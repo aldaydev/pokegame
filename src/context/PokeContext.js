@@ -17,16 +17,18 @@ export const PokeProvider = ({ children }) => {
 
   const [pokeProb, setPokeProb] = useState(null);
 
-  const [testPoke, setTestPoke] = useState(false);
+  const [testPoke, setTestPoke] = useState(null);
 
 
-  async function testingPoke(mainPoke){
+  async function testingPoke(pokeName){
+    
     if(localStorage.user && JSON.parse(localStorage.user).data.pokemons){
       const userPokes = JSON.parse(localStorage.user).data.pokemons;
+
       const testing = await userPokes.some((userPoke)=>{
-      console.log('CLG USERPOKE',userPoke.name.toLowerCase());
-      console.log('---MAINPOKE---', mainPoke.toLowerCase());
-      return userPoke.name.toLowerCase() === mainPoke.toLowerCase()
+      // console.log('CLG USERPOKE',userPoke.name.toLowerCase());
+      // console.log('---MAINPOKE---', pokeName.toLowerCase());
+      return userPoke.name.toLowerCase() === pokeName.toLowerCase()
     })
     setTestPoke(testing);
     }
@@ -308,7 +310,8 @@ export const PokeProvider = ({ children }) => {
         searchError,
         setSearchError,
         pokeProb,
-        testPoke
+        testPoke,
+        setTestPoke
       }}
     >
       {children}

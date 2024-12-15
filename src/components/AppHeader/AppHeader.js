@@ -15,10 +15,10 @@ const AppHeader = ()=>{
     const { setTypeId, typeList, showAllPoke, setShowAllPoke } = useContext(PokeContext);
 
 
-    const { loggedIn, userPokeballs, userPokeCount } = useContext(AuthContext);
+    const { loggedIn, userPokeballs, userPokeCount, startGlobalHunt } = useContext(AuthContext);
 
     return(
-        <header className="App-header">
+        <header className={`App-header ${startGlobalHunt && 'App-header--block'}`}>
             <Link to='/'>
                 <img src={pokemon_logo} alt="Logo de Pokemon" className="App-logo"/>
             </Link>

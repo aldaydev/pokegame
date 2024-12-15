@@ -1,4 +1,4 @@
-15/12/2024 - Madrugada- Desarrollando Auth, Pokeballs y Pokemons
+15/12/2024 - Tarde- Auth-Enviroment funcional
 
 # Getting Started with Create React App
 

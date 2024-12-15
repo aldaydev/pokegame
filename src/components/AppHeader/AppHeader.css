@@ -285,23 +285,29 @@
 
 .pokeballCount-container,
 .pokemonCount-container{
-    width: 35%;
-    height: 35%;
-    border-radius: 50%;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 25px;
     background-color: var(--color-blue);
     position: absolute;
-    right: 5px;
+    right: 3px;
     bottom: 0;
     z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.pokemonCount-container{background-color: var(--color-green);}
+.pokemonCount-container{
+    background-color: var(--color-green);
+}
 
 .pokeballCount-number,
 .pokemonCount-number{
     color: white;
     font-size: 1rem;
     font-weight: bold;
+    margin: 0 3px;
 }
 
 

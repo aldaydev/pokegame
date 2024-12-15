@@ -41,6 +41,11 @@ export async function updateData(newData){
 }
 
 export async function loadData(email){
+
+    if(localStorage.user){
+        email = JSON.parse(localStorage.user).email;
+    }
+
     const docRef = doc(db, 'users', email);
     const docSnap = await getDoc(docRef);
     console.log('DOCSNAP', docSnap.data().pokeballs)

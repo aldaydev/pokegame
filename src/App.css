@@ -7,7 +7,9 @@
   --color-blue: 	#3b4cca;
   --color-blue-dark: 	#1b2eba;
   --color-red-dark: #EF402E;
+  --color-red-light: #ef412eda;
   --color-green: #54a666;
+  --color-green-light: #54a66669;
   --color-green-dark: #53905f;
 
   --box-shadow: 1px 1px 3px #9c9c9c;
@@ -54,6 +56,13 @@ body {
   z-index: 999;
 
   box-shadow: 0 0 5px var(--color-blue);
+}
+
+.App-header--block{
+  pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+    user-select: none;
 }
 
 .App-main {
