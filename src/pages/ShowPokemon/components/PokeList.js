@@ -70,7 +70,7 @@ const PokeList = ({show, name})=>{
                 ? searchType.map((pokemon, i)=>{
                   
               return (
-                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name).toLowerCase())} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name.toLowerCase()) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`}>
+                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name).toLowerCase())} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name.toLowerCase()) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`} >
                   <div className="pokeList-imgContainer">
                     <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img"/>
                   </div>
@@ -80,7 +80,7 @@ const PokeList = ({show, name})=>{
               )
             }) : pokemons.map((pokemon, i)=>{
               return(
-                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name))} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`}>
+                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name))} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`} autoFocus={i === 0 && true}>
                   <div className="pokeList-imgContainer">
                     <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img"/>
                   </div>

@@ -1,4 +1,4 @@
-15/12/2024 - Tarde- Auth-Enviroment funcional
+16/12/2024 - Madrugada - Home básico diseñado
 
 # Getting Started with Create React App
 

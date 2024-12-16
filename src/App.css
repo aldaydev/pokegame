@@ -80,7 +80,7 @@ body {
 
 .App-main-title{
   margin: 10px;
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 2rem;
   animation: trackingDown .5s .2s ease-in-out both, fundido .5s .3s ease-in-out both;
 }
@@ -128,5 +128,30 @@ body {
       transform: translateY(-10px);
   }to{
       transform: translateY(0px);
+  }
+}
+
+@keyframes trackingUp {
+  from{
+      transform: translateY(10px);
+  }to{
+      transform: translateY(0px);
+  }
+}
+
+
+@keyframes trackingRigth {
+  from{
+      transform: translateX(-40px);
+  }to{
+      transform: translateX(0px);
+  }
+}
+
+@keyframes trackingLeft {
+  from{
+      transform: translateX(40px);
+  }to{
+      transform: translateX(0px);
   }
 }
