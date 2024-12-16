@@ -1,4 +1,4 @@
-16/12/2024 - Madrugada - Empezando seccion account
+16/12/2024 - Madrugada - Continuando sección account
 
 # Getting Started with Create React App
 

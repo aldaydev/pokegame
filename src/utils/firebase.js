@@ -65,14 +65,11 @@ export async function removeAllData(email) {
             await user.delete();
             await deleteDoc(doc(db, 'users', email));
             localStorage.removeItem('user');
-            console.log('Cuenta eliminada correctamente');
             return 'Cuenta eliminada correctamente';
         } catch (error) {
-            console.log('Error al eliminar la cuenta. Reinicia la sesión y prueba de nuevo')
             return 'Error al eliminar la cuenta. Reinicia la sesión y prueba de nuevo'
         }
     } else {
-        console.log('No hay un usuario autenticado.');
         return 'No hay un usuario autenticado.';
     }
     

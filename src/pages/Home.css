@@ -29,6 +29,7 @@
     top: 10%;
     right: 0;
     background-color: black;
+    animation: trackingUp .5s .2s ease-in-out both, fundido .5s .2s ease-in-out both;
 }
 
 .welcome-img{

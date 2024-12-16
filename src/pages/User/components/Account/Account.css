@@ -1,0 +1,158 @@
+.account-container{
+    display: grid;
+    grid-template-areas: 
+    "user user aside"
+    "poke poke aside"
+    "poke poke aside"
+    "poke poke aside"
+    "poke poke aside"
+    "poke poke aside"
+    "poke poke aside";
+    grid-template-rows: 1fr 8fr;
+    min-height: 1000px;
+}
+
+.account-userSect{
+    background-color: #F7F7F7;
+    padding: 0 50px;
+    grid-area: user;
+    /* background-color: var(--color-yellow); */
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 80px;
+    left: 0;
+}
+
+.userSect-imgContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.userSect-userImg{
+    width: 45px;
+    max-height: 40px;
+    filter: drop-shadow(-1px -1px 0 black) 
+    drop-shadow(1px -1px 0 black) 
+    drop-shadow(-1px 1px 0 black) 
+    drop-shadow(1px 1px 0 black);
+}
+
+.userSect-title{
+    font-size: 1.5rem;
+}
+
+.userSect-btnContainer{
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+}
+
+.AppButton-exit{
+    font-size: 1.1rem;
+    padding: 7px 20px;
+    background-color: var(--color-red-light);
+    color: white;
+}
+
+.AppButton-exit:hover{
+    background-color: var(--color-red-dark);
+}
+
+.AppButton-close{
+    font-size: 1.1rem;
+    padding: 7px 20px;
+    background-color: var(--color-blue);
+    color: white;
+}
+
+.AppButton-close:hover{
+    background-color: var(--color-blue-dark);
+}
+
+.deleteAccount-position{
+    background-color: #00000024;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteAccount-container{
+    padding: 50px;
+    margin-bottom: 200px;
+    background-color: var(--color-white-dark);
+    border-radius: 20px;
+}
+
+
+.deleteAccount-title{
+    font-size: 1.3rem;
+}
+
+.deleteAccount-subtitle{
+    font-size: 1.2rem;
+}
+
+.deleteAccount-btnContainer{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-pokemonSect{
+    grid-area: poke;
+}
+
+.pokemonSect-title{
+    background-color: #F7F7F7;
+    padding: 20px;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 160px;
+    left: 0;
+}
+
+.showPoke-pokeList--user{
+    /* background-color: #EFEFEF; */
+    justify-content:start;
+    align-items: start;
+    max-height: max-content;
+    overflow: hidden;
+}
+
+.pokeList-item--user:hover{
+    background-color: transparent;
+}
+
+.pokeList-item:hover{
+    background-color: none;
+}
+
+.account-aside{
+    position: sticky;
+    top: 80px;
+    left: 0;
+    grid-area: aside;
+    background-color: #6fc57f;
+}
+
+.acountAside-pokeballs{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.userSect-userImg--pokeball{
+    width: 60px;
+    max-height: 70px;
+}
