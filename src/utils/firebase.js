@@ -19,7 +19,7 @@ const db = getFirestore(app);
 
 export async function setSignUpData(email){
     const signUpData = {
-        pokeballs: 5,
+        pokeballs: 3,
         pokemons: [],
         pokeCount: 0
     }

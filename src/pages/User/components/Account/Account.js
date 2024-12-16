@@ -8,6 +8,7 @@ import pokeball2_icon from '../../../../assets/img/pokeball2_icon.svg';
 const Account = ()=>{
     
     const [deleteMsg, setDeleteMsg] = useState(false);
+    const [noSticky, setNoSticky] = useState(false);
     const { deleteAccount, removedMsg, userPokemons, userPokeballs } = useContext(AuthContext);
 
     const closeSession = ()=>{
@@ -19,15 +20,18 @@ const Account = ()=>{
         <main className="App-main">
             <h1 className="App-main-title">TU ÁREA DE USUARIO</h1>
             <div className="account-container">
-                <section className="account-userSect">
+                <section className={`account-userSect ${noSticky && noSticky}`}>
                     <div className="userSect-imgContainer">
                         <img src={user_icon} alt="User icon" className="userSect-userImg"/>
                         <h2 className="userSect-title">TU CUENTA</h2>
                     </div>
 
-                    <div className="userSect-btnContainer">
+                    <div className="userSect-btnContainer" >
                         <button onClick={()=>closeSession()} className="AppButton AppButton-close">CERRAR SESIÓN</button>
-                        <button onClick={()=>setDeleteMsg(true)} className="AppButton AppButton-exit">ELIMINAR CUENTA</button>
+                        <button onClick={()=>{
+                            setDeleteMsg(true);
+                            setNoSticky(()=>'account-userSect-noSticky');
+                            }} className='AppButton AppButton-exit'>ELIMINAR CUENTA</button>
                         {
                         deleteMsg && 
                         <div className="deleteAccount-position">

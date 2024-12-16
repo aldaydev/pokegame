@@ -9,7 +9,8 @@
     "poke poke aside"
     "poke poke aside";
     grid-template-rows: 1fr 8fr;
-    min-height: 1000px;
+    grid-template-columns: 60%, 40%;
+    /* min-height: 1000px; */
 }
 
 .account-userSect{
@@ -57,6 +58,10 @@
     color: white;
 }
 
+.AppButton-exit-noSticky{
+    position: static;
+}
+
 .AppButton-exit:hover{
     background-color: var(--color-red-dark);
 }
@@ -73,7 +78,8 @@
 }
 
 .deleteAccount-position{
-    background-color: #00000024;
+    /* background-color: #00000024; */
+    background-color: #ff0000;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -111,6 +117,7 @@
 
 .account-pokemonSect{
     grid-area: poke;
+    /* max-width: 100%; */
 }
 
 .pokemonSect-title{
@@ -118,12 +125,14 @@
     padding: 20px;
     font-size: 1.8rem;
     position: sticky;
-    top: 160px;
+    top: 180px;
     left: 0;
 }
 
 .showPoke-pokeList--user{
     /* background-color: #EFEFEF; */
+    
+    /* background-color: aqua; */
     justify-content:start;
     align-items: start;
     max-height: max-content;
@@ -139,6 +148,7 @@
 }
 
 .account-aside{
+    min-width: 350px;
     position: sticky;
     top: 80px;
     left: 0;
