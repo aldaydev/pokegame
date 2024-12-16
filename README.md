@@ -1,4 +1,4 @@
-16/12/2024 - Madrugada - Home básico diseñado
+16/12/2024 - Madrugada - Empezando seccion account
 
 # Getting Started with Create React App
 
