@@ -7,14 +7,18 @@ import pokeball2_icon from '../../assets/img/pokeball2_icon.svg'
 import pokes_icon from '../../assets/img/pokes_icon.svg'
 import user_icon from '../../assets/img/pokeuser_icon.svg'
 import SearchForm from './SearchForm';
+import { AuthContext } from '../../context/AuthContext';
 
 
 const AppHeader = ()=>{
 
     const { setTypeId, typeList, showAllPoke, setShowAllPoke } = useContext(PokeContext);
 
+
+    const { loggedIn, userPokeballs, userPokeCount, startGlobalHunt } = useContext(AuthContext);
+
     return(
-        <header className="App-header">
+        <header className={`App-header ${startGlobalHunt && 'App-header--block'}`}>
             <Link to='/'>
                 <img src={pokemon_logo} alt="Logo de Pokemon" className="App-logo"/>
             </Link>
@@ -50,17 +54,24 @@ const AppHeader = ()=>{
                 <SearchForm/>
 
                 <div className='nav-userButtons'>
-
+                    {loggedIn && 
+                    <>
+                    
                     <Link>
                         <img src={pokeball2_icon} className='nav-pokeball' alt='Pokeball icon'/>
+                        <div className='pokeballCount-container'>
+                            <span className='pokeballCount-number'>{userPokeballs}</span>
+                        </div>
                     </Link>
-                    <div className='nav-pokeballContainer'>
-                        
-                    </div>
 
                     <Link>
                         <img src={pokes_icon} className='nav-pokemons' alt='Pokemon icon'/>
+                        <div className='pokemonCount-container'>
+                            <span className='pokemonCount-number'>{userPokeCount}</span>
+                        </div>
                     </Link>
+
+                    </>}
                     
                     <Link to='/account'>
                         <img src={user_icon} className='nav-user' alt='User icon'/>

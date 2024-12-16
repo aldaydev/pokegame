@@ -1,3 +1,4 @@
+16/12/2024 - Madrugada - Empezando seccion account
 14/12/2024 - PokeHunt - Primera fase PokeHunt Finalizada (merged from auth)
 
 # Getting Started with Create React App

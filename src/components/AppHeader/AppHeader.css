@@ -223,6 +223,7 @@
     object-fit: cover;
     overflow: hidden;
     position: relative;
+    transition: transform .2s ease-in-out;
 }
 
 .nav-pokeball{
@@ -265,12 +266,49 @@
     transition: transform .3s ease-in-out;
 }
 
-.nav-user:hover,
+.nav-userButtons a:first-child:hover,
+.nav-userButtons a:nth-child(2):hover,
+.nav-userButtons a:nth-child(3):hover {
+    transform: scale(1.08);
+}
+
+
+/* .nav-user:hover,
 .nav-pokeball:hover,
 .nav-pokemons:hover{
     transform: scale(1.1);
+} */
+
+.nav-user:hover .pokeballCount-container{
+    transform: scale(1.1);
 }
 
+.pokeballCount-container,
+.pokemonCount-container{
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 25px;
+    background-color: var(--color-blue);
+    position: absolute;
+    right: 3px;
+    bottom: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokemonCount-container{
+    background-color: var(--color-green);
+}
+
+.pokeballCount-number,
+.pokemonCount-number{
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 3px;
+}
 
 
 

@@ -9,40 +9,112 @@ import { Link } from "react-router-dom";
 
 const MainPoke = (show, name)=>{
 
-    const { showMainPoke, pokeProb } = useContext(PokeContext);
-    const { loggedIn } = useContext(AuthContext);
+    const { showMainPoke, pokeProb, testPoke, setTestPoke } = useContext(PokeContext);
+    const { loggedIn, setUserPokeballs, userPokeballs, setUserPokemons, userPokemons, setUserPokeCount, userPokeCount, startGlobalHunt, setStartGlobalHunt } = useContext(AuthContext);
 
     const [ huntResult, setHuntResult ] = useState('initial');
     const [ startHunt, setStartHunt ] = useState(null);
     const [ huntMsg, setHuntMsg ] = useState(null);
     const [ resetHunt, setResetHunt ] = useState(true);
+    const [ huntBtn, setHuntBtn ] = useState(null);
+
+    const [changeBtn, setChangeBtn] = useState(0);
 
     useEffect(()=>{
-            if(pokeProb){
-                console.log('----- CALCULA SI SERÁ CAZADO -------');
-                console.log('POKEMON:',showMainPoke.name )
-                console.log('Prob de ser cazado', pokeProb);
+        if(loggedIn){
+            console.log('¿TIENES EL POKEMON?', testPoke);
+            if(startHunt === null){
+                if(testPoke){
+                    // console.log('Tipo de botón: Ir a Pokedex');
+                    setHuntBtn(<Link to='/account'>
+                        <AppButton text='¡LO TIENES EN TU POKEDEX!' className='huntBtn huntBtn-green' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
+                        </Link>)
+                }else{
+                    if(userPokeballs === 0){
+                        // console.log('Tipo de botón: Sin pokeballs');
+                        setHuntBtn( 
+                            <AppButton text='¡NO TE QUEDAN POKEBALLS!' className='huntBtn huntBtn-red' img={pokeball2_icon} imgClass='huntBtn-img'/>)
+                    }else if(userPokeballs > 0){
+                        // console.log('Tipo de botón: Lanzar Pokeball');
+                        setHuntBtn(<AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{
+                            setStartHunt(true);
+                            setStartGlobalHunt(true);
+                        }}/>) 
+                    }
+                }
+            }else{
+                setHuntBtn(<AppButton text='POKEBALL LANZADA' className='huntBtn huntBtn-block' img={pokeball2_icon} imgClass='huntBtn-img'/>)
+            }
+            
+        }else{
+            setHuntBtn(<Link to='/account'>
+                <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn huntBtn-red' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
+            </Link>)
+        }
+    },[loggedIn, testPoke,  userPokeballs, startHunt]) //He quitado "changeBtn"
+    //testPoke, loggedIn, userPokeballs,
+
+    // function setHuntBtn(){
+    //     if(loggedIn){
+    //         if(userPokeballs > 0){
+    //             return <AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{setStartHunt(true);}}/>
+    //         }else if(userPokeballs === 0){
+    //             return <Link to='/account'>
+    //                 <AppButton text='¡LO TIENES EN TU POKEDEX!' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
+    //             </Link>
+    //         }else{
+    //             <Link to='/account'>
+    //                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
+    //             </Link>
+    //         }
+    //     }
+    // }
+
+    useEffect(()=>{
+            if(pokeProb && !testPoke && loggedIn){
+                console.log('---- CALCULA SI SERÁ CAZADO ----');
+                console.log('- POKEMON:',showMainPoke.name )
+                console.log('- Prob de ser cazado: ', pokeProb);
                 const randomNumber = parseInt(Math.random()*100);
-                console.log('RandomNumber', randomNumber);
+                console.log('- Nº Aleatorio: ', randomNumber);
 
                 if(randomNumber <= pokeProb){
-                    console.log('Será cazado')
+                    console.log('Result: SERÁ CAZADO')
                     setHuntResult(true);
 
                 }else if(randomNumber > pokeProb){
-                    console.log('NO será cazado')
+                    console.log('Result: NO SERÁ CAZADO')
                     setHuntResult(false);
                 }
             }
             
     },[showMainPoke ,resetHunt])
     
+
     useEffect(()=>{
 
-        if(startHunt !== null){
+        if(startHunt !== null && userPokeballs > 0){
             console.log('----- PROCESO DE CAZADO-----')
+
+            console.log('Resta una pokeball');
+            setUserPokeballs(userPokeballs - 1); 
+            console.log('1. Animación Pokeball');
             const timeOut = ()=>setTimeout(()=>{
                 if(huntResult === true){
+
+                    
+                    setUserPokeCount(userPokeCount + 1);
+                    setTestPoke(true);
+
+                    const newPokemonData = {
+                        id: showMainPoke.id,
+                        name: showMainPoke.name,
+                        img: showMainPoke.img
+                    }
+                    console.log('Actualiza datos pokeballs');
+                    const allHuntedPokemons = [...userPokemons, newPokemonData]
+                    setUserPokemons(allHuntedPokemons);
+
                     console.log('Mensaje de ATRAPADO')
                     setHuntMsg(['¡POKEMON ATRAPADO!', 'Se ha añadido a tu Pokedex' ,'huntMsgWin'])
                 }else if(huntResult === false){
@@ -51,17 +123,27 @@ const MainPoke = (show, name)=>{
                 }
                 
                 const timeOut2 = ()=>{
-                    console.log('Entra segundo timeOut');
+                    
                     setTimeout(()=>{
                         setHuntMsg(null);
                         setStartHunt(null);
+                        setStartGlobalHunt(null);
                         setResetHunt(resetHunt === true ? false : true);
-                    }, 4000)
+                        setChangeBtn(changeBtn + 1);
+                    }, 3000)
                 }
+
+                // if(userPokeballs === 0){
+                //     setCountDown();
+                // }
                 console.log('Entra segundo timeOut');
                 timeOut2();
+                // if(userPokeballs === 0){
+                //     setCountDown();
+                // }
+                
             },5000)
-            console.log('Entra primer timeOut');
+            
             timeOut();
         }
     },[startHunt])
@@ -154,21 +236,21 @@ const MainPoke = (show, name)=>{
                 </section>
                 
                 <section className="mainPoke-huntSection">
-                    {
-                        loggedIn 
-                        ? 
-                        <AppButton text='LANZAR POKEBALL' 
-                        className='huntBtn' 
-                        img={pokeball2_icon} 
-                        imgClass='huntBtn-img'
-                        onClick={()=>{
-                            setStartHunt(true);
-                        }}
-                        />
-                        :
-                        <Link to='/account'>
-                            <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-                        </Link>
+                    {   huntBtn
+                        // loggedIn 
+                        // ? 
+                        // <AppButton text='LANZAR POKEBALL' 
+                        // className='huntBtn' 
+                        // img={pokeball2_icon} 
+                        // imgClass='huntBtn-img'
+                        // onClick={()=>{
+                        //     setStartHunt(true);
+                        // }}
+                        // />
+                        // :
+                        // <Link to='/account'>
+                        //     <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
+                        // </Link>
                         
                     }
                     

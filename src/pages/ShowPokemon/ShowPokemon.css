@@ -1,5 +1,5 @@
 .showPoke-section{
-    max-height: calc(100dvh - 180px);
+    /* max-height: calc(100dvh - 180px); */
     display: grid;
     grid-template-columns: 3fr 5fr;
     margin-bottom: 20px;
@@ -8,6 +8,7 @@
 /*---------- ESTILOS POKE LIST ----------*/
 
 .showPoke-pokeList{
+    max-height: calc(100dvh - 180px);
     flex-basis: 30%;
     background-color: var(--color-white);
     height: 100% ;
@@ -42,7 +43,6 @@
 
 .pokeList-item:focus{
     background-color: var(--color-yellow);
-    
 }
 
 .pokeList-item:focus .pokeList-img{
@@ -54,14 +54,33 @@
     transform: scale(1.1);
 }
 
-.pokeList-item:hover {
-    background-color: --color-yellow-light;
-}
-
 .pokeList-item:focus:hover {
     background-color: var(--color-yellow);
 }
 
+.pokeList-item--owned{
+    background-color: var(--color-green-light);
+}
+
+.pokeList-item--owned:hover{
+    background-color: var(--color-green);
+}
+
+.pokeList-item--owned:focus{
+    background-color: var(--color-green);
+    
+}
+
+.pokeList-item--owned:focus:hover {
+    background-color: var(--color-green);
+}
+
+.pokeList-item--block{
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+    user-select: none;
+}
 
 .pokeList-imgContainer{
     width: 130px;
@@ -194,7 +213,7 @@
     row-gap: 10px;
     justify-content: center;
     align-items: center;
-    margin-top: 20PX;
+    margin: 20px 20px 0 20px;
 }
 
 .mainPoke-itemContainer{
@@ -307,6 +326,36 @@
     drop-shadow(1px 1px 0 white);
 }
 
+.huntBtn-red{
+    background-color: var(--color-red-light);
+}
+
+.huntBtn-red:hover{
+    background-color: var(--color-red-dark);
+}
+
+.huntBtn-green{
+    background-color: var(--color-green);
+}
+
+.huntBtn-green:hover{
+    background-color: var(--color-green-dark);
+}
+
+.huntBtn-block{
+    background-color: var(--color-white-dark);
+    color: black;
+    
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+.huntBtn-block > img{
+    filter: grayscale();
+}
+
 .mainPoke-huntSection > a {
     text-decoration: none;
 }
@@ -387,7 +436,7 @@
     border-radius: 15px;
     box-shadow: var(--box-shadow);
     border: 3px solid black;
-    animation: huntMsg 4s ease-in-out both;
+    animation: huntMsg 3s ease-in-out both;
 }
 
 .huntMsgContainer > p{
@@ -400,7 +449,7 @@
 }
 
 .huntMsgWin{
-    background-color: #54a666;
+    background-color: var(--color-green);
 }
 
 @keyframes huntMsg {
@@ -421,5 +470,35 @@
     }
 }
 
+.showCountDown-container{
+    font-size: 1.2rem;
+    background-color: var(--color-red-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    right: 2%;
+    top: calc(80px + 2%);
+    padding: 10px 20px;
+    border-radius: 10px;
+    animation: showCountDown 12s ease-in-out both;
+}
+
+@keyframes showCountDown {
+    0%{
+        top: -100px;
+    }8%{
+        top: calc(80px + 4%);
+    }9%{
+        top: calc(80px + 2%);
+    }90%{
+        top: calc(80px + 2%);
+        opacity: 1;
+    }92%{
+        opacity: 0;
+    }
+}
 
 
