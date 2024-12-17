@@ -8,6 +8,7 @@
 /*---------- ESTILOS POKE LIST ----------*/
 
 .showPoke-pokeList{
+    
     max-height: calc(100dvh - 180px);
     flex-basis: 30%;
     background-color: var(--color-white);
@@ -26,8 +27,8 @@
 .pokeList-item{
     cursor: pointer;
     padding: 5px;
-    min-width: 200px;
-    min-height: 200px;
+    /* min-width: 150px;
+    min-height: 150px; */
     display: flex;
     flex-direction: column;
     justify-content: center;

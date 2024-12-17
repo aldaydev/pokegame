@@ -1,4 +1,4 @@
-16/12/2024 - Mañana - Continuando sección account
+17/12/2024 - Mañana - Funcionalidad hitos realizada (falta agregar más)
 
 # Getting Started with Create React App
 

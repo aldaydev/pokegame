@@ -79,6 +79,7 @@ const Login = ()=>{
                         <div className='form-passContainer'>
                             <FormInput type='password' placeholder='Contraseña' className='loginInput'/>
                             {passError[0] && passError[1] === 'signUp' && <span className='form-errorMsg'>{passError[2]}</span>}
+                            {loginError[0] && loginError[1] === 'signUp' && <span className='form-errorMsg'>{loginError[2]}</span>}
                         </div>
                         
                         <AppButton text='REGISTRARSE' className='loginSubmit'/>

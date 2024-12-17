@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
 
 import './Account.css';
@@ -9,12 +9,20 @@ const Account = ()=>{
     
     const [deleteMsg, setDeleteMsg] = useState(false);
     const [noSticky, setNoSticky] = useState(false);
-    const { deleteAccount, removedMsg, userPokemons, userPokeballs } = useContext(AuthContext);
+    const { deleteAccount, removedMsg, userPokemons, userPokeballs, achList } = useContext(AuthContext);
+
+    const [userAch, setUserAch] = useState([])
 
     const closeSession = ()=>{
         localStorage.removeItem('user');
         window.location.reload();
     }
+
+    useEffect(()=>{
+        if(localStorage.user){
+            setUserAch(JSON.parse(localStorage.user).data.achievements);
+        }
+    },[])
     
     return(
         <main className="App-main">
@@ -23,7 +31,10 @@ const Account = ()=>{
                 <section className={`account-userSect ${noSticky && noSticky}`}>
                     <div className="userSect-imgContainer">
                         <img src={user_icon} alt="User icon" className="userSect-userImg"/>
-                        <h2 className="userSect-title">TU CUENTA</h2>
+                        <hgroup className="userSect-hgroup">
+                            <h2 className="userSect-title">TU CUENTA</h2>
+                            <p className="userSect-email">{JSON.parse(localStorage.user).email}</p>
+                        </hgroup>
                     </div>
 
                     <div className="userSect-btnContainer" >
@@ -57,7 +68,7 @@ const Account = ()=>{
 
                 <section className="account-pokemonSect">
                     <h2 className="pokemonSect-title">TUS POKEMON</h2>
-                    <article className="showPoke-pokeList showPoke-pokeList--user">
+                    <article className="showPoke-pokeList--user">
                         {userPokemons && userPokemons.map((poke, i)=>{
                             return(
                                 <div className="pokeList-item pokeList-item--user" key={i}>
@@ -75,25 +86,31 @@ const Account = ()=>{
                 <aside className="account-aside">
                     <section className="acountAside-pokeballs">
                         <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg userSect-userImg--pokeball"/>
-                        <h2 className="userSect-title">{userPokeballs}{userPokeballs === 1 ? '  POKEBALL' : '  POKEBALLS'}</h2>
+                        <h2 className="userSect-title">TIENES {userPokeballs}{userPokeballs === 1 ? '  POKEBALL' : '  POKEBALLS'}</h2>
                     </section>
-                    <section className="acountAside-achievements">
-                    <h2 className="userSect-title">LOGROS</h2>
-                    <table>
-                        
-                            <tr>
-                                <th>LOGROS</th>
-                                <th>RECOMPENSA</th>
-                            </tr>
 
-                            <tr>
-                                <th>CONSIGE 3 POKEMONS</th>
-                                <th>RECIBE 3 POKEBALLS</th>
-                            </tr>
+                    <section className="acountAside-achievements">
+                        <h2 className="userSect-title userSect-title-ach"> TUS LOGROS</h2>
+                        <article className="ach-article">
+                            <div className="ach-container">
+                                <h3 className="ach-title-left">LOGRO</h3>
+                                <h3 className="ach-title-right">PREMIO</h3>
+                            </div>
+                            {achList && achList.map((ach, i)=>{
+                                return(
+                                    <div className={`ach-container ach-container--ach ${
+                                        localStorage.user && (JSON.parse(localStorage.user).data.achievements).includes(i) && 'ach-container--green'
+                                    }`} key={i} >
+                                        <h3 className="ach-left">{ach.achievement}</h3>
+                                        <div className="ach-right">
+                                            <span className="ach-num">{ach.reward}</span>
+                                            <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg"/>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </article>
                         
-                    
-                        
-                    </table>
                     </section>
                 </aside>
             </div>

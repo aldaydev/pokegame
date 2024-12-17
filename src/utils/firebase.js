@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, setDoc, doc, getDoc, deleteDoc  } from 'firebase/firestore';
+import { getFirestore, collection, setDoc, doc, getDoc, deleteDoc, getDocs  } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDwsdMznaTMlmsOtY3gvNhjNjN7zn2dj_A",
@@ -21,7 +21,8 @@ export async function setSignUpData(email){
     const signUpData = {
         pokeballs: 3,
         pokemons: [],
-        pokeCount: 0
+        pokeCount: 0,
+        achievements: [0]
     }
     await setDoc(doc(db, 'users', email), signUpData)
 
@@ -48,12 +49,11 @@ export async function loadData(email){
 
     const docRef = doc(db, 'users', email);
     const docSnap = await getDoc(docRef);
-    console.log('DOCSNAP', docSnap.data().pokeballs)
 
     const localLogged = {
         connected: true,
         email: email,
-        data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons}
+        data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons, achievements: docSnap.data().achievements}
     }
     localStorage.user = JSON.stringify(localLogged);
 } 
@@ -72,9 +72,13 @@ export async function removeAllData(email) {
     } else {
         return 'No hay un usuario autenticado.';
     }
-    
-    
 
+}
+
+export async function getAchievements(){
+    const querySnapshot = await getDocs(collection(db, "achievements"));
+
+    return querySnapshot.docs.map((doc) => doc.data())
 }
 
 

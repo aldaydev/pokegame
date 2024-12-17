@@ -54,22 +54,6 @@ const MainPoke = (show, name)=>{
     },[loggedIn, testPoke,  userPokeballs, startHunt]) //He quitado "changeBtn"
     //testPoke, loggedIn, userPokeballs,
 
-    // function setHuntBtn(){
-    //     if(loggedIn){
-    //         if(userPokeballs > 0){
-    //             return <AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{setStartHunt(true);}}/>
-    //         }else if(userPokeballs === 0){
-    //             return <Link to='/account'>
-    //                 <AppButton text='¡LO TIENES EN TU POKEDEX!' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-    //             </Link>
-    //         }else{
-    //             <Link to='/account'>
-    //                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-    //             </Link>
-    //         }
-    //     }
-    // }
-
     useEffect(()=>{
             if(pokeProb && !testPoke && loggedIn){
                 console.log('---- CALCULA SI SERÁ CAZADO ----');
@@ -96,13 +80,10 @@ const MainPoke = (show, name)=>{
         if(startHunt !== null && userPokeballs > 0){
             console.log('----- PROCESO DE CAZADO-----')
 
-            console.log('Resta una pokeball');
-            setUserPokeballs(userPokeballs - 1); 
             console.log('1. Animación Pokeball');
             const timeOut = ()=>setTimeout(()=>{
                 if(huntResult === true){
 
-                    
                     setUserPokeCount(userPokeCount + 1);
                     setTestPoke(true);
 
@@ -121,10 +102,14 @@ const MainPoke = (show, name)=>{
                     console.log('Mensaje de ESCAPADO')
                     setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose']);
                 }
+
+                console.log('Resta una pokeball');
+                setUserPokeballs(userPokeballs - 1); 
                 
                 const timeOut2 = ()=>{
                     
                     setTimeout(()=>{
+                        
                         setHuntMsg(null);
                         setStartHunt(null);
                         setStartGlobalHunt(null);
