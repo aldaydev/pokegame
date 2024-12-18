@@ -39,10 +39,12 @@ export const AuthProvider = ({ children }) => {
   
     }
 
-
     setTimeout(()=>{
       countProcess();
-    },5600)
+    },1000)
+    // setTimeout(()=>{
+    //   countProcess();
+    // },5600)
 
   }
 
@@ -57,23 +59,29 @@ export const AuthProvider = ({ children }) => {
           //SI SE CUMPLE EL HITO DE CAZAR 3 POKEMONS
           case 3:
             if(currentAch && !currentAch.includes(1)){
-              alert('HITO CONSEGUIDO');
-              setShowAchievement('¡Logro cumplido, has recibido 5 pokeballs');
-              setUserPokeballs((previous)=>previous + 5);
+              // alert('HITO CONSEGUIDO');
+              setTimeout(()=>{
+                setShowAchievement(['¡Logro cumplido!', 'Has recibido 5 pokeballs']);
+                setUserPokeballs((previous)=>previous + 5);
+              }, 3000)
             }
             break;
           case 5:
             if(currentAch && !currentAch.includes(2)){
-              alert('HITO CONSEGUIDO');
-              setShowAchievement('¡Logro cumplido, has recibido 8 pokeballs');
+              // alert('HITO CONSEGUIDO');
+              setTimeout(()=>{
+              setShowAchievement(['¡Logro cumplido!', 'Has recibido 8 pokeballs']);
               setUserPokeballs((previous)=>previous + 8);
+            }, 3000)
             }
             break;
           case 7:
             if(currentAch && !currentAch.includes(3)){
-              alert('HITO CONSEGUIDO');
-              setShowAchievement('¡Logro cumplido, has recibido 10 pokeballs');
+              // alert('HITO CONSEGUIDO');
+              setTimeout(()=>{
+              setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
               setUserPokeballs((previous)=>previous + 10);
+            }, 3000)
             }
             break;
           default: 

@@ -1,4 +1,4 @@
-17/12/2024 - Mañana - Funcionalidad hitos realizada (falta agregar más)
+19/12/2024 - Madrugada - Animaciones hitos realizadas (falta agregar más)
 
 # Getting Started with Create React App
 

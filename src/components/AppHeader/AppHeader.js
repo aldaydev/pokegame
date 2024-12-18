@@ -18,13 +18,12 @@ const AppHeader = ()=>{
     const { loggedIn, userPokeballs, userPokeCount, startGlobalHunt, showCountDown, showAchiement, setShowAchievement } = useContext(AuthContext);
 
 
-    // useEffect(()=>{
+    useEffect(()=>{
+        setTimeout(()=>{
+            setShowAchievement(null);
+        },8000)
 
-    //     setTimeout(()=>{
-    //         setShowAchievement(null);
-    //     },12000)
-
-    // },[showAchiement, loggedIn])
+    },[showAchiement, loggedIn, setShowAchievement])
 
     return(
         <header className={`App-header ${startGlobalHunt && 'App-header--block'}`}>
@@ -96,10 +95,10 @@ const AppHeader = ()=>{
                 <span className="showCountDown-count">{`${showCountDown} segundos`}</span>
             </div>}
 
-            {/* {loggedIn && showAchiement !== null && <div className="showCountDown-container showCountDown-container--ach">
+            {loggedIn && showAchiement !== null && <div className="showAchievement-container">
                 <span className="showCountDown-text">{`${showAchiement[0]}`}</span>
                 <span className="showCountDown-count">{`${showAchiement[1]}`}</span>
-            </div>} */}
+            </div>}
 
         </header>
     )
