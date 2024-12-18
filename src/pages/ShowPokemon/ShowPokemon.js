@@ -17,10 +17,10 @@ const ShowPokemon = ({name, show})=>{
                 <MainPoke show={show} name={name}/>
             </section>
 
-            {loggedIn && showCountDown !== null && <div className="showCountDown-container">
+            {/* {loggedIn && showCountDown !== null && <div className="showCountDown-container">
                 <span className="showCountDown-text">{`3 pokeballs más en:`}</span>
                 <span className="showCountDown-count">{`${showCountDown} segundos`}</span>
-            </div>}
+            </div>} */}
             
             
         </main>
