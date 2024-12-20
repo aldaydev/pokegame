@@ -1,4 +1,4 @@
-19/12/2024 - Madrugada - Animaciones hitos realizadas (falta agregar más)
+20/12/2024 - Madrugada - Animación signUp y adición de logros realizada (falta comprobarlos)
 
 # Getting Started with Create React App
 

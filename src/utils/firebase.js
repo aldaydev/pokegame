@@ -32,6 +32,7 @@ export async function setSignUpData(email){
         data: signUpData
     }
     localStorage.user = JSON.stringify(constlocalLogged);
+    return 'HAS RECIBIDO 3 POKEBALLS POR REGISTRARTE';
 }
 
 export async function updateData(newData){

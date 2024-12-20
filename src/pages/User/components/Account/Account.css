@@ -182,6 +182,12 @@
     max-height: 70px;
 }
 
+.userSect-userImg--star{
+    margin: 5px;
+    margin-right: 12px;
+    width: 30px;
+}
+
 .acountAside-achievements{
     padding: 20px 0;
 }
@@ -247,4 +253,86 @@
 .ach-num{
     font-size: 1.4rem;
     font-weight: bold;
+}
+
+.firstMsg-position{
+    background-color: #e1e1e142;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firstMsg-container{    
+    background-color: var(--color-green);
+    border-radius: 30px;
+    /* width: 40%; */
+    /* min-height: 300px; */
+    margin: 20px;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: popUp 4s ease-in-out both;
+}
+
+.firstMsg-title{
+    font-size: 1.7rem;
+    width: 80%;
+    margin-bottom: 30px;
+    text-wrap: balance;
+}
+
+.img--firstMsg{
+    transform: scale(2);
+    min-width: 50px;
+    margin-left: 30px;
+    
+}
+
+.img--firstMsg:first-child{
+    animation: popUpPokeball 4s .5s ease-in-out both;
+}
+
+.img--firstMsg:nth-child(2){
+    animation: popUpPokeball 4s .7s ease-in-out both;
+}
+
+.img--firstMsg:nth-child(3){
+    animation: popUpPokeball 4s .9s ease-in-out both;
+}
+
+@keyframes popUp {
+    0%{
+        transform: scale(0);
+    }10%{
+        transform: scale(1.1);
+    }15%{
+        transform: scale(1);
+    }90%{
+        transform: scale(1);
+        opacity: 1;
+    }92%{
+        transform: scale(1.1);
+    }100%{
+        transform: scale(0);
+    }
+}
+
+@keyframes popUpPokeball {
+    0%{
+        transform: scale(0);
+    }10%{
+        transform: scale(2.1);
+    }15%{
+        transform: scale(2);
+    }100%{
+        transform: scale(2);
+    }
 }

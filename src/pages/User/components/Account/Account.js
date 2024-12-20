@@ -4,14 +4,17 @@ import { AuthContext } from "../../../../context/AuthContext";
 import './Account.css';
 import user_icon from '../../../../assets/img/pokeuser_icon.svg';
 import pokeball2_icon from '../../../../assets/img/pokeball2_icon.svg';
+import star_icon from '../../../../assets/img/star_icon.svg';
 
 const Account = ()=>{
     
     const [deleteMsg, setDeleteMsg] = useState(false);
     const [noSticky, setNoSticky] = useState(false);
-    const { deleteAccount, removedMsg, userPokemons, userPokeballs, achList } = useContext(AuthContext);
 
-    const [userAch, setUserAch] = useState([])
+    const { deleteAccount, removedMsg, userPokemons, userPokeballs, achList, signUpMsg, setSignUpMsg } = useContext(AuthContext);
+
+    const [userEmail, setUserEmail] = useState('');
+    const [firstMsg, setFirstMsg] = useState(null);
 
     const closeSession = ()=>{
         localStorage.removeItem('user');
@@ -19,9 +22,16 @@ const Account = ()=>{
     }
 
     useEffect(()=>{
-        if(localStorage.user){
-            setUserAch(JSON.parse(localStorage.user).data.achievements);
+        localStorage.user && JSON.parse(localStorage.user).data.achievements.length === 1 && signUpMsg && setFirstMsg(signUpMsg);
+
+        const timeOut = ()=>{
+            setTimeout(()=>{
+                setFirstMsg(null);
+                setSignUpMsg(null);
+            },4000)
         }
+        timeOut();
+        localStorage.user && setUserEmail(JSON.parse(localStorage.user).email)
     },[])
     
     return(
@@ -33,7 +43,7 @@ const Account = ()=>{
                         <img src={user_icon} alt="User icon" className="userSect-userImg"/>
                         <hgroup className="userSect-hgroup">
                             <h2 className="userSect-title">TU CUENTA</h2>
-                            <p className="userSect-email">{JSON.parse(localStorage.user).email}</p>
+                            <p className="userSect-email">{userEmail}</p>
                         </hgroup>
                     </div>
 
@@ -104,7 +114,12 @@ const Account = ()=>{
                                         <h3 className="ach-left">{ach.achievement}</h3>
                                         <div className="ach-right">
                                             <span className="ach-num">{ach.reward}</span>
+
+                                            {i !== 7 ?
                                             <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg"/>
+                                            :
+                                            <img src={star_icon} alt="Star Icon" className="userSect-userImg--star"/>
+                                            }
                                         </div>
                                     </div>
                                 )
@@ -114,6 +129,17 @@ const Account = ()=>{
                     </section>
                 </aside>
             </div>
+            {firstMsg && 
+                <div className="firstMsg-position">
+                    <div className="firstMsg-container">
+                        <h2 className="firstMsg-title">{firstMsg}</h2>
+                        <div className="firstMsg-imgContainer">
+                            <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg img--firstMsg"/>
+                            <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg img--firstMsg"/>
+                            <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg img--firstMsg"/>
+                        </div>
+                    </div>
+                </div>}
             
         </main>
     )
