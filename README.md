@@ -1,4 +1,4 @@
-21/12/2024 - Madrugada - Haciendo animación winnerMsg
+21/12/2024 - Tarde - Trabajando drag&drop account
 
 # Getting Started with Create React App
 

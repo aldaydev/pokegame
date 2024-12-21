@@ -1,3 +1,5 @@
+/*---------- VARIABLES GENERALES ----------*/
+
 :root{
   --color-yellow: #FFCB05;
   --color-yellow-light: #ffdf60;
@@ -15,8 +17,8 @@
   --box-shadow: 1px 1px 3px #9c9c9c;
 }
 
-/*Amarillo ANTERIOR -> #ffde00*/
-/*Amarillo ligh ANTERIOR -> #fff197*/
+
+/*---------- ESTILOS GLOBALES ----------*/
 
 *{
   margin: 0;
@@ -35,6 +37,8 @@ body {
 
 }
 
+/*---------- ESTILOS APP ----------*/
+
 .App {
   text-align: center;
   display: grid;
@@ -42,6 +46,8 @@ body {
   min-height: 100dvh;
   background-color: var(--color-white);
 }
+
+/* ESTILOS APP-HEADER */
 
 .App-header{
   background-color: var(--color-yellow);
@@ -65,9 +71,11 @@ body {
     user-select: none;
 }
 
+/* ESTILOS APP-MAIN */
+
 .App-main {
   min-height: calc(100dvh - 80px);
-  width: 95%;
+  width: 80%;
   margin: 0 auto;
   /* padding-bottom: 20px; */
   display: grid;
@@ -110,11 +118,23 @@ body {
   max-width: 150px;
 }
 
+/* ESTILOS APP-FOOTER */
+
 .App-footer {
   height: 60px;
   background-color: var(--color-yellow);
   box-shadow: -1px -1px 3px #9c9c9c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
+
+
+
+
+/*---------- ESTILOS WINNER MSG ----------*/
 
 .winnerMsg-position{
   position: absolute;
@@ -132,12 +152,14 @@ body {
 .winnerMsg-container{
   position: relative;
   z-index: 999;
+  box-shadow: var(--box-shadow);
   background-color: var(--color-green);
+  border: 3px solid black;
   margin: 50px;
   padding: 50px;
-  border-radius: 30px;
+  border-radius: 15px;
   max-width: 500px;
-  animation: winnerMsg 15s ease-in-out both;
+  animation: winnerMsg 15s 1s ease-in-out both;
 }
 
 .winnerMsg-title{
@@ -212,6 +234,8 @@ body {
   left: 90%;
   animation: winnerBg 5s 4s ease-in infinite both;
 }
+
+/*---------- ANIMACIONES ----------*/
 
 @keyframes winnerBg {
   0%{

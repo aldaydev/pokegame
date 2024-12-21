@@ -65,14 +65,14 @@ const AppHeader = ()=>{
                     {loggedIn && 
                     <>
                     
-                    <Link>
+                    <Link to='/account'>
                         <img src={pokeball2_icon} className='nav-pokeball' alt='Pokeball icon'/>
                         <div className='pokeballCount-container'>
                             <span className='pokeballCount-number'>{userPokeballs}</span>
                         </div>
                     </Link>
 
-                    <Link>
+                    <Link to='/account'>
                         <img src={pokes_icon} className='nav-pokemons' alt='Pokemon icon'/>
                         <div className='pokemonCount-container'>
                             <span className='pokemonCount-number'>{userPokeCount}</span>

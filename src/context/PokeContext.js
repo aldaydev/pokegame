@@ -279,6 +279,7 @@ export const PokeProvider = ({ children }) => {
         }else{
           setMainPokemon(testPokemon.name);
           setSearchError(null);
+          setSearchPoke(null);
         }
       }
       getPokemones();

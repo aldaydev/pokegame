@@ -1,21 +1,16 @@
 .account-container{
     display: grid;
     grid-template-areas: 
-    "user user user aside"
-    "poke poke poke aside"
-    "poke poke poke aside"
-    "poke poke poke aside"
-    "poke poke poke aside"
-    "poke poke poke aside"
-    "poke poke poke aside";
+    "user aside"
+    "poke aside";
     grid-template-rows: 1fr 8fr;
-    grid-template-columns: 60%, 40%;
+    grid-template-columns: 8fr 2fr;
     /* min-height: 1000px; */
 }
 
 .account-userSect{
     background-color: #F7F7F7;
-    padding: 0 50px;
+    padding: 0 50px 0 0;
     grid-area: user;
     /* background-color: var(--color-yellow); */
     display: grid;
@@ -154,7 +149,17 @@
     /* max-height: max-content; */
     overflow: hidden;
 
-    margin: 25px;
+    margin: 25px 25px 25px 0;
+    position: relative;
+}
+
+.pokelist-user--noPokeContainer{
+    position: absolute;
+    top: 0;
+}
+
+.pokelist-user--noPokeTitle{
+    font-size: 1.3rem;
 }
 
 .pokeList-item--user:hover{
@@ -164,6 +169,25 @@
 .pokeList-item:hover{
     background-color: none;
 }
+
+.deletePokemon{
+    background-color: transparent;
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    z-index: 999;
+
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+.deletePokemon-icon{
+    max-width: 200px;
+}
+
+
+
 
 .account-aside{
     max-width: 400px;
@@ -306,7 +330,6 @@
     transform: scale(2);
     min-width: 50px;
     margin-left: 30px;
-    
 }
 
 .img--firstMsg:first-child{

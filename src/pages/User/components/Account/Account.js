@@ -5,6 +5,8 @@ import './Account.css';
 import user_icon from '../../../../assets/img/pokeuser_icon.svg';
 import pokeball2_icon from '../../../../assets/img/pokeball2_icon.svg';
 import star_icon from '../../../../assets/img/star_icon.svg';
+import lock_icon from '../../../../assets/img/lock_icon.svg';
+import unlock_icon from '../../../../assets/img/unlock_icon.svg';
 
 const Account = ()=>{
     
@@ -15,10 +17,41 @@ const Account = ()=>{
 
     const [userEmail, setUserEmail] = useState('');
     const [firstMsg, setFirstMsg] = useState(null);
+    const [showBin, setShowBin] = useState(false);
+    const [releaseImg, setReleaseImg] = useState(false);
 
     const closeSession = ()=>{
         localStorage.removeItem('user');
         window.location.reload();
+    }
+
+    const dragItem = (e)=>{
+        setShowBin(true);
+        e.dataTransfer.setData("text/plain", e.target.id);
+    }
+
+    const dragOver = (e)=>{
+        e.preventDefault();
+        setReleaseImg(true);
+    }
+
+    const dragArea = (e)=>{
+        // e.preventDefault();
+        console.log('DROPPED');
+        const idToDelete = e.dataTransfer.getData("text/plain", e.target.id);
+        console.log(idToDelete);
+        const getLocalStorage = JSON.parse(localStorage.user);
+        const getLocalPokeList = JSON.parse(localStorage.user).data.pokemons;
+
+        getLocalPokeList.splice(idToDelete,1);
+        getLocalStorage.data.pokemons = getLocalPokeList;
+        getLocalStorage.data.pokeCount -= 1;
+        console.log(getLocalStorage, getLocalPokeList);
+
+        localStorage.user = JSON.stringify(getLocalStorage);
+
+        window.location.reload();
+
     }
 
     useEffect(()=>{
@@ -31,7 +64,7 @@ const Account = ()=>{
             },4000)
         }
         timeOut();
-        localStorage.user && setUserEmail(JSON.parse(localStorage.user).email)
+        localStorage.user && setUserEmail(JSON.parse(localStorage.user).email);
     },[])
     
     return(
@@ -79,16 +112,23 @@ const Account = ()=>{
                 <section className="account-pokemonSect">
                     <h2 className="pokemonSect-title">TUS POKEMON</h2>
                     <article className="showPoke-pokeList--user">
-                        {userPokemons && userPokemons.map((poke, i)=>{
+                        {userPokemons && userPokemons.length > 0 ?
+                        userPokemons.map((poke, i)=>{
                             return(
-                                <div className="pokeList-item pokeList-item--user" key={i}>
+                                <div className="pokeList-item pokeList-item--user" key={i} onDragStart={(e)=>dragItem(e)} onDragEnd={(e)=>setShowBin(false)}id={i} draggable="true">
                                     <div className="pokeList-imgContainer">
-                                        <img src={poke.img} alt={`Imagen de ${poke.name}`} className="pokeList-img"/>
+                                        <img src={poke.img} alt={`Imagen de ${poke.name}`} className="pokeList-img" onDragStart={(e)=>dragItem(e)} id={i} draggable="true" />
                                     </div>
                                     <h3 className="pokeList-title">{poke.name}</h3>
                                 </div>
                             )
-                        })}
+                        })
+                        :
+                        <div className="pokelist-user--noPokeContainer">
+                            <h3 className="pokelist-user--noPokeTitle">TUS POKEMON CAZADOS APARECERÁN AQUÍ</h3>
+                        </div>
+                        
+                        }
                     </article>
                     
                 </section>
@@ -140,6 +180,10 @@ const Account = ()=>{
                         </div>
                     </div>
                 </div>}
+            {showBin && <div className="deletePokemon" onDrop={(e)=>dragArea(e)} onDragOver={(e)=> dragOver(e)} onDragLeave={(e)=>setReleaseImg(false)}>
+                {!releaseImg ? <img src={lock_icon} alt="Icono papelera" className="deletePokemon-icon"/> : <img src={unlock_icon} alt="Icono papelera" className="deletePokemon-icon"/>}
+                
+            </div>}
             
         </main>
     )
