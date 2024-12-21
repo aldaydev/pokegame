@@ -85,7 +85,7 @@ const Account = ()=>{
                                     <div className="pokeList-imgContainer">
                                         <img src={poke.img} alt={`Imagen de ${poke.name}`} className="pokeList-img"/>
                                     </div>
-                                    <h3 >{poke.name}</h3>
+                                    <h3 className="pokeList-title">{poke.name}</h3>
                                 </div>
                             )
                         })}
@@ -96,7 +96,7 @@ const Account = ()=>{
                 <aside className="account-aside">
                     <section className="acountAside-pokeballs">
                         <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg userSect-userImg--pokeball"/>
-                        <h2 className="userSect-title">TIENES {userPokeballs}{userPokeballs === 1 ? '  POKEBALL' : '  POKEBALLS'}</h2>
+                        <h2 className="userPokeballs-title">TIENES {userPokeballs}{userPokeballs === 1 ? '  POKEBALL' : '  POKEBALLS'}</h2>
                     </section>
 
                     <section className="acountAside-achievements">

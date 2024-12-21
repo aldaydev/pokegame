@@ -1,4 +1,4 @@
-20/12/2024 - Madrugada - Animación signUp y adición de logros realizada (falta comprobarlos)
+21/12/2024 - Madrugada - Haciendo animación winnerMsg
 
 # Getting Started with Create React App
 

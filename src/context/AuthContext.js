@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(1)){
               // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
-                setShowAchievement(['¡Logro cumplido!', 'Has recibido 5 pokeballs']);
+                setShowAchievement(['¡Logro cumplido!', 'Has recibido 3 pokeballs']);
                 setUserPokeballs((previous)=>previous + 3);
               }, 3000)
             }
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(2)){
               // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
-              setShowAchievement(['¡Logro cumplido!', 'Has recibido 8 pokeballs']);
+              setShowAchievement(['¡Logro cumplido!', 'Has recibido 5 pokeballs']);
               setUserPokeballs((previous)=>previous + 5);
             }, 3000)
             }
@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(4)){
               // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
-              setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
+              setShowAchievement(['¡Logro cumplido!', 'Has recibido 20 pokeballs']);
               setUserPokeballs((previous)=>previous + 20);
             }, 3000)
             }
@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(5)){
               // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
-              setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
+              setShowAchievement(['¡Logro cumplido!', 'Has recibido 40 pokeballs']);
               setUserPokeballs((previous)=>previous + 40);
             }, 3000)
             }
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(6)){
               // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
-              setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
+              setShowAchievement(['¡Logro cumplido!', 'Has recibido 75 pokeballs']);
               setUserPokeballs((previous)=>previous + 75);
             }, 3000)
             }
@@ -126,7 +126,16 @@ export const AuthProvider = ({ children }) => {
 
   // CONTADOR QUE RESETEA LAS POKEBALLS CUANDO LLEGAN A 0 Y NO SE HA CUMPLIDO NINGÚN HITO EN ESE INTENTO
   useEffect(()=>{
-    if(loggedIn && userPokeballs === 0 && userPokeCount !== 3 && userPokeCount !== 5 && userPokeCount !== 7){
+
+    if(loggedIn && 
+      userPokeballs === 0 && 
+      userPokeCount !== 3 && 
+      userPokeCount !== 5 && 
+      userPokeCount !== 10 && 
+      userPokeCount !== 25 && 
+      userPokeCount !== 50 && 
+      userPokeCount !== 75 &&
+      userPokeCount !== 151 ){
       // setIsCounting(true)
       setTimeout(()=>{
         setCountDown();
@@ -311,7 +320,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={ { loggedIn, signIn, loginError, signUp, deleteAccount, removedMsg, userPokeballs, setUserPokeballs, userPokemons, setUserPokemons, userPokeCount, setUserPokeCount, setCountDown, showCountDown, startGlobalHunt, setStartGlobalHunt, achList, setShowAchievement, showAchiement, signUpMsg, setSignUpMsg } }>
+    <AuthContext.Provider value={ { loggedIn, signIn, loginError, signUp, deleteAccount, removedMsg, userPokeballs, setUserPokeballs, userPokemons, setUserPokemons, userPokeCount, setUserPokeCount, setCountDown, showCountDown, startGlobalHunt, setStartGlobalHunt, achList, setShowAchievement, showAchiement, signUpMsg, setSignUpMsg, winnerMsg, setWinnerMsg } }>
       {children}
     </AuthContext.Provider>
   );

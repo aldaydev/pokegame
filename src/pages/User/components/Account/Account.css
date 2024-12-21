@@ -27,6 +27,10 @@
     left: 0; */
 }
 
+.userSect-hgroup{
+    margin-right: 40px;
+}
+
 .userSect-imgContainer{
     display: flex;
     justify-content: center;
@@ -42,11 +46,12 @@
     drop-shadow(1px 1px 0 black);
 }
 
-
-
 .userSect-title{
     font-size: 1.5rem;
+    text-wrap: nowrap;
 }
+
+
 
 .userSect-email{
     font-size: 1.2rem;
@@ -140,10 +145,10 @@
 
 .showPoke-pokeList--user{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
     justify-items: center;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 20px;
     /* max-height: max-content; */
@@ -174,7 +179,13 @@
     align-items: center;
     justify-content: center;
     height: 88px;
+    padding: 20px;
     background-color: #ffcd054a;
+}
+
+.userPokeballs-title{
+    font-size: 1.5rem;
+    text-align: start;
 }
 
 .userSect-userImg--pokeball{
@@ -240,6 +251,7 @@
     height: 100%;
     flex-basis: 80%;
     text-align: start;
+    margin: 3px 30px 3px 3px;
     /* background-color: #ff0000; */
 }
 
@@ -287,6 +299,7 @@
     width: 80%;
     margin-bottom: 30px;
     text-wrap: balance;
+    color: white;
 }
 
 .img--firstMsg{

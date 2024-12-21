@@ -98,6 +98,7 @@ body {
   border-radius: 7px;
   box-shadow: var(--box-shadow);
   cursor: pointer;
+  text-wrap: nowrap;
   transition: background .2s ease-in-out;
 }
 
@@ -113,6 +114,144 @@ body {
   height: 60px;
   background-color: var(--color-yellow);
   box-shadow: -1px -1px 3px #9c9c9c;
+}
+
+.winnerMsg-position{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #54a6662d;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: winnerMsgContainer 15s ease-in-out both;
+}
+
+.winnerMsg-container{
+  position: relative;
+  z-index: 999;
+  background-color: var(--color-green);
+  margin: 50px;
+  padding: 50px;
+  border-radius: 30px;
+  max-width: 500px;
+  animation: winnerMsg 15s ease-in-out both;
+}
+
+.winnerMsg-title{
+  font-size: 30px;
+  margin-top: 20px;
+  text-wrap: balance;
+}
+
+.winnerMsg-bgContainer{
+  position: absolute;
+  
+  top: 0;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.winnerMsg-img--litle{
+  position: absolute;
+  top: -10%;
+  width: 50px;
+}
+
+.winnerMsg-img--litle:nth-child(1){
+  left: 0;
+  animation: winnerBg 5s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(2){
+  left: 10%;
+  animation: winnerBg 5s 2s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(3){
+  left: 20%;
+  animation: winnerBg 5s 1s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(4){
+  left: 30%;
+  animation: winnerBg 5s 4.5s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(5){
+  left: 40%;
+  animation: winnerBg 5s 3.7s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(6){
+  left: 50%;
+  animation: winnerBg 5s 2.7s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(7){
+  left: 60%;
+  animation: winnerBg 5s 1.5s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(8){
+  left: 70%;
+  animation: winnerBg 5s .5s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(9){
+  left: 80%;
+  animation: winnerBg 5s 3s ease-in infinite both;
+}
+
+.winnerMsg-img--litle:nth-child(10){
+  left: 90%;
+  animation: winnerBg 5s 4s ease-in infinite both;
+}
+
+@keyframes winnerBg {
+  0%{
+    top: -10%;
+  }98%{
+    top: 98%;
+    opacity: 1;
+  }100%{
+    opacity: 0;
+    top: 100%;
+  }
+}
+
+@keyframes winnerMsgContainer {
+  0%{
+    opacity: 0;
+  }10%{
+    opacity: 1;
+  }90%{
+    opacity: 1;
+  }100%{
+    opacity: 0;
+  }
+}
+
+@keyframes winnerMsg {
+  0%{
+      transform: scale(0);
+  }4%{
+      transform: scale(1.1);
+  }5%{
+      transform: scale(1);
+  }90%{
+      transform: scale(1);
+      opacity: 1;
+  }92%{
+      opacity: 0;
+  }100%{
+      opacity: 0;
+  }
 }
 
 @keyframes fundido {

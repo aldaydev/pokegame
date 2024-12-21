@@ -214,31 +214,10 @@ const MainPoke = (show, name)=>{
                                 )
                             })}
                         </div>
-                        
-                        
-
-                        
                 </section>
                 
                 <section className="mainPoke-huntSection">
-                    {   huntBtn
-                        // loggedIn 
-                        // ? 
-                        // <AppButton text='LANZAR POKEBALL' 
-                        // className='huntBtn' 
-                        // img={pokeball2_icon} 
-                        // imgClass='huntBtn-img'
-                        // onClick={()=>{
-                        //     setStartHunt(true);
-                        // }}
-                        // />
-                        // :
-                        // <Link to='/account'>
-                        //     <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-                        // </Link>
-                        
-                    }
-                    
+                    { huntBtn }
                 </section>
 
             </div>
