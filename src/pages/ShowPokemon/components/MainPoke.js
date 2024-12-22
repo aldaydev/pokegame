@@ -20,6 +20,7 @@ const MainPoke = (show, name)=>{
 
     const [changeBtn, setChangeBtn] = useState(0);
 
+    //DETERMINA SI TIENES EL POKEMON Y DISPONE EL BOTÓN EN CONSECUENCIA
     useEffect(()=>{
         if(loggedIn){
             console.log('¿TIENES EL POKEMON?', testPoke);
@@ -39,7 +40,7 @@ const MainPoke = (show, name)=>{
                         setHuntBtn(<AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{
                             setStartHunt(true);
                             setStartGlobalHunt(true);
-                        }}/>) 
+                        }} id={showMainPoke.id}/>) 
                     }
                 }
             }else{
@@ -51,7 +52,7 @@ const MainPoke = (show, name)=>{
                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn huntBtn-red' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
             </Link>)
         }
-    },[loggedIn, testPoke,  userPokeballs, startHunt]) //He quitado "changeBtn"
+    },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]) //He quitado "changeBtn"
     //testPoke, loggedIn, userPokeballs,
 
     useEffect(()=>{
@@ -133,6 +134,24 @@ const MainPoke = (show, name)=>{
         }
     },[startHunt])
 
+    
+
+    const dragOver = (e)=>{
+        e.preventDefault();
+        // setReleaseImg(true);
+    }
+
+    const dragArea = (e)=>{
+        console.log('SOLTADO');
+        const idToHunt = e.dataTransfer.getData("text/plain", e.target.id);
+        console.log(e.target.id);
+        console.log(idToHunt);
+        if(idToHunt === e.target.id){
+            console.log('SON IGUALES');
+            setStartHunt(true);
+        }
+    }
+
 
     return(
         <article className="showPoke-mainPoke">
@@ -147,8 +166,8 @@ const MainPoke = (show, name)=>{
                     
                     <section className="mainPoke-upperSec">
 
-                        <div className="mainPoke-imgContainer">
-                            <img src={showMainPoke.img} alt={`Imagen de ${showMainPoke.name}`} className="mainPoke-img"/>
+                        <div className="mainPoke-imgContainer" onDragOver={(e)=>e.preventDefault()} onDrop={(e)=>dragArea(e)}>
+                            <img src={showMainPoke.img} alt={`Imagen de ${showMainPoke.name}`} className="mainPoke-img" id={showMainPoke.id}/>
                             <span className="mainPoke-id">{`#${showMainPoke.id}`}</span>
                             
                             {startHunt && 

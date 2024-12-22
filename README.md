@@ -1,4 +1,4 @@
-21/12/2024 - Tarde - Trabajando drag&drop account
+22/12/2024 - Tarde - Trabajando drag&drop pokeHunt realizado
 
 # Getting Started with Create React App
 

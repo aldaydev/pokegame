@@ -105,17 +105,16 @@ const Account = ()=>{
                         </div>
                         }
                     </div>
-                    
-                    
+
                 </section>
 
                 <section className="account-pokemonSect">
-                    <h2 className="pokemonSect-title">TUS POKEMON</h2>
+                    <h2 className="pokemonSect-title">TU POKEDEX</h2>
                     <article className="showPoke-pokeList--user">
                         {userPokemons && userPokemons.length > 0 ?
                         userPokemons.map((poke, i)=>{
                             return(
-                                <div className="pokeList-item pokeList-item--user" key={i} onDragStart={(e)=>dragItem(e)} onDragEnd={(e)=>setShowBin(false)}id={i} draggable="true">
+                                <div className="pokeList-item--user" key={i} onDragStart={(e)=>dragItem(e)} onDragEnd={(e)=>setShowBin(false)}id={i} draggable="true">
                                     <div className="pokeList-imgContainer">
                                         <img src={poke.img} alt={`Imagen de ${poke.name}`} className="pokeList-img" onDragStart={(e)=>dragItem(e)} id={i} draggable="true" />
                                     </div>
@@ -134,39 +133,42 @@ const Account = ()=>{
                 </section>
 
                 <aside className="account-aside">
-                    <section className="acountAside-pokeballs">
-                        <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg userSect-userImg--pokeball"/>
-                        <h2 className="userPokeballs-title">TIENES {userPokeballs}{userPokeballs === 1 ? '  POKEBALL' : '  POKEBALLS'}</h2>
-                    </section>
+                    <div className="accountAside-sticky">
+                        <section className="acountAside-pokeballs">
+                            <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg userSect-userImg--pokeball"/>
+                            <h2 className="userPokeballs-title">TIENES {userPokeballs}{userPokeballs === 1 ? '  POKEBALL' : '  POKEBALLS'}</h2>
+                        </section>
 
-                    <section className="acountAside-achievements">
-                        <h2 className="userSect-title userSect-title-ach"> TUS LOGROS</h2>
-                        <article className="ach-article">
-                            <div className="ach-container">
-                                <h3 className="ach-title-left">LOGRO</h3>
-                                <h3 className="ach-title-right">PREMIO</h3>
-                            </div>
-                            {achList && achList.map((ach, i)=>{
-                                return(
-                                    <div className={`ach-container ach-container--ach ${
-                                        localStorage.user && (JSON.parse(localStorage.user).data.achievements).includes(i) && 'ach-container--green'
-                                    }`} key={i} >
-                                        <h3 className="ach-left">{ach.achievement}</h3>
-                                        <div className="ach-right">
-                                            <span className="ach-num">{ach.reward}</span>
+                        <section className="acountAside-achievements">
+                            <h2 className="userSect-title userSect-title-ach"> TUS LOGROS</h2>
+                            <article className="ach-article">
+                                <div className="ach-container">
+                                    <h3 className="ach-title-left">LOGRO</h3>
+                                    <h3 className="ach-title-right">PREMIO</h3>
+                                </div>
+                                {achList && achList.map((ach, i)=>{
+                                    return(
+                                        <div className={`ach-container ach-container--ach ${
+                                            localStorage.user && (JSON.parse(localStorage.user).data.achievements).includes(i) && 'ach-container--green'
+                                        }`} key={i} >
+                                            <h3 className="ach-left">{ach.achievement}</h3>
+                                            <div className="ach-right">
+                                                <span className="ach-num">{ach.reward}</span>
 
-                                            {i !== 7 ?
-                                            <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg"/>
-                                            :
-                                            <img src={star_icon} alt="Star Icon" className="userSect-userImg--star"/>
-                                            }
+                                                {i !== 7 ?
+                                                <img src={pokeball2_icon} alt="Pokeball Icon" className="userSect-userImg"/>
+                                                :
+                                                <img src={star_icon} alt="Star Icon" className="userSect-userImg--star"/>
+                                                }
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })}
-                        </article>
-                        
-                    </section>
+                                    )
+                                })}
+                            </article>
+                            
+                        </section>
+                    </div>
+                    
                 </aside>
             </div>
             {firstMsg && 

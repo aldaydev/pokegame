@@ -45,13 +45,13 @@ function App() {
                   )
                 })}
 
-              <Route path='/all' 
-              element=
-              <ShowPokemon 
+                <Route path='/all' 
+                element=
+                <ShowPokemon 
                 name='TODOS LOS POKEMON' 
                 show='all'/> 
-              />
-              <Route path='/account' element=<User/> />
+                />
+                <Route path='/account' element=<User/> />
               
               </Routes>
               <AppFooter/>

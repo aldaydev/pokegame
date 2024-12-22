@@ -136,6 +136,7 @@
     position: sticky;
     top: 80px;
     left: 0;
+    z-index: 500;
 }
 
 .showPoke-pokeList--user{
@@ -151,6 +152,18 @@
 
     margin: 25px 25px 25px 0;
     position: relative;
+}
+
+.pokeList-item--user{
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background .2s ease-in-out;
+    animation: fundido .5s ease-in-out;
 }
 
 .pokelist-user--noPokeContainer{
@@ -172,7 +185,7 @@
 
 .deletePokemon{
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     top: 100px;
     right: 40px;
     z-index: 999;
@@ -180,22 +193,37 @@
     display: flex;
     justify-content: end;
     align-items: start;
+    animation: showLock .4s ease-in-out;
+}
+
+@keyframes showLock {
+    0%{
+        transform: scale(0);
+    }25%{
+        transform: scale(1.1);
+    }35%{
+        transform: scale(1);
+    }
 }
 
 .deletePokemon-icon{
-    max-width: 200px;
+    max-width: 180px;
 }
 
-
-
-
 .account-aside{
-    max-width: 400px;
-    position: sticky;
-    top: 80px;
-    left: 0;
     grid-area: aside;
+    max-width: 400px;
+    /* position: sticky;
+    top: 80px;
+    left: 0; */
+
     /* background-color: #6fc57f; */
+}
+
+.accountAside-sticky{
+    position: sticky;
+    top: 100px;
+    left: 0;
 }
 
 .acountAside-pokeballs{
