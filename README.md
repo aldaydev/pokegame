@@ -1,4 +1,4 @@
-22/12/2024 - Tarde - Inicio fase DESIGN
+22/12/2024 - Tarde - Adding images for hunting
 
 # Getting Started with Create React App
 
