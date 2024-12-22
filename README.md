@@ -1,4 +1,4 @@
-22/12/2024 - Tarde - Trabajando drag&drop pokeHunt realizado
+22/12/2024 - Tarde - Inicio fase DESIGN
 
 # Getting Started with Create React App
 
