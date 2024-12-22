@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { PokeContext } from "../../../context/PokeContext";
 import { AuthContext } from "../../../context/AuthContext";
 import { useLocation } from "react-router-dom";
+import MainPoke from "./MainPoke";
 
 const PokeList = ({show, name})=>{
 
@@ -70,9 +71,10 @@ const PokeList = ({show, name})=>{
                 ? searchType.map((pokemon, i)=>{
                   
               return (
-                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name).toLowerCase())} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name.toLowerCase()) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`} >
+                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name).toLowerCase())} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name.toLowerCase()) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`}>
+                  {/* autoFocus={MainPoke && pokemon.name === MainPoke.name && true} */}
                   <div className="pokeList-imgContainer">
-                    <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img"/>
+                    <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img" onDragStart={(e)=>e.preventDefault()}/>
                   </div>
                   
                   <h2 className="pokeList-title">{pokemon.name}</h2>
@@ -80,9 +82,10 @@ const PokeList = ({show, name})=>{
               )
             }) : pokemons.map((pokemon, i)=>{
               return(
-                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name))} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`} autoFocus={i === 0 && true}>
+                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name))} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`} >
+                  {/* autoFocus={i === 0 && true} */}
                   <div className="pokeList-imgContainer">
-                    <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img"/>
+                    <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img" onDragStart={(e)=>e.preventDefault()}/>
                   </div>
                   <h2 className="pokeList-title">{pokemon.name}</h2>
                 </button>

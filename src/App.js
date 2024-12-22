@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { PokeContext } from './context/PokeContext';
@@ -7,12 +7,24 @@ import ShowPokemon from './pages/ShowPokemon/ShowPokemon';
 import User from './pages/User/User';
 import Home from './pages/Home';
 import AppFooter from './components/AppFooter';
+import star_icon from './assets/img/star_icon.svg';
+import { AuthContext } from './context/AuthContext';
 
 
 function App() {
 
   const { typeList } = useContext(PokeContext);
+  const { winnerMsg, setWinnerMsg } = useContext(AuthContext);
 
+  useEffect(()=>{
+    const timeOut = ()=>{
+      setTimeout(()=>{
+        setWinnerMsg(false);
+      },15000)
+    }
+
+    timeOut();
+  },[winnerMsg, setWinnerMsg])
 
   return (
       <Router>
@@ -33,16 +45,36 @@ function App() {
                   )
                 })}
 
-              <Route path='/all' 
-              element=
-              <ShowPokemon 
+                <Route path='/all' 
+                element=
+                <ShowPokemon 
                 name='TODOS LOS POKEMON' 
                 show='all'/> 
-              />
-              <Route path='/account' element=<User/> />
+                />
+                <Route path='/account' element=<User/> />
               
               </Routes>
               <AppFooter/>
+              {winnerMsg && <div className='winnerMsg-position'>
+                <div className='winnerMsg-container'>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img'/>
+                  <h2 className='winnerMsg-title'>¡HAS CAZADO TODOS LOS POKEMON!</h2>
+                </div>
+                <div className='winnerMsg-bgContainer'>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                  <img src={star_icon} alt='Star icon' className='winnerMsg-img--litle'/>
+                </div>
+                
+              </div>}
+              
           </div>
       </Router>
           

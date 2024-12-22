@@ -20,21 +20,17 @@ export const PokeProvider = ({ children }) => {
   const [testPoke, setTestPoke] = useState(null);
 
 
+  //COMPROBAR SI EL USUARIO TIENE EL MAIN POKEMON
   async function testingPoke(pokeName){
     
     if(localStorage.user && JSON.parse(localStorage.user).data.pokemons){
       const userPokes = JSON.parse(localStorage.user).data.pokemons;
 
       const testing = await userPokes.some((userPoke)=>{
-      // console.log('CLG USERPOKE',userPoke.name.toLowerCase());
-      // console.log('---MAINPOKE---', pokeName.toLowerCase());
       return userPoke.name.toLowerCase() === pokeName.toLowerCase()
     })
     setTestPoke(testing);
     }
-    
-    // console.log('---USERPOKES---', userPokes)
-    // console.log('---MAINPOKE---', mainPoke)
   }
 
   //OBTENER POKEMONS DE UN TIPO
@@ -283,6 +279,7 @@ export const PokeProvider = ({ children }) => {
         }else{
           setMainPokemon(testPokemon.name);
           setSearchError(null);
+          setSearchPoke(null);
         }
       }
       getPokemones();

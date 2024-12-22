@@ -1,0 +1,402 @@
+.account-container{
+    display: grid;
+    grid-template-areas: 
+    "user aside"
+    "poke aside";
+    grid-template-rows: 1fr 8fr;
+    grid-template-columns: 8fr 2fr;
+    /* min-height: 1000px; */
+}
+
+.account-userSect{
+    background-color: #F7F7F7;
+    padding: 0 50px 0 0;
+    grid-area: user;
+    /* background-color: var(--color-yellow); */
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: space-between;
+    /* position: sticky;
+    top: 80px;
+    left: 0; */
+}
+
+.userSect-hgroup{
+    margin-right: 40px;
+}
+
+.userSect-imgContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userSect-userImg{
+    width: 45px;
+    max-height: 40px;
+    filter: drop-shadow(-1px -1px 0 black) 
+    drop-shadow(1px -1px 0 black) 
+    drop-shadow(-1px 1px 0 black) 
+    drop-shadow(1px 1px 0 black);
+}
+
+.userSect-title{
+    font-size: 1.5rem;
+    text-wrap: nowrap;
+}
+
+
+
+.userSect-email{
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.userSect-btnContainer{
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+}
+
+.AppButton-exit{
+    font-size: 1.1rem;
+    padding: 7px 20px;
+    background-color: var(--color-red-light);
+    color: white;
+}
+
+.AppButton-exit-noSticky{
+    position: static;
+}
+
+.AppButton-exit:hover{
+    background-color: var(--color-red-dark);
+}
+
+.AppButton-close{
+    font-size: 1.1rem;
+    padding: 7px 20px;
+    background-color: var(--color-blue);
+    color: white;
+}
+
+.AppButton-close:hover{
+    background-color: var(--color-blue-dark);
+}
+
+.deleteAccount-position{
+    background-color: #00000024;
+    /* background-color: #ff0000; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteAccount-container{
+    padding: 50px;
+    margin-bottom: 200px;
+    background-color: var(--color-white-dark);
+    border-radius: 20px;
+}
+
+
+.deleteAccount-title{
+    font-size: 1.3rem;
+}
+
+.deleteAccount-subtitle{
+    font-size: 1.2rem;
+}
+
+.deleteAccount-btnContainer{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-pokemonSect{
+    grid-area: poke;
+    /* max-width: 100%; */
+}
+
+.pokemonSect-title{
+    background-color: #F7F7F7;
+    padding: 20px;
+    font-size: 1.8rem;
+    position: sticky;
+    top: 80px;
+    left: 0;
+    z-index: 500;
+}
+
+.showPoke-pokeList--user{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+    justify-items: center;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    /* max-height: max-content; */
+    overflow: hidden;
+
+    margin: 25px 25px 25px 0;
+    position: relative;
+}
+
+.pokeList-item--user{
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background .2s ease-in-out;
+    animation: fundido .5s ease-in-out;
+}
+
+.pokelist-user--noPokeContainer{
+    position: absolute;
+    top: 0;
+}
+
+.pokelist-user--noPokeTitle{
+    font-size: 1.3rem;
+}
+
+.pokeList-item--user:hover{
+    background-color: transparent;
+}
+
+.pokeList-item:hover{
+    background-color: none;
+}
+
+.deletePokemon{
+    background-color: transparent;
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    z-index: 999;
+
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    animation: showLock .4s ease-in-out;
+}
+
+@keyframes showLock {
+    0%{
+        transform: scale(0);
+    }25%{
+        transform: scale(1.1);
+    }35%{
+        transform: scale(1);
+    }
+}
+
+.deletePokemon-icon{
+    max-width: 180px;
+}
+
+.account-aside{
+    grid-area: aside;
+    max-width: 400px;
+    /* position: sticky;
+    top: 80px;
+    left: 0; */
+
+    /* background-color: #6fc57f; */
+}
+
+.accountAside-sticky{
+    position: sticky;
+    top: 100px;
+    left: 0;
+}
+
+.acountAside-pokeballs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 88px;
+    padding: 20px;
+    background-color: #ffcd054a;
+}
+
+.userPokeballs-title{
+    font-size: 1.5rem;
+    text-align: start;
+}
+
+.userSect-userImg--pokeball{
+    width: 60px;
+    max-height: 70px;
+}
+
+.userSect-userImg--star{
+    margin: 5px;
+    margin-right: 12px;
+    width: 30px;
+}
+
+.acountAside-achievements{
+    padding: 20px 0;
+}
+
+.ach-article{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.userSect-title-ach{
+    margin-bottom: 15px;
+}
+
+.ach-container{
+    display: flex;
+    /* margin: 0 20px; */
+    align-items: center;
+    font-size: 1rem;
+}
+
+.ach-title-left{
+    flex-basis: 80%;
+    text-align: start;
+    margin-right: 10px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid black;
+}
+
+.ach-title-right{
+    flex-basis: 20%;
+    margin-left: 10px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid black;
+}
+
+.ach-container--ach{
+    background-color: #ef412e62;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.ach-container--green{
+    background-color: #54a66662;
+}
+
+.ach-left{
+    height: 100%;
+    flex-basis: 80%;
+    text-align: start;
+    margin: 3px 30px 3px 3px;
+    /* background-color: #ff0000; */
+}
+
+.ach-right{
+    flex-basis: 20%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.ach-num{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.firstMsg-position{
+    background-color: #e1e1e142;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firstMsg-container{    
+    background-color: var(--color-green);
+    border-radius: 30px;
+    /* width: 40%; */
+    /* min-height: 300px; */
+    margin: 20px;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: popUp 4s ease-in-out both;
+}
+
+.firstMsg-title{
+    font-size: 1.7rem;
+    width: 80%;
+    margin-bottom: 30px;
+    text-wrap: balance;
+    color: white;
+}
+
+.img--firstMsg{
+    transform: scale(2);
+    min-width: 50px;
+    margin-left: 30px;
+}
+
+.img--firstMsg:first-child{
+    animation: popUpPokeball 4s .5s ease-in-out both;
+}
+
+.img--firstMsg:nth-child(2){
+    animation: popUpPokeball 4s .7s ease-in-out both;
+}
+
+.img--firstMsg:nth-child(3){
+    animation: popUpPokeball 4s .9s ease-in-out both;
+}
+
+@keyframes popUp {
+    0%{
+        transform: scale(0);
+    }10%{
+        transform: scale(1.1);
+    }15%{
+        transform: scale(1);
+    }90%{
+        transform: scale(1);
+        opacity: 1;
+    }92%{
+        transform: scale(1.1);
+    }100%{
+        transform: scale(0);
+    }
+}
+
+@keyframes popUpPokeball {
+    0%{
+        transform: scale(0);
+    }10%{
+        transform: scale(2.1);
+    }15%{
+        transform: scale(2);
+    }100%{
+        transform: scale(2);
+    }
+}

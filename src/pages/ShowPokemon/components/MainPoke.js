@@ -20,6 +20,7 @@ const MainPoke = (show, name)=>{
 
     const [changeBtn, setChangeBtn] = useState(0);
 
+    //DETERMINA SI TIENES EL POKEMON Y DISPONE EL BOTÓN EN CONSECUENCIA
     useEffect(()=>{
         if(loggedIn){
             console.log('¿TIENES EL POKEMON?', testPoke);
@@ -39,7 +40,7 @@ const MainPoke = (show, name)=>{
                         setHuntBtn(<AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{
                             setStartHunt(true);
                             setStartGlobalHunt(true);
-                        }}/>) 
+                        }} id={showMainPoke.id}/>) 
                     }
                 }
             }else{
@@ -51,24 +52,8 @@ const MainPoke = (show, name)=>{
                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn huntBtn-red' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
             </Link>)
         }
-    },[loggedIn, testPoke,  userPokeballs, startHunt]) //He quitado "changeBtn"
+    },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]) //He quitado "changeBtn"
     //testPoke, loggedIn, userPokeballs,
-
-    // function setHuntBtn(){
-    //     if(loggedIn){
-    //         if(userPokeballs > 0){
-    //             return <AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{setStartHunt(true);}}/>
-    //         }else if(userPokeballs === 0){
-    //             return <Link to='/account'>
-    //                 <AppButton text='¡LO TIENES EN TU POKEDEX!' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-    //             </Link>
-    //         }else{
-    //             <Link to='/account'>
-    //                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-    //             </Link>
-    //         }
-    //     }
-    // }
 
     useEffect(()=>{
             if(pokeProb && !testPoke && loggedIn){
@@ -96,13 +81,10 @@ const MainPoke = (show, name)=>{
         if(startHunt !== null && userPokeballs > 0){
             console.log('----- PROCESO DE CAZADO-----')
 
-            console.log('Resta una pokeball');
-            setUserPokeballs(userPokeballs - 1); 
             console.log('1. Animación Pokeball');
             const timeOut = ()=>setTimeout(()=>{
                 if(huntResult === true){
 
-                    
                     setUserPokeCount(userPokeCount + 1);
                     setTestPoke(true);
 
@@ -121,10 +103,14 @@ const MainPoke = (show, name)=>{
                     console.log('Mensaje de ESCAPADO')
                     setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose']);
                 }
+
+                console.log('Resta una pokeball');
+                setUserPokeballs(userPokeballs - 1); 
                 
                 const timeOut2 = ()=>{
                     
                     setTimeout(()=>{
+                        
                         setHuntMsg(null);
                         setStartHunt(null);
                         setStartGlobalHunt(null);
@@ -148,6 +134,24 @@ const MainPoke = (show, name)=>{
         }
     },[startHunt])
 
+    
+
+    const dragOver = (e)=>{
+        e.preventDefault();
+        // setReleaseImg(true);
+    }
+
+    const dragArea = (e)=>{
+        console.log('SOLTADO');
+        const idToHunt = e.dataTransfer.getData("text/plain", e.target.id);
+        console.log(e.target.id);
+        console.log(idToHunt);
+        if(idToHunt === e.target.id){
+            console.log('SON IGUALES');
+            setStartHunt(true);
+        }
+    }
+
 
     return(
         <article className="showPoke-mainPoke">
@@ -162,8 +166,8 @@ const MainPoke = (show, name)=>{
                     
                     <section className="mainPoke-upperSec">
 
-                        <div className="mainPoke-imgContainer">
-                            <img src={showMainPoke.img} alt={`Imagen de ${showMainPoke.name}`} className="mainPoke-img"/>
+                        <div className="mainPoke-imgContainer" onDragOver={(e)=>e.preventDefault()} onDrop={(e)=>dragArea(e)}>
+                            <img src={showMainPoke.img} alt={`Imagen de ${showMainPoke.name}`} className="mainPoke-img" id={showMainPoke.id}/>
                             <span className="mainPoke-id">{`#${showMainPoke.id}`}</span>
                             
                             {startHunt && 
@@ -229,31 +233,10 @@ const MainPoke = (show, name)=>{
                                 )
                             })}
                         </div>
-                        
-                        
-
-                        
                 </section>
                 
                 <section className="mainPoke-huntSection">
-                    {   huntBtn
-                        // loggedIn 
-                        // ? 
-                        // <AppButton text='LANZAR POKEBALL' 
-                        // className='huntBtn' 
-                        // img={pokeball2_icon} 
-                        // imgClass='huntBtn-img'
-                        // onClick={()=>{
-                        //     setStartHunt(true);
-                        // }}
-                        // />
-                        // :
-                        // <Link to='/account'>
-                        //     <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
-                        // </Link>
-                        
-                    }
-                    
+                    { huntBtn }
                 </section>
 
             </div>

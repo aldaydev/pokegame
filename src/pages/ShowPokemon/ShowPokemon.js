@@ -1,12 +1,13 @@
 import PokeList from "./components/PokeList";
 import MainPoke from "./components/MainPoke";
 import './ShowPokemon.css';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const ShowPokemon = ({name, show})=>{
 
     const { loggedIn, showCountDown } = useContext(AuthContext);
+
 
     return (
         <main className="App-main App-main--showPoke">
@@ -16,10 +17,10 @@ const ShowPokemon = ({name, show})=>{
                 <MainPoke show={show} name={name}/>
             </section>
 
-            {loggedIn && showCountDown !== null && <div className="showCountDown-container">
+            {/* {loggedIn && showCountDown !== null && <div className="showCountDown-container">
                 <span className="showCountDown-text">{`3 pokeballs más en:`}</span>
                 <span className="showCountDown-count">{`${showCountDown} segundos`}</span>
-            </div>}
+            </div>} */}
             
             
         </main>

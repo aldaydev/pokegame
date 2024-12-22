@@ -1,5 +1,5 @@
 import './AppHeader.css';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PokeContext } from "../../context/PokeContext";
 import { Link } from "react-router-dom";
 import pokemon_logo from '../../assets/img/pokemon_logo.svg'
@@ -15,7 +15,15 @@ const AppHeader = ()=>{
     const { setTypeId, typeList, showAllPoke, setShowAllPoke } = useContext(PokeContext);
 
 
-    const { loggedIn, userPokeballs, userPokeCount, startGlobalHunt } = useContext(AuthContext);
+    const { loggedIn, userPokeballs, userPokeCount, startGlobalHunt, showCountDown, showAchiement, setShowAchievement } = useContext(AuthContext);
+
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            setShowAchievement(null);
+        },8000)
+
+    },[showAchiement, loggedIn, setShowAchievement])
 
     return(
         <header className={`App-header ${startGlobalHunt && 'App-header--block'}`}>
@@ -57,14 +65,14 @@ const AppHeader = ()=>{
                     {loggedIn && 
                     <>
                     
-                    <Link>
+                    <Link to='/account'>
                         <img src={pokeball2_icon} className='nav-pokeball' alt='Pokeball icon'/>
                         <div className='pokeballCount-container'>
                             <span className='pokeballCount-number'>{userPokeballs}</span>
                         </div>
                     </Link>
 
-                    <Link>
+                    <Link to='/account'>
                         <img src={pokes_icon} className='nav-pokemons' alt='Pokemon icon'/>
                         <div className='pokemonCount-container'>
                             <span className='pokemonCount-number'>{userPokeCount}</span>
@@ -81,6 +89,17 @@ const AppHeader = ()=>{
                 </div>
                 
             </nav>
+
+            {loggedIn && showCountDown !== null && <div className="showCountDown-container">
+                <span className="showCountDown-text">{`3 pokeballs más en:`}</span>
+                <span className="showCountDown-count">{`${showCountDown} segundos`}</span>
+            </div>}
+
+            {loggedIn && showAchiement !== null && <div className="showAchievement-container">
+                <span className="showCountDown-text">{`${showAchiement[0]}`}</span>
+                <span className="showCountDown-count">{`${showAchiement[1]}`}</span>
+            </div>}
+
         </header>
     )
 }

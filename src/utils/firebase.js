@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, setDoc, doc, getDoc, deleteDoc  } from 'firebase/firestore';
+import { getFirestore, collection, setDoc, doc, getDoc, deleteDoc, getDocs  } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDwsdMznaTMlmsOtY3gvNhjNjN7zn2dj_A",
@@ -19,9 +19,10 @@ const db = getFirestore(app);
 
 export async function setSignUpData(email){
     const signUpData = {
-        pokeballs: 5,
+        pokeballs: 3,
         pokemons: [],
-        pokeCount: 0
+        pokeCount: 0,
+        achievements: [0]
     }
     await setDoc(doc(db, 'users', email), signUpData)
 
@@ -31,6 +32,7 @@ export async function setSignUpData(email){
         data: signUpData
     }
     localStorage.user = JSON.stringify(constlocalLogged);
+    return 'HAS RECIBIDO 3 POKEBALLS POR REGISTRARTE';
 }
 
 export async function updateData(newData){
@@ -48,12 +50,11 @@ export async function loadData(email){
 
     const docRef = doc(db, 'users', email);
     const docSnap = await getDoc(docRef);
-    console.log('DOCSNAP', docSnap.data().pokeballs)
 
     const localLogged = {
         connected: true,
         email: email,
-        data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons}
+        data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons, achievements: docSnap.data().achievements}
     }
     localStorage.user = JSON.stringify(localLogged);
 } 
@@ -65,19 +66,20 @@ export async function removeAllData(email) {
             await user.delete();
             await deleteDoc(doc(db, 'users', email));
             localStorage.removeItem('user');
-            console.log('Cuenta eliminada correctamente');
             return 'Cuenta eliminada correctamente';
         } catch (error) {
-            console.log('Error al eliminar la cuenta. Reinicia la sesión y prueba de nuevo')
             return 'Error al eliminar la cuenta. Reinicia la sesión y prueba de nuevo'
         }
     } else {
-        console.log('No hay un usuario autenticado.');
         return 'No hay un usuario autenticado.';
     }
-    
-    
 
+}
+
+export async function getAchievements(){
+    const querySnapshot = await getDocs(collection(db, "achievements"));
+
+    return querySnapshot.docs.map((doc) => doc.data())
 }
 
 

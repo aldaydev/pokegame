@@ -23,13 +23,15 @@ const SearchForm = ()=>{
 
     return(
         <form onSubmit={(e)=>searchPokemon(e)} className="nav-form">
-                    <input type='text' placeholder='Busca tu pokemon' className="nav-form-input"/>
-                    <button type='submit' className="nav-form-submit">
-                        <img src={search_icon} alt='Search icon'className="nav-form-submit-icon"/>
-                    </button>
+            <input type='text' placeholder='Busca tu pokemon' className="nav-form-input"/>
+            <button type='submit' className="nav-form-submit">
+                <img src={search_icon} alt='Search icon'className="nav-form-submit-icon"/>
+            </button>
                     
-                    {searchError !== null ? <span className={errorClass}>{searchError}</span> : null}
-                </form>
+            {searchError !== null 
+                ? <span className={errorClass}>{searchError}</span> 
+                : null}
+        </form>
     )
 }
 
