@@ -51,7 +51,8 @@
     
 }
 
-.pokeList-item:hover .pokeList-img {
+.pokeList-item:hover .pokeList-img,
+.pokeList-item--user:hover .pokeList-img {
     transform: scale(1.1);
 }
 
@@ -442,16 +443,21 @@
     border-radius: 15px;
     box-shadow: var(--box-shadow);
     border: 3px solid black;
-    animation: huntMsg 3s ease-in-out both;
+    animation: huntMsg 4s ease-in-out both;
 }
 
-.huntMsgContainer > p{
+.huntMsg-text{
     font-size: 1.4rem;
     font-weight: 600;
 }
 
-.huntMsg{
+.huntMsg-title{
     font-size: 1.8rem;
+}
+
+.huntMsg-img{
+    margin-top: 15px;
+    max-width: 180px;
 }
 
 .huntMsgWin{

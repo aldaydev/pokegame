@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
     setTimeout(()=>{
       countProcess();
-    },1000)
+    },2000)
 
   }
   
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
               setTimeout(()=>{
                 setShowAchievement(['¡Logro cumplido!', 'Has recibido 3 pokeballs']);
                 setUserPokeballs((previous)=>previous + 3);
-              }, 3000)
+              }, 4000)
             }
             break;
           case 5:
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 5 pokeballs']);
               setUserPokeballs((previous)=>previous + 5);
-            }, 3000)
+            }, 4000)
             }
             break;
           case 10:
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
               setUserPokeballs((previous)=>previous + 10);
-            }, 3000)
+            }, 4000)
             }
             break;
             case 25:
@@ -87,7 +87,7 @@ export const AuthProvider = ({ children }) => {
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 20 pokeballs']);
               setUserPokeballs((previous)=>previous + 20);
-            }, 3000)
+            }, 4000)
             }
             break;
             case 50:
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }) => {
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 40 pokeballs']);
               setUserPokeballs((previous)=>previous + 40);
-            }, 3000)
+            }, 4000)
             }
             break;
             case 100:
@@ -105,7 +105,7 @@ export const AuthProvider = ({ children }) => {
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 75 pokeballs']);
               setUserPokeballs((previous)=>previous + 75);
-            }, 3000)
+            }, 4000)
             }
             break;
             case 151:
@@ -115,7 +115,7 @@ export const AuthProvider = ({ children }) => {
               setWinnerMsg(true);
               // setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
               setUserPokeballs(0);
-            }, 3000)
+            }, 4000)
             }
             break;
           default: 

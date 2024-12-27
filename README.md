@@ -1,4 +1,4 @@
-22/12/2024 - Tarde - Adding images for hunting
+27/12/2024 - Noche - Adding images for hunting and fixing timeouts
 
 # Getting Started with Create React App
 

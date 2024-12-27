@@ -4,6 +4,8 @@ import loading_spinner from '../../../assets/img/loading_spinner.svg'
 import AppButton from "../../../components/AppButton";
 import pokeball2_icon from '../../../assets/img/pokeball2_icon.svg'
 import pokeuser_icon from '../../../assets/img/pokeuser_icon.svg'
+import hunted_img from '../../../assets/img/hunted_img.svg'
+import noHunted_img from '../../../assets/img/noHunted_img.svg'
 import { AuthContext } from "../../../context/AuthContext";
 import { Link } from "react-router-dom";
 
@@ -76,12 +78,13 @@ const MainPoke = (show, name)=>{
     },[showMainPoke ,resetHunt])
     
 
+    //PROCESO DE CAZADO
     useEffect(()=>{
 
         if(startHunt !== null && userPokeballs > 0){
             console.log('----- PROCESO DE CAZADO-----')
 
-            console.log('1. Animación Pokeball');
+            console.log('1. Animación Pokeball - Primer timeOut');
             const timeOut = ()=>setTimeout(()=>{
                 if(huntResult === true){
 
@@ -98,10 +101,10 @@ const MainPoke = (show, name)=>{
                     setUserPokemons(allHuntedPokemons);
 
                     console.log('Mensaje de ATRAPADO')
-                    setHuntMsg(['¡POKEMON ATRAPADO!', 'Se ha añadido a tu Pokedex' ,'huntMsgWin'])
+                    setHuntMsg(['¡POKEMON ATRAPADO!', 'Se ha añadido a tu Pokedex' ,'huntMsgWin', hunted_img, 'Image de pokemon cazado'])
                 }else if(huntResult === false){
                     console.log('Mensaje de ESCAPADO')
-                    setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose']);
+                    setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose', noHunted_img, 'Imagen de pokemon no cazado']);
                 }
 
                 console.log('Resta una pokeball');
@@ -116,17 +119,11 @@ const MainPoke = (show, name)=>{
                         setStartGlobalHunt(null);
                         setResetHunt(resetHunt === true ? false : true);
                         setChangeBtn(changeBtn + 1);
-                    }, 3000)
+                    }, 4000)
                 }
 
-                // if(userPokeballs === 0){
-                //     setCountDown();
-                // }
-                console.log('Entra segundo timeOut');
+                console.log('2. Mensaje en pantalla y reset - segundo timeOut');
                 timeOut2();
-                // if(userPokeballs === 0){
-                //     setCountDown();
-                // }
                 
             },5000)
             
@@ -181,8 +178,9 @@ const MainPoke = (show, name)=>{
                         {(startHunt && huntMsg) && 
                             <div className='huntMsgPosition'>
                                 <div className={`huntMsgContainer ${huntMsg[2]}`}>
-                                    <h2 className='huntMsg'>{huntMsg[0]}</h2>
-                                    <p>{huntMsg[1]}</p>
+                                    <h2 className='huntMsg-title'>{huntMsg[0]}</h2>
+                                    <p className='huntMsg-text'>{huntMsg[1]}</p>
+                                    <img src={huntMsg[3]} alt={huntMsg[4]} className="huntMsg-img"/>
                                 </div>
                             </div>
                         }
