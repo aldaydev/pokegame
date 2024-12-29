@@ -1,4 +1,4 @@
-27/12/2024 - Noche - Adding images for hunting and fixing timeouts
+29/12/2024 - Noche - Initial commit designLab
 
 # Getting Started with Create React App
 
