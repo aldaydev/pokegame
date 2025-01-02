@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const MainPoke = (show, name)=>{
 
     const { showMainPoke, pokeProb, testPoke, setTestPoke } = useContext(PokeContext);
-    const { loggedIn, setUserPokeballs, userPokeballs, setUserPokemons, userPokemons, setUserPokeCount, userPokeCount, startGlobalHunt, setStartGlobalHunt } = useContext(AuthContext);
+    const { loggedIn, setUserPokeballs, userPokeballs, setUserPokemons, userPokemons, setUserPokeCount, userPokeCount, setStartGlobalHunt } = useContext(AuthContext);
 
     const [ huntResult, setHuntResult ] = useState('initial');
     const [ startHunt, setStartHunt ] = useState(null);
@@ -130,13 +130,6 @@ const MainPoke = (show, name)=>{
             timeOut();
         }
     },[startHunt])
-
-    
-
-    const dragOver = (e)=>{
-        e.preventDefault();
-        // setReleaseImg(true);
-    }
 
     const dragArea = (e)=>{
         console.log('SOLTADO');

@@ -66,9 +66,8 @@ body {
 
 .App-header--block{
   pointer-events: none;
-    opacity: 0.7;
-    cursor: not-allowed;
-    user-select: none;
+  cursor: not-allowed;
+  user-select: none;
 }
 
 /* ESTILOS APP-MAIN */
