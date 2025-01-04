@@ -1,72 +1,40 @@
-04/01/2025 - Noche - Algunas ultimas correciones
+04/01/2025 - Tarde - Trabajando la documentación...
 
-# Getting Started with Create React App
+# Pokemon Game (por Rafa Alday)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🗒️ Descripción general:
+- Esta aplicación es un juego de pokemon en el que puedes cazarlos, guardarlos en tu pokedex, liberarlos y recibir pokeballs al cumplir logros.
+- La app ha sido diseñada con React JS.
+- Tanto el listado de tipos, como el listado completo, así como la información de cada pokemon ha sido extraida de la API pokeApi.
+- El sistema de registro ha sido creado con FireBase Auth. En el proceso además se crea un documento por usuario en una colección en FireStore, donde se almacenan datos como la cantidad de pokemons cazados, la cantidad de pokeballs del usuario o los logros cumplidos. Además, dichos datos también se almacenan en LocalStorage para mantener la sesión al volver a entrar en la página.
+- Uso FireStore para almacenar todos los logros que se pueden cumplir.    
 
-## Available Scripts
+## 🛠️ Funcionalidades:
 
-In the project directory, you can run:
+- Buscar pokemons: Por tipo, por listado completo o por nombre utilizando el input de búsqueda.
+- Registro y almacenamiento de los datos del juego del usuario.
+- Cazar pokemons: Una vez registrado, el usuario podrá cazar pokemons, guardarlos en su pokedex. También podrá liberarlos. Todo el proceso actualizará los estados correspondientes de cantidad de pokemons del usuario, cantidad de pokeballs que tiene...
+- Cumplit logros: La dinámica del juego es que, al cumplir logros, se le dan pokeballs al usuario, lo que le permite seguir jugando.
 
-### `npm start`
+## 📂 Componentes, páginas y contextos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### index.js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Aquí es donde he colocado los "contextos" que envuelven toda la aplicaicón y que explicaré a continuación.
 
-### `npm test`
+### PokeContext.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Este contexto contiene todo lo relacionado con mostrar:
+    - Obtener el listado de tipos de pokemon
+    - Obtener los pokemons de un tipo
+    - Obtener los 151 pokemons
+    - Obtener el main pokemon (pokemon principal-seleccionado del que podremos obtener información detallada)
+    - Buscar un pokemon por nombre
+    - Comprobar si el usuario (si está logeado) tiene el main pokemon.
 
-### `npm run build`
+### AuthContext.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### App.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Es el componente principal que incluye el Header, Footer y las rutas necesarias. También incluye la animación que aparece al pasarte el juego (cazar los 151 pokemons), que ocupará toda la pantalla.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
