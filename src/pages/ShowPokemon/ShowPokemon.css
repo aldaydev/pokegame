@@ -330,9 +330,9 @@
 
 .huntBtn-red{
     background-color: var(--color-red-light);
-    pointer-events: none;
-    opacity: 0.7;
-    cursor: not-allowed;
+    /* pointer-events: none; */
+    /* opacity: 0.7; */
+    /* cursor: not-allowed; */
     user-select: none;
 
 }

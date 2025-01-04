@@ -1,4 +1,4 @@
-02/01/2025 - Noche - HeaderBlock corregido
+04/01/2025 - Noche - Algunas ultimas correciones
 
 # Getting Started with Create React App
 

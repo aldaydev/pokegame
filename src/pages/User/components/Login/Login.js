@@ -18,7 +18,6 @@ const Login = ()=>{
 
         const emailValue = e.target[0].value;
         const passValue = e.target[1].value;
-        console.log(emailValue, passValue)
 
         const emailFormat = validateEmail(emailValue);
         const passFormat = validatePass(passValue);
