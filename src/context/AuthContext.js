@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const [startGlobalHunt, setStartGlobalHunt] = useState(null);
   
+  //CUENTA ATRÁS RENOVAR POKEBALLS
   function setCountDown(){
     
     const countProcess = ()=>{
@@ -305,6 +306,7 @@ export const AuthProvider = ({ children }) => {
 
   const [removedMsg, setRemovedMsg] = useState(false);
 
+  //ELIMINAR CUENTA
   const deleteAccount = async ()=>{
     const email = JSON.parse(localStorage.user).email;
     console.log('EMAIL', email);

@@ -1,4 +1,4 @@
-04/01/2025 - Tarde - Trabajando la documentación...
+06/01/2025 - Tarde - Trabajando la documentación...
 
 # Pokemon Game (por Rafa Alday)
 
@@ -13,18 +13,21 @@
 
 - Buscar pokemons: Por tipo, por listado completo o por nombre utilizando el input de búsqueda.
 - Registro y almacenamiento de los datos del juego del usuario.
-- Cazar pokemons: Una vez registrado, el usuario podrá cazar pokemons, guardarlos en su pokedex. También podrá liberarlos. Todo el proceso actualizará los estados correspondientes de cantidad de pokemons del usuario, cantidad de pokeballs que tiene...
-- Cumplit logros: La dinámica del juego es que, al cumplir logros, se le dan pokeballs al usuario, lo que le permite seguir jugando.
+- Cazar pokemons: Una vez registrado, el usuario podrá cazar pokemons y guardarlos en su pokedex. También podrá liberarlos. Todo el proceso actualizará los estados correspondientes de cantidad de pokemons del usuario, cantidad de pokeballs y logros conseguidos.
+- Cumplir logros: La dinámica del juego es que, al cumplir logros, se le dan pokeballs al usuario, lo que le permite seguir jugando.
+- Si el usuario se queda sin pokeballs (y no cumple un logro en esa tirada, deberá esperar 10 segundos para recibir 3 pokeballs)
 
 ## 📂 Componentes, páginas y contextos:
 
-### index.js
+## 1 - index.js
 
 Aquí es donde he colocado los "contextos" que envuelven toda la aplicaicón y que explicaré a continuación.
 
+## 2 - Contextos: 
+
 ### PokeContext.js
 
-Este contexto contiene todo lo relacionado con mostrar:
+Este contexto contiene todo lo relacionado con:
     - Obtener el listado de tipos de pokemon
     - Obtener los pokemons de un tipo
     - Obtener los 151 pokemons
@@ -34,7 +37,47 @@ Este contexto contiene todo lo relacionado con mostrar:
 
 ### AuthContext.js
 
-### App.js
+Este contexto contiene todo lo relacionado con:
+
+    - SignIn (Iniciar sesión)
+    - SignUp (Crear cuenta)
+    - Eliminar cuenta
+    - Recuperar datos del usuario de LocalStorage
+    - Obtener el listado de logros general
+    - Actualizar pokeballs, pokemons cazados y logros del usuario
+    - Gestionar cuando un usuario se queda sin pokeballs (timeOut, mensaje con cuenta atrás y entregar 3 pokeballs)
+    - Gestionar logros del usuario al conseguirlos (mensajes y actualización de datos)
+
+## 3 - App.js
 
 Es el componente principal que incluye el Header, Footer y las rutas necesarias. También incluye la animación que aparece al pasarte el juego (cazar los 151 pokemons), que ocupará toda la pantalla.
+
+## 4 - Pages
+
+### ShowPokemon
+
+ShowPokemon es la página que aparecerá al buscar pokemons por tipo o en el listado general. Se compone de dos componentes:
+
+### PokeList.js
+
+- Este componente mostrará el listado de pokemons de un tipo concreto o el listado completo, dependiendo de los valores que se le entreguen como prop al componente. 
+- Al pulsar en uno de los pokemons del listado, este se marcará como mainPoke (pokemon principal).
+- Si el usuario tiene un pokemon en la pokedex, éste se marcará en el listado de PokeList con un fondo verde claro.
+
+### MainPoke.js
+
+- Este componente contiene el Pokemon principal y es donde podremos inciar el proceso de cazado.
+- Al buscar un pokemon por tipo o listado general, el pokemon principal será por defecto el primero de la lista.
+- El pokemon principal contiene más información sobre el pokemon, como estadísticas, su tipo o habilidades entre otras.
+
+- El botón del componente mainPoke será fundamental en la app. Tiene varios estados (cada uno con una imagen y estilos diferentes):
+    1. Si no estamos logeados, nos invitará a hacerlo
+    2. Si estamos logeados y NO tenemos el pokemon, podremos "lanzar una pokeball", iniciando el proceso de caza.
+    3. Si estamos logeados y SI tenemos el pokemon, el botón nos llevará a nuestra zona de usuario donde está la pokedex y podremos verlo.
+
+- Proceso de caza:
+    1. Al cargarse un mainPokemon, 
+
+
+
 
