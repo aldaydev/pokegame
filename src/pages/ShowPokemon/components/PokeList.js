@@ -20,6 +20,7 @@ const PokeList = ({show, name})=>{
       return userPokemons.some((userPoke)=> userPoke.name.toLowerCase() === testPoke)
     }
 
+    //DEFINIR SI SE MUESTRA UN TIPO (Y CUAL) O EL LISTADO COMPLETO
     useEffect(()=>{
       if(show === 'type'){
         switch(location.pathname){

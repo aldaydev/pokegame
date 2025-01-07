@@ -17,6 +17,7 @@ export const auth = getAuth(app);
 
 const db = getFirestore(app);
 
+//SIGN UP
 export async function setSignUpData(email){
     const signUpData = {
         pokeballs: 3,
@@ -35,6 +36,7 @@ export async function setSignUpData(email){
     return 'HAS RECIBIDO 3 POKEBALLS POR REGISTRARTE';
 }
 
+//ACTUALIZR DATOS DEL USUARIO
 export async function updateData(newData){
     if(localStorage.user){
         const email = JSON.parse(localStorage.user).email;
@@ -42,6 +44,7 @@ export async function updateData(newData){
     }
 }
 
+//SIGNIN (CARGAR DATOS DEL USUARIO)
 export async function loadData(email){
 
     if(localStorage.user){
@@ -59,6 +62,7 @@ export async function loadData(email){
     localStorage.user = JSON.stringify(localLogged);
 } 
 
+//ELIMINAR DATOS DEL USUARIO (ELIMINAR CUENTA)
 export async function removeAllData(email) {
     const user = auth.currentUser;
     if (user) {
@@ -76,6 +80,7 @@ export async function removeAllData(email) {
 
 }
 
+//OBTENER EL LISTADO DE LOGROS
 export async function getAchievements(){
     const querySnapshot = await getDocs(collection(db, "achievements"));
 

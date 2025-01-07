@@ -20,21 +20,25 @@ const Account = ()=>{
     const [showBin, setShowBin] = useState(false);
     const [releaseImg, setReleaseImg] = useState(false);
 
+    //Cerrar sesión
     const closeSession = ()=>{
         localStorage.removeItem('user');
         window.location.reload();
     }
 
+    //Arrastrar un pokemon de la pokedex
     const dragItem = (e)=>{
         setShowBin(true);
         e.dataTransfer.setData("text/plain", e.target.id);
     }
 
+    //Colocar el pokemon sobre el candado
     const dragOver = (e)=>{
         e.preventDefault();
         setReleaseImg(true);
     }
 
+    //Soltar el pokemon sobre el candado (librar)
     const dragArea = (e)=>{
         // e.preventDefault();
         console.log('DROPPED');
@@ -54,6 +58,7 @@ const Account = ()=>{
 
     }
 
+    //Mostrar el mensaje cuando creas la cuenta y cumplit primer logro
     useEffect(()=>{
         localStorage.user && JSON.parse(localStorage.user).data.achievements.length === 1 && signUpMsg && setFirstMsg(signUpMsg);
 

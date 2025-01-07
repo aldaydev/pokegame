@@ -1,4 +1,4 @@
-06/01/2025 - Tarde - Trabajando la documentación...
+07/01/2025 - Noche - Finalizando la documentación
 
 # Pokemon Game (por Rafa Alday)
 
@@ -54,7 +54,7 @@ Es el componente principal que incluye el Header, Footer y las rutas necesarias.
 
 ## 4 - Pages
 
-### ShowPokemon
+### ShowPokemon.js
 
 ShowPokemon es la página que aparecerá al buscar pokemons por tipo o en el listado general. Se compone de dos componentes:
 
@@ -76,7 +76,77 @@ ShowPokemon es la página que aparecerá al buscar pokemons por tipo o en el lis
     3. Si estamos logeados y SI tenemos el pokemon, el botón nos llevará a nuestra zona de usuario donde está la pokedex y podremos verlo.
 
 - Proceso de caza:
-    1. Al cargarse un mainPokemon, 
+    1. Al cargarse un mainPokemon, se calcula si será cazado o no.
+    Esto se hace a través del parámetro "exp (experience)" que se recoge de la API.
+    Se genera un nº aleatorio con el que, si es menor o igual, el pokemon será cazado y, si es mayor, no será cazado.
+    2. Aparece la animación de la pokeball.
+    3. Aparece una alerta verde si el pokemon es cazado y roja si no.
+    4. Si el pokemon es cazado, el botón del componente MainPoke.js cambiará e indicará que lo tenemos en nuestra pokedex. Además, en el listado de PokeList.js, se marcará en verde dicho pokemon.
+    5. He trabajado los eventos "DROP", por lo que también puedes cazar los pokemons arrastrando la pokeball sobre el main pokemon.
+
+## User.js
+
+En esta página es donde aparecerá lo relacionado con la cuenta del usuario. Si no está logeado, nos llevará a la página de registro. Si está logeado, nos llevará a la página del usuario.
+
+Todas las operaciones referentes a firebase Auth y fireStore las tenemos el el archivo "utils/firebase.js".
+
+Toda la información de juego del usuario se almacena, tanto en direStore como en LocalStorage para conservar los datos si se cierra el navegador.
+
+### login.js
+
+Aquí podremos, bien crear una cuenta con correo y contraseña, bien hacer signIn su ya la hemos creado.
+
+Los campos email y contraseña tiene un una validación que proviene del archivo "utils/validations.js".
+
+    - El email debe tener un formato correcto xxx@xxx.xx
+    - La contraseña debe contener al menos una letra, un nº, un caracter especial y 6 dígitos.
+
+### Account.js
+
+Este será el área de usuario. Aquí podremos encontrar:
+
+    1. Opciones para cerrar sesión y borrar la cuenta. En el caso de borrar la cuenta nos aparecerá una alerta para que confirmemos, indicándonos que perderemos todo nuestro progreso en el juego.
+
+    2. Cantidad de pokeballs del usuario.
+
+    3. La pokedex: 
+     - Si no hay pokemons aparecerá un mensaje diciendo "Aquí aparecerán tus pokemons cuando los cazes". Si hemos cazado alguno, nos aparecerá.
+     - Podemos LIBERAR POKEMONS. Para ello arrastramos la imagen del pokemon y automáticamente nos aparecerá el icono de un candado cerrado arriba a la derecha. Al poner la imagen sobre el candado se volverá verde y, si soltamos el pokemon encima, se recargará la página y se actualizarán los datos, tanto en firebase como en localStorage, eliminando dicho pokemon.
+
+    4. Listado de logros:
+     - Podemos ver un listado de los logros que podemos conseguir y las recompensas que obtendremos.
+     - Se marcarán en verde los logros cumplidos y en rojo los que no.
+
+## 📂 Estilos:
+
+He tratado de darle un estilo coherente a la app, utilizando variables en css para los corolores y también para el box shadow de ciertos elementos.
+
+He creado diferentes animaciones, tanto al mostrar elementos como alertas.
+
+No me ha dado tiempo a hacerla responsive, en gran medida por ciertos errores de base que comentaré a continuanción en "Autocrítica".
+
+## 📂 Autocrítica:
+
+### Uso excesivo de context:
+
+Creo que he abusado de createContext. Me he dejado llevar un poco por la versatilidad de tener muchos datos y funciones accesibles desde cualquier sitio de la web. Creo que, quizás, el PokeContext podría hacer estado en gran medida directamente en el App.js y pasar los datos necesarios para cada componente como promps, así como las funciones.
+
+### No tener en cuenta el responsive desde el inicio:
+
+Como comentaba anteriormente, al no tener en cuenta el diseño responsive desde un inicio, en la etapa final en la que he intentado adaptarlo todo me he encontrado problemas ya que no había dispuesto los elementos y contenedores de la manera correcta para hacerlo. Podría haberlo hecho, pero me ha faltado tiempo ya que tendría que reorganizar bastantes cosas.
+
+### NO HE DOCUMENTADO COMO ME HUBIERA GUSTADO
+
+A parte de que me ha faltado tiempo para documentar mejor, veo con cada proyecto que hago que es una buena idea ir documentando según escribes código.
+
+### Mejor planificación inicial
+
+Cada vez veo más importante que, si no diseñas y defines MUY BIEN qué vas a hacer y cómo lo harás, tendrás que rehacer bastante trabajo y/o el código no quedará tan bien estructurado. Esto es parte también porque, al ser una práctica, en un inicio no era consciente de que iba a llegar tan lejos. Pero la lección de la planificación es algo que veo en cada trabajo nuevo que hago.
+
+## 📂 Conclusiones:
+
+Estoy muy orgulloso del trabajo que he hecho y creo que me ha servido muchísimo para entender muchas cosas de React. Ha sido apasionante ir viendo crecer el proyecto y haber llegado a crear un juego funcional.
+
 
 
 

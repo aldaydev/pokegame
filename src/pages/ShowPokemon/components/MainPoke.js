@@ -57,6 +57,7 @@ const MainPoke = (show, name)=>{
     },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]) //He quitado "changeBtn"
     //testPoke, loggedIn, userPokeballs,
 
+    //CALCULA SI EL POKEMON SERÁ CAZADO O NO
     useEffect(()=>{
             if(pokeProb && !testPoke && loggedIn){
                 console.log('---- CALCULA SI SERÁ CAZADO ----');
@@ -131,6 +132,7 @@ const MainPoke = (show, name)=>{
         }
     },[startHunt])
 
+    //SOLTAR LA POKEBALL SOBRE EL POKEMON
     const dragArea = (e)=>{
         console.log('SOLTADO');
         const idToHunt = e.dataTransfer.getData("text/plain", e.target.id);

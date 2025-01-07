@@ -13,6 +13,7 @@ const Login = ()=>{
     const [emailError, setEmailError] = useState([false, 'type', 'msg']);
     const [passError, setPassError] = useState([false, 'type', 'msg']);
 
+    //VALIDACIÓN DE SIGNIN
     const validateSignIn = (e, type)=>{
         e.preventDefault();
 
