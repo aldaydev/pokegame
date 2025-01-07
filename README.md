@@ -129,15 +129,15 @@ No me ha dado tiempo a hacerla responsive, en gran medida por ciertos errores de
 
 ### Uso excesivo de context:
 
-Creo que he abusado de createContext. Me he dejado llevar un poco por la versatilidad de tener muchos datos y funciones accesibles desde cualquier sitio de la web. Creo que, quizás, el PokeContext podría hacer estado en gran medida directamente en el App.js y pasar los datos necesarios para cada componente como promps, así como las funciones.
+Creo que he abusado de createContext. Me he dejado llevar un poco por la versatilidad de tener muchos datos y funciones accesibles desde cualquier sitio de la web. Creo que, por ejemplo, el PokeContext podría haber estado en gran medida directamente en el App.js y pasar los datos necesarios para cada componente como promps, así como las funciones.
 
 ### No tener en cuenta el responsive desde el inicio:
 
 Como comentaba anteriormente, al no tener en cuenta el diseño responsive desde un inicio, en la etapa final en la que he intentado adaptarlo todo me he encontrado problemas ya que no había dispuesto los elementos y contenedores de la manera correcta para hacerlo. Podría haberlo hecho, pero me ha faltado tiempo ya que tendría que reorganizar bastantes cosas.
 
-### NO HE DOCUMENTADO COMO ME HUBIERA GUSTADO
+### No he documentado como me hubiera gustado.
 
-A parte de que me ha faltado tiempo para documentar mejor, veo con cada proyecto que hago que es una buena idea ir documentando según escribes código.
+A parte de que me ha faltado tiempo para documentar mejor, veo con cada proyecto que hago que es una buena idea ir comentado y documentando según escribes código.
 
 ### Mejor planificación inicial
 
