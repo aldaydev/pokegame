@@ -1,4 +1,4 @@
-07/01/2025 - Noche - Finalizando la documentación
+07/01/2025 - Noche - Merge from doc to main
 
 # Pokemon Game (por Rafa Alday)
 
