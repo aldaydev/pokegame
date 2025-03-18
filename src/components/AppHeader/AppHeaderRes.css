@@ -1,0 +1,115 @@
+@media screen and (max-width: 1440px) { 
+    .nav-pokeball{
+        width: 50px;
+        position: absolute;
+        top: 4px;
+        left: 5px;
+    }
+
+    .nav-pokemons{
+        width: 35px;
+        max-height: 35px;
+    }
+
+    .pokeballCount-container,
+    .pokemonCount-container{
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    right: 6px;
+    bottom: 5px;
+    }
+
+    .nav-user{
+        margin-top: 10px;
+        width: 37px;
+        max-height: 40px;
+        filter: drop-shadow(-1px -1px 0 black) 
+        drop-shadow(1px -1px 0 black) 
+        drop-shadow(-1px 1px 0 black) 
+        drop-shadow(1px 1px 0 black);
+        
+    }
+}
+
+@media screen and (max-width: 1280px) { 
+    .App-header{
+        padding: 0 5%;
+    }
+}
+
+@media screen and (max-width: 1024px) { 
+    .App-header{
+        padding: 0 2%;
+    }
+}
+
+@media screen and (max-width: 825px) { 
+    .nav-menuToggle{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .toggleIcon{
+        transition: transform .3s ease-in-out;
+    }
+
+    .toggleIcon--mod{
+        transform: rotate(90deg);
+    }
+
+    .nav-container{
+        background-color: var(--color-yellow);
+        position: absolute;
+        width: 400px;
+        padding: 0 20px;
+        top: 80px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-container--res{
+        display: none;
+    }
+
+    .nav-pagesList{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-pagesItem{
+        width: 100%;
+    }
+
+    .pagesItem-dropTitle,
+    .nav-pagesItem > a{
+        border-bottom: 2px solid black;
+    }
+
+    .nav-form{
+        padding: 20px 20px 40px 20px;
+    }
+
+    .pagesItem-dropList{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .pagesItem-dropItem > a{
+        width: 100%;
+        padding: 5px 20px;
+        text-align: center;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: black;
+        border-bottom: 2px solid black;
+    }
+
+
+
+}
