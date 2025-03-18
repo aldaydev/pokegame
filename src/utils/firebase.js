@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, setDoc, doc, getDoc, deleteDoc  } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDwsdMznaTMlmsOtY3gvNhjNjN7zn2dj_A",
-    authDomain: "pokestorealday.firebaseapp.com",
-    projectId: "pokestorealday",
-    storageBucket: "pokestorealday.firebasestorage.app",
-    messagingSenderId: "224912064865",
-    appId: "1:224912064865:web:08f528131e00f504d90520"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
