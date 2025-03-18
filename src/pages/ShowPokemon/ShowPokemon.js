@@ -1,6 +1,7 @@
 import PokeList from "./components/PokeList";
 import MainPoke from "./components/MainPoke";
 import './ShowPokemon.css';
+import './ShowPokemonRes.css';
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 

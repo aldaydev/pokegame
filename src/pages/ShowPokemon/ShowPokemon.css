@@ -26,7 +26,7 @@
 .showPoke-pokeList{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(170px, 1fr));
     justify-items: center;
     justify-content: start;
     align-items: start;

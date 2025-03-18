@@ -1,0 +1,132 @@
+@media screen and (max-width: 1440px) {
+    .App-main-title{
+        margin: 10px;
+        margin-top: 20px;
+        font-size: 1.6rem;
+        animation: trackingDown .5s .2s ease-in-out both, fundido .5s .3s ease-in-out both;
+    }
+
+    .showPoke-pokeList{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .pokeList-imgContainer{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .pokeList-img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .pokeList-title{
+        font-size: 1rem;
+    }
+
+    /*MAIN POKE*/
+
+    .mainPoke-container{
+        align-items: start;
+        align-content: start;
+        grid-template-rows: min-content;
+        gap: 15px;
+    }
+
+    .mainPoke-upperSec {
+        margin: 0;
+    }
+
+    .mainPoke-title{
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .showPoke-mainPoke{
+        padding: 0 15px;
+    }
+
+    .mainPoke-imgContainer{
+        min-height: 150px;
+        max-height: 250px;
+        min-width: 150px;
+        max-width: 250px;
+    }
+
+    .mainPoke-img{
+        max-width: 250px;
+        max-height: 250px;
+        min-width: 150px;
+        min-height: 150px;
+        padding: 15px;
+    }
+
+    .mainPoke-statContainer{
+        margin-bottom: 7px;
+    }
+
+    .mainPoke-statsTitle{
+        font-size: 1.4rem;
+    }
+
+    .mainPoke-statTitle{
+        margin: 0;
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+
+    .mainPoke-lowerSec{
+        margin: 0;
+        align-items: start;
+        row-gap: 10px;
+
+    }
+
+    .mainPoke-itemContainer{
+        gap: 4px;
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 3px 10px;
+        margin: 0 2px;
+    }
+
+    .mainPoke-itemTitle{
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 3px 10px;
+    }
+
+    .mainPoke-huntSection {
+        margin: 0 40px;
+    }
+
+    .huntBtn {
+        padding: 10px 40px;
+        max-height: 70px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 10px;
+        font-size: 1.3rem;
+    }
+
+    .huntBtn-img{
+        transform: scale(0.5) translateX(20px);
+        filter: drop-shadow(-1px -1px 0 white) 
+        drop-shadow(1px -1px 0 white) 
+        drop-shadow(-1px 1px 0 white) 
+        drop-shadow(1px 1px 0 white);
+    }
+    
+    .huntBtn-img-loggin{
+        height: 50px;
+        filter: drop-shadow(-1px -1px 0 white) 
+        drop-shadow(1px -1px 0 white) 
+        drop-shadow(-1px 1px 0 white) 
+        drop-shadow(1px 1px 0 white);
+    }
+
+    
+}
