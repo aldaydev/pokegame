@@ -1,7 +1,7 @@
 {
   "name": "daw_react_c26-1_ex-2",
   "version": "0.1.0",
-  "homepage": "https://aldaydev.github.io/pokegame",
+  "homepage": "https://pokegame.alday.es",
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
