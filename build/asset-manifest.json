@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ecfdecfc.css",
+    "main.js": "/static/js/main.31380472.js",
+    "static/js/488.124e16da.chunk.js": "/static/js/488.124e16da.chunk.js",
+    "static/media/hunted_img.svg": "/static/media/hunted_img.4ea0af4921cfd3d68f6fc818c25547be.svg",
+    "static/media/noHunted_img.svg": "/static/media/noHunted_img.0b04772f13f019aa8cd735badaf56d4b.svg",
+    "static/media/pokeuser_icon.svg": "/static/media/pokeuser_icon.0e91947f8283252a0b1f8a4943619e3e.svg",
+    "static/media/welcome_img.svg": "/static/media/welcome_img.b69d0f282bb45630fe3bcfc075c087e9.svg",
+    "static/media/pokemon_logo.svg": "/static/media/pokemon_logo.17b2d8c1482f004467895f547c5a57f7.svg",
+    "static/media/pokes_icon.svg": "/static/media/pokes_icon.c57cef362f9df7c5c2ae2ce6f9a08553.svg",
+    "static/media/pokeball2_icon.svg": "/static/media/pokeball2_icon.62058a9f0573155ab2db307640d61d33.svg",
+    "static/media/loading_spinner.svg": "/static/media/loading_spinner.e207e26cab35250cffc49f5f14f392f7.svg",
+    "static/media/number3.svg": "/static/media/number3.f3b4daa7786c0e4c87831b66b0714aaa.svg",
+    "static/media/number2.svg": "/static/media/number2.d27151647441d8254ad1a61f06be8919.svg",
+    "static/media/lock_icon.svg": "/static/media/lock_icon.16d364812b1ad620c68070a05bee4705.svg",
+    "static/media/unlock_icon.svg": "/static/media/unlock_icon.38ace0f6142fc3822c205833a027885f.svg",
+    "static/media/star_icon.svg": "/static/media/star_icon.ff16dd58757a4e4096740f60ea234d3e.svg",
+    "static/media/number1.svg": "/static/media/number1.c85590f5b28bb789705cc4e9e9de348e.svg",
+    "index.html": "/index.html",
+    "static/media/search_icon.svg": "/static/media/search_icon.21360126eebe7a0a51a052e9a4baf9f6.svg",
+    "main.ecfdecfc.css.map": "/static/css/main.ecfdecfc.css.map",
+    "main.31380472.js.map": "/static/js/main.31380472.js.map",
+    "488.124e16da.chunk.js.map": "/static/js/488.124e16da.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ecfdecfc.css",
+    "static/js/main.31380472.js"
+  ]
+}
