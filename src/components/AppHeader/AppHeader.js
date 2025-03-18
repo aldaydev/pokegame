@@ -68,8 +68,8 @@ const AppHeader = ()=>{
             <nav className="App-nav">
                 <div className={isOpen ? 'nav-container' : ' nav-container nav-container--res'} >
 
-                    <ul className={isOpen ? 'nav-pagesList' : 'nav-pagesList nav-pagesList--res'} onClick={handleDropList}>
-                        <li className={dropList ? "nav-pagesItem--drop" : "nav-pagesItem"}>
+                    <ul className={isOpen ? 'nav-pagesList' : 'nav-pagesList nav-pagesList--res'}>
+                        <li className={dropList ? "nav-pagesItem--drop" : "nav-pagesItem"} onClick={handleDropList}>
                             
                             <div className={isOpen ? "pagesItem-dropTitle" : "pagesItem-dropTitle nav-pagesList--res"}>TIPOS</div>
 
@@ -90,7 +90,7 @@ const AppHeader = ()=>{
                         </li>
 
                         <li onClick={()=>setShowAllPoke(showAllPoke === true ? false : true)} className="nav-pagesItem">
-                            <Link to='/all'>
+                            <Link to='/all' onClick={toggleMenu}>
                                 TODOS
                             </Link>
                         </li>
