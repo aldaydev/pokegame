@@ -98,6 +98,10 @@
         padding: 3px 10px;
     }
 
+    .mainPoke-itemText{
+        font-size: 1.1rem;
+    }
+
     .mainPoke-huntSection {
         margin: 0 40px;
     }
@@ -126,6 +130,88 @@
         drop-shadow(1px -1px 0 white) 
         drop-shadow(-1px 1px 0 white) 
         drop-shadow(1px 1px 0 white);
+    }
+
+}
+
+@media screen and (max-width: 1280px){
+
+    .showPoke-mainPoke {
+        justify-content: center;
+    }
+
+    .showPoke-section{
+        grid-template-columns: auto;
+        align-items: center;
+    }
+
+    .showPoke-pokeList {
+        display: flex;
+        /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-rows: 1fr; */
+        min-width: 200px;
+        justify-content: start;
+        overflow-x: auto;
+        min-height: 200px;
+        max-height: 200px;
+        gap: 15px;
+        margin-bottom: 0;
+    }
+
+    .App-main {
+        width: 90%;
+    }
+
+    .mainPoke-upperSec {
+        margin: 0 10px;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .mainPoke-lowerSec {
+        max-width: 600px;
+    }
+
+    .mainPoke-statsContainer {
+        flex-basis: 30%;
+    }
+
+    .mainPoke-imgContainer {
+        flex-basis: 70%;
+    }
+
+    .mainPoke-huntSection{
+        margin-bottom: 35px;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    .showPoke-mainPoke {
+        padding: 0;
+    }
+
+    .mainPoke-upperSec{
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .huntBtn {
+        padding: 10px 10px;
+        max-height: 70px;
+        width: auto;
+        max-width: 500px;
+        margin: 0 auto;
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+
+    .huntBtn > span {
+        margin-right: 10px;
+    }
+
+    .mainPoke-abilities {
+        flex-direction: column;
     }
 
     

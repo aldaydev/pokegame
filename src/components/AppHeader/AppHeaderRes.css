@@ -110,6 +110,12 @@
         border-bottom: 2px solid black;
     }
 
+}
 
-
+@media screen and (max-width: 600px){
+    
+    .nav-container{
+        width: 100%;
+    }
+        
 }

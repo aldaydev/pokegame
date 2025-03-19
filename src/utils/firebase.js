@@ -118,8 +118,8 @@ export async function removeAllData(uid) {
     const user = auth.currentUser;
     if (user) {
         try {
-            await user.delete();
             await deleteDoc(doc(db, 'users', uid));
+            await user.delete();
             sessionStorage.removeItem('user');
             return 'Cuenta eliminada correctamente';
         } catch (error) {

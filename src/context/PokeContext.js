@@ -23,8 +23,8 @@ export const PokeProvider = ({ children }) => {
   //COMPROBAR SI EL USUARIO TIENE EL MAIN POKEMON
   async function testingPoke(pokeName){
     
-    if(localStorage.user && JSON.parse(localStorage.user).data.pokemons){
-      const userPokes = JSON.parse(localStorage.user).data.pokemons;
+    if(sessionStorage.user && JSON.parse(sessionStorage.user).data.pokemons){
+      const userPokes = JSON.parse(sessionStorage.user).data.pokemons;
 
       const testing = await userPokes.some((userPoke)=>{
       return userPoke.name.toLowerCase() === pokeName.toLowerCase()

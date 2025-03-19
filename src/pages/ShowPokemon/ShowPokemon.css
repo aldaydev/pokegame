@@ -34,7 +34,7 @@
     /* max-height: max-content; */
     min-height: 700px;
     max-height: calc(100dvh - 250px);
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 
     margin: 25px 25px 25px 0;

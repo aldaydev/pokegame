@@ -31,6 +31,11 @@ const AppHeader = ()=>{
         setDropList(prevState => !prevState);
     };
 
+    const handleAllButton = () => {
+        setDropList(false);
+        setIsOpen(false);
+    };
+
     useEffect(()=>{
         setTimeout(()=>{
             setShowAchievement(null);
@@ -90,7 +95,7 @@ const AppHeader = ()=>{
                         </li>
 
                         <li onClick={()=>setShowAllPoke(showAllPoke === true ? false : true)} className="nav-pagesItem">
-                            <Link to='/all' onClick={toggleMenu}>
+                            <Link to='/all' onClick={handleAllButton}>
                                 TODOS
                             </Link>
                         </li>
