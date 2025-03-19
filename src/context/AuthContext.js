@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, setSignUpData, loadData, removeAllData, updateData, getAchievements, fireBaseSignUp, fireBaseSignIn } from '../utils/firebase';
 
 export const AuthContext = createContext();
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   //GENERA EL NUEVO HITO CUANDO SE CONSIGUE
   useEffect(()=>{
     if(loggedIn){
-        const currentAch = JSON.parse(localStorage.user).data.achievements;
+        const currentAch = JSON.parse(sessionStorage.user).data.achievements;
         if(currentAch)
         switch(userPokeCount){
           //SI SE CUMPLE EL HITO DE CAZAR 3 POKEMONS
@@ -148,18 +148,18 @@ export const AuthProvider = ({ children }) => {
   //ACTUALIZA LOS POKEMONS Y LOGROS DEL USUARIO
   useEffect(()=>{
 
-    if(localStorage.user && userPokemons){
-      const previousLS = JSON.parse(localStorage.user);
-      const previousLSData = JSON.parse(localStorage.user).data;
+    if(sessionStorage.user && userPokemons){
+      const previousLS = JSON.parse(sessionStorage.user);
+      const previousLSData = JSON.parse(sessionStorage.user).data;
 
       let newLSData, newLS;
-      const currentAch = JSON.parse(localStorage.user).data.achievements;
+      const currentAch = JSON.parse(sessionStorage.user).data.achievements;
       switch (userPokeCount){
         case 3:
           if(currentAch && !currentAch.includes(1)){
             newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1], pokeballs: (userPokeballs + 3)}
             newLS = {...previousLS, data: newLSData}
-            localStorage.user = JSON.stringify(newLS);
+            sessionStorage.user = JSON.stringify(newLS);
             updateData(newLSData);
           }
           break;
@@ -167,7 +167,7 @@ export const AuthProvider = ({ children }) => {
           if(currentAch && !currentAch.includes(2)){
             newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1,2], pokeballs: (userPokeballs + 5)}
             newLS = {...previousLS, data: newLSData}
-            localStorage.user = JSON.stringify(newLS);
+            sessionStorage.user = JSON.stringify(newLS);
             updateData(newLSData);
           }
           break;
@@ -175,7 +175,7 @@ export const AuthProvider = ({ children }) => {
           if(currentAch && !currentAch.includes(3)){
             newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1,2,3], pokeballs: (userPokeballs + 10)}
             newLS = {...previousLS, data: newLSData}
-            localStorage.user = JSON.stringify(newLS);
+            sessionStorage.user = JSON.stringify(newLS);
             updateData(newLSData);
           }
           break;
@@ -183,7 +183,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(4)){
               newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1,2,3,4], pokeballs: (userPokeballs + 20)}
               newLS = {...previousLS, data: newLSData}
-              localStorage.user = JSON.stringify(newLS);
+              sessionStorage.user = JSON.stringify(newLS);
               updateData(newLSData);
             }
           break;
@@ -191,7 +191,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(5)){
               newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1,2,3,4,5], pokeballs: (userPokeballs + 40)}
               newLS = {...previousLS, data: newLSData}
-              localStorage.user = JSON.stringify(newLS);
+              sessionStorage.user = JSON.stringify(newLS);
               updateData(newLSData);
             }
           break;
@@ -199,7 +199,7 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(6)){
               newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1,2,3,4,5,6], pokeballs: (userPokeballs + 75)}
               newLS = {...previousLS, data: newLSData}
-              localStorage.user = JSON.stringify(newLS);
+              sessionStorage.user = JSON.stringify(newLS);
               updateData(newLSData);
             }
           break;
@@ -207,14 +207,14 @@ export const AuthProvider = ({ children }) => {
             if(currentAch && !currentAch.includes(7)){
               newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount, achievements: [0,1,2,3,4,5,6,7], pokeballs: 0}
               newLS = {...previousLS, data: newLSData}
-              localStorage.user = JSON.stringify(newLS);
+              sessionStorage.user = JSON.stringify(newLS);
               updateData(newLSData);
             }
           break;
         default: 
           newLSData = {...previousLSData, pokemons: userPokemons, pokeCount: userPokeCount}
           newLS = {...previousLS, data: newLSData};
-          localStorage.user = JSON.stringify(newLS);
+          sessionStorage.user = JSON.stringify(newLS);
           updateData(newLSData);
           break;
       }
@@ -227,27 +227,27 @@ export const AuthProvider = ({ children }) => {
   useEffect(()=>{
 
     if(loggedIn && userPokeballs === null && userPokeballs !== 0){
-      setUserPokeballs(JSON.parse(localStorage.user).data.pokeballs);
-      setUserPokeCount(JSON.parse(localStorage.user).data.pokeCount);
-      setUserPokemons(JSON.parse(localStorage.user).data.pokemons);
+      setUserPokeballs(JSON.parse(sessionStorage.user).data.pokeballs);
+      setUserPokeCount(JSON.parse(sessionStorage.user).data.pokeCount);
+      setUserPokemons(JSON.parse(sessionStorage.user).data.pokemons);
     }
 
-    localStorage.user && JSON.parse(localStorage.user).connected === true && setLoggedIn(true);
+    sessionStorage.user && JSON.parse(sessionStorage.user).connected === true && setLoggedIn(true);
 
   }, [loggedIn, userPokeballs]) //He añadido las dependencias por sugrencia de REACT (VER)
 
 
   //ACTUALIZA LAS POKEBALLS DEL USUARIO
   useEffect(()=>{
-    if(localStorage.user && userPokeballs !== null){
+    if(sessionStorage.user && userPokeballs !== null){
       
-      const previousLS = JSON.parse(localStorage.user);
-      const previousLSData = JSON.parse(localStorage.user).data;
+      const previousLS = JSON.parse(sessionStorage.user);
+      const previousLSData = JSON.parse(sessionStorage.user).data;
 
       const newLSData = {...previousLSData, pokeballs: userPokeballs}
       const newLS = {...previousLS, data: newLSData}
 
-      localStorage.user = JSON.stringify(newLS);
+      sessionStorage.user = JSON.stringify(newLS);
       updateData(newLSData);
     }
     
@@ -291,8 +291,8 @@ export const AuthProvider = ({ children }) => {
     try {
         // await createUserWithEmailAndPassword(auth, email, password);
         
-        const signedUp = await fireBaseSignUp(email);
-
+        const signedUp = await fireBaseSignUp(email, password);
+        console.log(signedUp);
         setSignUpMsg(signedUp);
         setLoggedIn(true);
         
@@ -310,9 +310,8 @@ export const AuthProvider = ({ children }) => {
 
   //ELIMINAR CUENTA
   const deleteAccount = async ()=>{
-    const email = JSON.parse(localStorage.user).email;
-    console.log('EMAIL', email);
-    const result = await removeAllData(email);
+    const uid = JSON.parse(sessionStorage.user).uid;
+    const result = await removeAllData(uid);
     setRemovedMsg(result);
     
     function reloadPage (){

@@ -22,7 +22,7 @@ const Account = ()=>{
 
     //Cerrar sesión
     const closeSession = ()=>{
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         window.location.reload();
     }
 
@@ -44,15 +44,15 @@ const Account = ()=>{
         console.log('DROPPED');
         const idToDelete = e.dataTransfer.getData("text/plain", e.target.id);
         console.log(idToDelete);
-        const getLocalStorage = JSON.parse(localStorage.user);
-        const getLocalPokeList = JSON.parse(localStorage.user).data.pokemons;
+        const getSessionStorage = JSON.parse(sessionStorage.user);
+        const getLocalPokeList = JSON.parse(sessionStorage.user).data.pokemons;
 
         getLocalPokeList.splice(idToDelete,1);
-        getLocalStorage.data.pokemons = getLocalPokeList;
-        getLocalStorage.data.pokeCount -= 1;
-        console.log(getLocalStorage, getLocalPokeList);
+        getSessionStorage.data.pokemons = getLocalPokeList;
+        getSessionStorage.data.pokeCount -= 1;
+        console.log(getSessionStorage, getLocalPokeList);
 
-        localStorage.user = JSON.stringify(getLocalStorage);
+        sessionStorage.user = JSON.stringify(getSessionStorage);
 
         window.location.reload();
 
@@ -60,7 +60,7 @@ const Account = ()=>{
 
     //Mostrar el mensaje cuando creas la cuenta y cumplit primer logro
     useEffect(()=>{
-        localStorage.user && JSON.parse(localStorage.user).data.achievements.length === 1 && signUpMsg && setFirstMsg(signUpMsg);
+        sessionStorage.user && JSON.parse(sessionStorage.user).data.achievements.length === 1 && signUpMsg && setFirstMsg(signUpMsg);
 
         const timeOut = ()=>{
             setTimeout(()=>{
@@ -69,7 +69,7 @@ const Account = ()=>{
             },4000)
         }
         timeOut();
-        localStorage.user && setUserEmail(JSON.parse(localStorage.user).email);
+        sessionStorage.user && setUserEmail(JSON.parse(sessionStorage.user).email);
     },[])
     
     return(
@@ -154,7 +154,7 @@ const Account = ()=>{
                                 {achList && achList.map((ach, i)=>{
                                     return(
                                         <div className={`ach-container ach-container--ach ${
-                                            localStorage.user && (JSON.parse(localStorage.user).data.achievements).includes(i) && 'ach-container--green'
+                                            sessionStorage.user && (JSON.parse(sessionStorage.user).data.achievements).includes(i) && 'ach-container--green'
                                         }`} key={i} >
                                             <h3 className="ach-left">{ach.achievement}</h3>
                                             <div className="ach-right">

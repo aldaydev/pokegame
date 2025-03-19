@@ -71,8 +71,8 @@ export async function fireBaseSignUp(email, password) {
 
 //ACTUALIZR DATOS DEL USUARIO
 export async function updateData(newData){
-    if(localStorage.user){
-        const uid = JSON.parse(localStorage.user).uid;
+    if(sessionStorage.user){
+        const uid = JSON.parse(sessionStorage.user).uid;
         await setDoc(doc(db, 'users', uid), newData);
     }
 }
@@ -96,31 +96,31 @@ export async function fireBaseSignIn(email, password){
 }
 
 //SIGNIN (CARGAR DATOS DEL USUARIO)
-export async function loadData(email){
+// export async function loadData(email){
 
-    if(localStorage.user){
-        email = JSON.parse(localStorage.user).email;
-    }
+//     if(localStorage.user){
+//         email = JSON.parse(localStorage.user).email;
+//     }
 
-    const docRef = doc(db, 'users', email);
-    const docSnap = await getDoc(docRef);
+//     const docRef = doc(db, 'users', email);
+//     const docSnap = await getDoc(docRef);
 
-    const localLogged = {
-        connected: true,
-        email: email,
-        data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons, achievements: docSnap.data().achievements}
-    }
-    localStorage.user = JSON.stringify(localLogged);
-} 
+//     const localLogged = {
+//         connected: true,
+//         email: email,
+//         data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons, achievements: docSnap.data().achievements}
+//     }
+//     localStorage.user = JSON.stringify(localLogged);
+// } 
 
 //ELIMINAR DATOS DEL USUARIO (ELIMINAR CUENTA)
-export async function removeAllData(email) {
+export async function removeAllData(uid) {
     const user = auth.currentUser;
     if (user) {
         try {
             await user.delete();
-            await deleteDoc(doc(db, 'users', email));
-            localStorage.removeItem('user');
+            await deleteDoc(doc(db, 'users', uid));
+            sessionStorage.removeItem('user');
             return 'Cuenta eliminada correctamente';
         } catch (error) {
             return 'Error al eliminar la cuenta. Reinicia la sesión y prueba de nuevo'
