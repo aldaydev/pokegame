@@ -6,10 +6,21 @@
         animation: trackingDown .5s .2s ease-in-out both, fundido .5s .3s ease-in-out both;
     }
 
+    .showPoke-section {
+        /* max-height: calc(100dvh - 180px); */
+        display: grid
+    ;
+        grid-template-columns: 3fr 5fr;
+        margin-bottom: 20px;
+    }
+
     .showPoke-pokeList{
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         grid-template-rows: repeat(auto-fill, minmax(140px, 1fr));
         gap: 15px;
+        height: 100%;
+        max-height: calc(100dvh - 350px);
+        min-height: 600px;
     }
 
     .pokeList-imgContainer{
@@ -203,7 +214,7 @@
         max-width: 500px;
         margin: 0 auto;
         margin-top: 10px;
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .huntBtn > span {
@@ -214,5 +225,36 @@
         flex-direction: column;
     }
 
-    
+    .mainPoke-itemTitle {
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 3px 10px;
+        
+    }
+
+    .mainPoke-charsContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mainPoke-itemContainer {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .huntBtn-img{
+        transform: scale(0.3) translateX(20px);
+        filter: drop-shadow(-1px -1px 0 white) 
+        drop-shadow(1px -1px 0 white) 
+        drop-shadow(-1px 1px 0 white) 
+        drop-shadow(1px 1px 0 white);
+    }
+
+    .huntBtn-img-loggin{
+        height: 30px;
+        filter: drop-shadow(-1px -1px 0 white) 
+        drop-shadow(1px -1px 0 white) 
+        drop-shadow(-1px 1px 0 white) 
+        drop-shadow(1px 1px 0 white);
+    }
 }
