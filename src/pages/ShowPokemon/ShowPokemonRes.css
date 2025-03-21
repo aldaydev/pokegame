@@ -207,10 +207,14 @@
         margin: 0;
     }
 
+    .mainPoke-huntSection {
+        order: -1;
+    }
+
     .huntBtn {
         padding: 10px 10px;
         max-height: 70px;
-        width: auto;
+        width: 100%;
         max-width: 500px;
         margin: 0 auto;
         margin-top: 10px;
@@ -218,12 +222,18 @@
     }
 
     .huntBtn > span {
-        margin-right: 10px;
+        margin-right: 0;
+        /* transform: translateX(-48px); */
+    }
+
+    .huntBtn-img {
+        display: none;
     }
 
     .mainPoke-abilities {
         flex-direction: column;
     }
+
 
     .mainPoke-itemTitle {
         font-size: 1.1rem;
