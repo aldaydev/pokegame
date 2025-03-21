@@ -3,8 +3,8 @@
 ## ⭐ Tecnologías utilizadas:
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center">
-    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white&color=black" alt="React Badge">
-    <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white&color=white" alt="React Router Badge">
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white&color=black" alt="React Badge" style="width: 150px; height: auto;">
+    <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white&color=black" alt="React Router Badge">
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white&color=black" alt="Node.js Badge">
     <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white&color=black" alt="Firebase Badge">
     <img src="https://img.shields.io/badge/Firestore-FFA000?style=for-the-badge&logo=firebase&logoColor=white&color=black" alt="Firestore Badge">
