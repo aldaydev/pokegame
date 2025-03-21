@@ -1,4 +1,5 @@
 import './Loggin.css';
+import './LogginRes.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
 import FormInput from "./FormInput";
@@ -41,7 +42,7 @@ const Login = ()=>{
     }
 
     return(
-        <main className="App-main App-main--short">
+        <main className="App-main App-main--short App-main--login">
             <hgroup>
                 <h1 className="App-main-title">ACCEDE</h1>
                 <h2 className="App-main-sutitle">¡PODRÁS CAZAR POKEMONS Y GUARDARLOS EN TU POKEDEX!</h2>

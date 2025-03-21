@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
 
 import './Account.css';
+import './AccountRes.css';
 import user_icon from '../../../../assets/img/pokeuser_icon.svg';
 import pokeball2_icon from '../../../../assets/img/pokeball2_icon.svg';
 import star_icon from '../../../../assets/img/star_icon.svg';
@@ -73,7 +74,7 @@ const Account = ()=>{
     },[])
     
     return(
-        <main className="App-main">
+        <main className="App-main App-main-account">
             <h1 className="App-main-title">TU ÁREA DE USUARIO</h1>
             <div className="account-container">
                 <section className={`account-userSect ${noSticky && noSticky}`}>

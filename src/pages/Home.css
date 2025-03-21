@@ -102,3 +102,10 @@
     list-style: none;
     text-wrap: ballance;
 }
+
+.videoPresentation-container{
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    margin-top: 40px;
+}

@@ -101,7 +101,7 @@ const AppHeader = ()=>{
                         </li>
                     </ul>
                 
-                    <SearchForm/>
+                    <SearchForm closeMenu={setIsOpen} closeDropList={setDropList}/>
                 </div>
                 
 
@@ -125,7 +125,7 @@ const AppHeader = ()=>{
 
                     </>}
                     
-                    <Link to='/account'>
+                    <Link to='/account' onClick={handleAllButton}>
                         <img src={user_icon} className='nav-user' alt='User icon'/>
                     </Link>
 

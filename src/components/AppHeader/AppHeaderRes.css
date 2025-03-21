@@ -97,6 +97,7 @@
 
     .pagesItem-dropList{
         width: 100%;
+        top: 60px;
         margin: 0 auto;
     }
 
@@ -104,10 +105,10 @@
         width: 100%;
         padding: 5px 20px;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
         text-decoration: none;
         color: black;
-        border-bottom: 2px solid black;
+        border-bottom: 1px solid black;
     }
 
 }
@@ -118,4 +119,22 @@
         width: 100%;
     }
         
+}
+
+@media screen and (max-width: 500px) {
+
+    .nav-userButtons > a {
+        display: block;
+        width: 40px;
+        height: 60px;
+        transform: scale(0.8);
+    }
+
+    .App-header > a {
+        margin-right: 5px;
+    }
+
+    .App-logo{
+        width: 95px;
+    }
 }

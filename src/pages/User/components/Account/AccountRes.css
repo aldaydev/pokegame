@@ -1,0 +1,101 @@
+@media screen and (max-width: 1440px){
+    
+    .userPokeballs-title {
+        font-size: 1.2rem;
+        text-align: start;
+    }
+
+    .pokemonSect-title{
+        font-size: 1.5rem;
+    }
+
+    .pokelist-user--noPokeTitle{
+        font-size: 1.1rem;
+    }
+
+    .userSect-title-ach{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 1024px){
+
+    .App-main-account{
+        width: 94%;
+    }
+
+    .account-container {
+        grid-template-areas:
+            "user"
+            "aside"
+            "poke";
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .account-aside {
+        grid-area: aside;
+        max-width: none;
+        /* background-color: #6fc57f; */
+    }
+
+    .userSect-btnContainer{
+        margin-bottom: 15px;
+    }
+
+    .showPoke-pokeList--user{
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    .account-userSect {
+        margin: 0 auto;
+        background-color: #F7F7F7;
+        padding: 0 50px 0 0;
+        grid-area: user;
+        gap: 15px;
+        /* background-color: var(--color-yellow); */
+        display: grid
+    ;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+
+    .userSect-hgroup {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        margin-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .userSect-btnContainer {
+        flex-direction: column;
+        justify-content: end;
+        gap: 15px;
+    }
+
+    .userSect-hgroup {
+        flex-direction: column;
+    }
+
+    .showPoke-pokeList--user {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .account-userSect {
+        padding: 0;
+        grid-area: user;
+        gap: 15px;
+    }
+
+}

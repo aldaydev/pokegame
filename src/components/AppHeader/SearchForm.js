@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { PokeContext } from "../../context/PokeContext";
 import { useNavigate } from 'react-router-dom';
 
-const SearchForm = ()=>{
+const SearchForm = ({closeMenu, closeDropList})=>{
 
     const { setSearchPoke, searchError } = useContext(PokeContext);
 
@@ -23,6 +23,9 @@ const SearchForm = ()=>{
             },2000)
         }
         handleTimeout();
+
+        closeMenu(false);
+        closeDropList(false);
     }
 
     return(
