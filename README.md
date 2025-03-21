@@ -2,6 +2,10 @@
 
 # Pokemon Game (por Rafa Alday)
 
+## ⭐ Tecnologías utilizadas:
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Node](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat&logo=react-router&logoColor=white) ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=white) ![Firestore](https://img.shields.io/badge/Firestore-FFA000?style=flat&logo=firebase&logoColor=white) 
+
 ## 🗒️ Descripción general:
 - Esta aplicación es un juego de pokemon en el que puedes cazarlos, guardarlos en tu pokedex, liberarlos y recibir pokeballs al cumplir logros.
 - La app ha sido diseñada con React JS.
@@ -117,35 +121,13 @@ Este será el área de usuario. Aquí podremos encontrar:
      - Podemos ver un listado de los logros que podemos conseguir y las recompensas que obtendremos.
      - Se marcarán en verde los logros cumplidos y en rojo los que no.
 
-## 📂 Estilos:
+## 📄 Estilos:
 
 He tratado de darle un estilo coherente a la app, utilizando variables en css para los corolores y también para el box shadow de ciertos elementos.
 
 He creado diferentes animaciones, tanto al mostrar elementos como alertas.
 
-No me ha dado tiempo a hacerla responsive, en gran medida por ciertos errores de base que comentaré a continuanción en "Autocrítica".
-
-## 📂 Autocrítica:
-
-### Uso excesivo de context:
-
-Creo que he abusado de createContext. Me he dejado llevar un poco por la versatilidad de tener muchos datos y funciones accesibles desde cualquier sitio de la web. Creo que, por ejemplo, el PokeContext podría haber estado en gran medida directamente en el App.js y pasar los datos necesarios para cada componente como promps, así como las funciones.
-
-### No tener en cuenta el responsive desde el inicio:
-
-Como comentaba anteriormente, al no tener en cuenta el diseño responsive desde un inicio, en la etapa final en la que he intentado adaptarlo todo me he encontrado problemas ya que no había dispuesto los elementos y contenedores de la manera correcta para hacerlo. Podría haberlo hecho, pero me ha faltado tiempo ya que tendría que reorganizar bastantes cosas.
-
-### No he documentado como me hubiera gustado.
-
-A parte de que me ha faltado tiempo para documentar mejor, veo con cada proyecto que hago que es una buena idea ir comentado y documentando según escribes código.
-
-### Mejor planificación inicial
-
-Cada vez veo más importante que, si no diseñas y defines MUY BIEN qué vas a hacer y cómo lo harás, tendrás que rehacer bastante trabajo y/o el código no quedará tan bien estructurado. Esto es parte también porque, al ser una práctica, en un inicio no era consciente de que iba a llegar tan lejos. Pero la lección de la planificación es algo que veo en cada trabajo nuevo que hago.
-
-## 📂 Conclusiones:
-
-Estoy muy orgulloso del trabajo que he hecho y creo que me ha servido muchísimo para entender muchas cosas de React. Ha sido apasionante ir viendo crecer el proyecto y haber llegado a crear un juego funcional.
+Toda la app es responsive y se ve correctamente en todos los dispositivos.
 
 
 
