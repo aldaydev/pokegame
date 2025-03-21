@@ -45,30 +45,6 @@ export async function fireBaseSignUp(email, password) {
     return 'HAS RECIBIDO 3 POKEBALLS POR REGISTRARTE';
 }
 
-
-//SIGN UP
-// export async function setSignUpData(email){
-
-//     const signUpData = {
-//         pokeballs: 3,
-//         pokemons: [],
-//         pokeCount: 0,
-//         achievements: [0],
-//         email: email
-//     }
-
-//     await setDoc(doc(db, 'users', user.uid), signUpData)
-
-//     const constlocalLogged = {
-//         connected: true,
-//         uid: user.uid,
-//         email: user.email,
-//         data: signUpData
-//     }
-//     localStorage.user = JSON.stringify(constlocalLogged);
-//     return 'HAS RECIBIDO 3 POKEBALLS POR REGISTRARTE';
-// }
-
 //ACTUALIZR DATOS DEL USUARIO
 export async function updateData(newData){
     if(sessionStorage.user){
@@ -94,24 +70,6 @@ export async function fireBaseSignIn(email, password){
 
     sessionStorage.user = JSON.stringify(sessionStorageData);
 }
-
-//SIGNIN (CARGAR DATOS DEL USUARIO)
-// export async function loadData(email){
-
-//     if(localStorage.user){
-//         email = JSON.parse(localStorage.user).email;
-//     }
-
-//     const docRef = doc(db, 'users', email);
-//     const docSnap = await getDoc(docRef);
-
-//     const localLogged = {
-//         connected: true,
-//         email: email,
-//         data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons, achievements: docSnap.data().achievements}
-//     }
-//     localStorage.user = JSON.stringify(localLogged);
-// } 
 
 //ELIMINAR DATOS DEL USUARIO (ELIMINAR CUENTA)
 export async function removeAllData(uid) {

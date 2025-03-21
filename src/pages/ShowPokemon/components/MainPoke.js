@@ -28,17 +28,14 @@ const MainPoke = (show, name)=>{
             console.log('¿TIENES EL POKEMON?', testPoke);
             if(startHunt === null){
                 if(testPoke){
-                    // console.log('Tipo de botón: Ir a Pokedex');
                     setHuntBtn(<Link to='/account'>
                         <AppButton text='¡LO TIENES EN TU POKEDEX!' className='huntBtn huntBtn-green' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
                         </Link>)
                 }else{
                     if(userPokeballs === 0){
-                        // console.log('Tipo de botón: Sin pokeballs');
                         setHuntBtn( 
                             <AppButton text='¡NO TE QUEDAN POKEBALLS!' className='huntBtn huntBtn-red' img={pokeball2_icon} imgClass='huntBtn-img'/>)
                     }else if(userPokeballs > 0){
-                        // console.log('Tipo de botón: Lanzar Pokeball');
                         setHuntBtn(<AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{
                             setStartHunt(true);
                             setStartGlobalHunt(true);
@@ -54,8 +51,7 @@ const MainPoke = (show, name)=>{
                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn huntBtn-red' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
             </Link>)
         }
-    },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]) //He quitado "changeBtn"
-    //testPoke, loggedIn, userPokeballs,
+    },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]);
 
     //CALCULA SI EL POKEMON SERÁ CAZADO O NO
     useEffect(()=>{

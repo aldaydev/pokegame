@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-// import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, setSignUpData, loadData, removeAllData, updateData, getAchievements, fireBaseSignUp, fireBaseSignIn } from '../utils/firebase';
+import { removeAllData, updateData, getAchievements, fireBaseSignUp, fireBaseSignIn } from '../utils/firebase';
 
 export const AuthContext = createContext();
 
@@ -57,7 +56,6 @@ export const AuthProvider = ({ children }) => {
           //SI SE CUMPLE EL HITO DE CAZAR 3 POKEMONS
           case 3:
             if(currentAch && !currentAch.includes(1)){
-              // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
                 setShowAchievement(['¡Logro cumplido!', 'Has recibido 3 pokeballs']);
                 setUserPokeballs((previous)=>previous + 3);
@@ -66,7 +64,6 @@ export const AuthProvider = ({ children }) => {
             break;
           case 5:
             if(currentAch && !currentAch.includes(2)){
-              // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 5 pokeballs']);
               setUserPokeballs((previous)=>previous + 5);
@@ -75,7 +72,6 @@ export const AuthProvider = ({ children }) => {
             break;
           case 10:
             if(currentAch && !currentAch.includes(3)){
-              // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
               setUserPokeballs((previous)=>previous + 10);
@@ -84,7 +80,6 @@ export const AuthProvider = ({ children }) => {
             break;
             case 25:
             if(currentAch && !currentAch.includes(4)){
-              // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 20 pokeballs']);
               setUserPokeballs((previous)=>previous + 20);
@@ -93,7 +88,6 @@ export const AuthProvider = ({ children }) => {
             break;
             case 50:
             if(currentAch && !currentAch.includes(5)){
-              // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 40 pokeballs']);
               setUserPokeballs((previous)=>previous + 40);
@@ -102,7 +96,6 @@ export const AuthProvider = ({ children }) => {
             break;
             case 100:
             if(currentAch && !currentAch.includes(6)){
-              // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
               setShowAchievement(['¡Logro cumplido!', 'Has recibido 75 pokeballs']);
               setUserPokeballs((previous)=>previous + 75);
@@ -114,7 +107,6 @@ export const AuthProvider = ({ children }) => {
               // alert('HITO CONSEGUIDO');
               setTimeout(()=>{
               setWinnerMsg(true);
-              // setShowAchievement(['¡Logro cumplido!', 'Has recibido 10 pokeballs']);
               setUserPokeballs(0);
             }, 4000)
             }

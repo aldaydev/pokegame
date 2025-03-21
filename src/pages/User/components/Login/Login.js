@@ -9,7 +9,7 @@ import { validateEmail, validatePass } from '../../../../utils/validations';
 
 const Login = ()=>{
 
-    const { loggedIn, signIn, loginError, signUp } = useContext(AuthContext);
+    const { signIn, loginError, signUp } = useContext(AuthContext);
 
     const [emailError, setEmailError] = useState([false, 'type', 'msg']);
     const [passError, setPassError] = useState([false, 'type', 'msg']);

@@ -296,8 +296,6 @@ export const PokeProvider = ({ children }) => {
         searchType, //Devuelvo los pokemon de un tipo
         pokemons, //Devuelve los 151 pokemon
         typeList, //Devuelve el listado de tipos (viebe de setTypeList que se ejecuta al iniciar)
-        // typeName,
-        // setTypeName,
         showAllPoke,
         setShowAllPoke,
         setMainPokemon,

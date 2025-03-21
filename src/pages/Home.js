@@ -16,7 +16,6 @@ const Home = ()=>{
                 </article>
                 <article className="welcome-textArticle">
                     <h4 className="welcome-text">Me llamo Rafa Alday <br/> y te doy la bienvenida al PokeGame.</h4>
-                    {/* <h4 className="welcome-text">Aquí podrás ver y cazar pokemons, así como loguearte de manera segura y guardarlos en tu pokedex.</h4> */}
                     <h4 className="welcome-text">Este proyecto ha sido creado para mostrar mis conocimientos y habilidades.</h4>
                     <h4 className="welcome-text">La app ha sido desarrollada con React, Firebase Auth y FireStore, con datos de PokeAPI.</h4>
                 </article>

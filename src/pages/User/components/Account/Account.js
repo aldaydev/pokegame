@@ -41,10 +41,7 @@ const Account = ()=>{
 
     //Soltar el pokemon sobre el candado (librar)
     const dragArea = (e)=>{
-        // e.preventDefault();
-        console.log('DROPPED');
         const idToDelete = e.dataTransfer.getData("text/plain", e.target.id);
-        console.log(idToDelete);
         const getSessionStorage = JSON.parse(sessionStorage.user);
         const getLocalPokeList = JSON.parse(sessionStorage.user).data.pokemons;
 
