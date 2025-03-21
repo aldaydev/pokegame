@@ -75,6 +75,10 @@
 
 @media screen and (max-width: 500px) {
 
+    .deletePokemon-icon{
+        max-width: 140px;
+    }
+
     .userSect-btnContainer {
         flex-direction: column;
         justify-content: end;

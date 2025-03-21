@@ -1,0 +1,46 @@
+.footer-text{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.footer-links{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.footer-logo--linkedIn{
+    height: 30px;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.footer-logo--github{
+    height: 24px;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.footer-logo--linkedIn:hover,
+.footer-logo--github:hover{
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 1024px){
+    .App-footer {
+        padding: 20px 50px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .App-footer {
+        padding: 20px 20px;
+    }
+}
+
+@media screen and (max-width: 560px){
+    .App-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

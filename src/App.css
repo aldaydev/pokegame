@@ -120,17 +120,16 @@ body {
 /* ESTILOS APP-FOOTER */
 
 .App-footer {
-  height: 60px;
+  /* height: 60px; */
+  padding: 20px 150px;
   background-color: var(--color-yellow);
   box-shadow: -1px -1px 3px #9c9c9c;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
   font-weight: 600;
 }
-
-
 
 
 /*---------- ESTILOS WINNER MSG ----------*/

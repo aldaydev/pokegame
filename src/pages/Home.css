@@ -105,6 +105,7 @@
 
 .videoPresentation-container{
     aspect-ratio: 16 / 9;
+    max-width: 900px;
     margin: 0 auto;
     margin-bottom: 80px;
     margin-top: 40px;
