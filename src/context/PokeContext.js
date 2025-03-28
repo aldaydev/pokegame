@@ -115,8 +115,8 @@ export const PokeProvider = ({ children }) => {
           const response = await fetch(pokemon.url);
           const poke = await response.json();
 
-          if (index === 0 && !mainPokemon) {
-            setMainPokemon(poke.id);
+          if (!searchPoke) {
+            index === 0 && setMainPokemon(poke.id);
           }
           return {
             id: poke.id,

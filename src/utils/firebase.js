@@ -29,7 +29,7 @@ export async function fireBaseSignUp(email, password) {
         pokemons: [],
         pokeCount: 0,
         achievements: [0],
-        email: user.email
+        email: email
     }
     await setDoc(doc(db, 'users', user.uid), signUpData);
 
