@@ -40,6 +40,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "chromedriver": "^134.0.5",
+    "geckodriver": "^5.0.0",
+    "gh-pages": "^6.3.0",
+    "selenium-webdriver": "^4.30.0"
   }
 }
