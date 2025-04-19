@@ -8,7 +8,9 @@ const AppFooter = ()=>{
             <p className="footer-text">RAFAEL ALDAY &copy; 2024</p>
             <a href='https://alday.dev' target='_blank' rel='noreferrer' className='footer__link'>
                     <span className='footer-logo--aldaydev'>
-                        {"{AldayDev}"}
+                        <span className='footer-logo--aldaydevBraceLeft'>{"{"}</span>
+                        AldayDev
+                        <span className='footer-logo--aldaydevBraceRight'>{"}"}</span>
                     </span>
                 </a>
             <div className="footer-links">
