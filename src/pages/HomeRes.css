@@ -92,6 +92,10 @@
         margin: 0 auto;
         padding: 0;
     }
+
+    .welcome-imageArticle::after {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 460px) {
@@ -116,10 +120,6 @@
 
     .home-welcome{
         margin-top: 0;
-    }
-
-    .welcome-imageArticle::after {
-        display: none;
     }
 }
 

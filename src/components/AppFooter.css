@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     gap: 25px;
+    text-decoration: none;
 }
 
 .footer-logo--linkedIn{
@@ -21,14 +22,40 @@
     transition: transform .2s ease-in-out;
 }
 
+.footer__link{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo--aldaydev{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: black;
+    vertical-align: top;
+    transition: letter-spacing .2s ease-in-out;
+}
+
 .footer-logo--linkedIn:hover,
 .footer-logo--github:hover{
     transform: scale(1.1);
 }
 
+.footer-logo--aldaydev:hover{
+    letter-spacing: 1.5px;
+}
+
 @media screen and (max-width: 1024px){
     .App-footer {
         padding: 20px 50px;
+    }
+}
+
+@media screen and (max-width: 810px){
+    .App-footer {
+        padding: 20px 20px;
+        flex-direction: column;
     }
 }
 
@@ -40,7 +67,7 @@
 
 @media screen and (max-width: 560px){
     .App-footer {
-        flex-direction: column;
+        
         gap: 15px;
     }
 }

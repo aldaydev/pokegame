@@ -8,23 +8,32 @@ import pokeball2_icon from '../../../../assets/img/pokeball2_icon.svg';
 import star_icon from '../../../../assets/img/star_icon.svg';
 import lock_icon from '../../../../assets/img/lock_icon.svg';
 import unlock_icon from '../../../../assets/img/unlock_icon.svg';
+import { useNavigate } from "react-router-dom";
 
 const Account = ()=>{
+
+    const navigate = useNavigate();
     
     const [deleteMsg, setDeleteMsg] = useState(false);
     const [noSticky, setNoSticky] = useState(false);
 
-    const { deleteAccount, removedMsg, userPokemons, userPokeballs, achList, signUpMsg, setSignUpMsg } = useContext(AuthContext);
+    const { loggedIn, deleteAccount, removedMsg, userPokemons, userPokeballs, achList, signUpMsg, setSignUpMsg } = useContext(AuthContext);
 
     const [userEmail, setUserEmail] = useState('');
     const [firstMsg, setFirstMsg] = useState(null);
     const [showBin, setShowBin] = useState(false);
     const [releaseImg, setReleaseImg] = useState(false);
 
+    useEffect(()=>{
+        if(!loggedIn){
+            navigate('/');
+        }
+    });
+
     //Cerrar sesión
     const closeSession = ()=>{
         sessionStorage.removeItem('user');
-        window.location.reload();
+        navigate('/');
     }
 
     //Arrastrar un pokemon de la pokedex
