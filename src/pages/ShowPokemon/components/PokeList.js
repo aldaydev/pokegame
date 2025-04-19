@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { PokeContext } from "../../../context/PokeContext";
 import { AuthContext } from "../../../context/AuthContext";
 import { useLocation } from "react-router-dom";
-import MainPoke from "./MainPoke";
 
 const PokeList = ({show, name})=>{
 
@@ -12,14 +11,11 @@ const PokeList = ({show, name})=>{
 
     const location = useLocation();
 
-    const [listLinkStyle, setListLinkStyle] = useState('');
-
     const testPokeList = (testPoke)=>{
-      // console.log(userPokemons);
-      // console.log('USERPOKE', userPoke.name);
       return userPokemons.some((userPoke)=> userPoke.name.toLowerCase() === testPoke)
     }
 
+    //DEFINIR SI SE MUESTRA UN TIPO (Y CUAL) O EL LISTADO COMPLETO
     useEffect(()=>{
       if(show === 'type'){
         switch(location.pathname){
@@ -83,7 +79,6 @@ const PokeList = ({show, name})=>{
             }) : pokemons.map((pokemon, i)=>{
               return(
                 <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name))} className={`pokeList-item ${loggedIn && testPokeList(pokemon.name) && 'pokeList-item--owned'} ${startGlobalHunt && 'pokeList-item--block'}`} >
-                  {/* autoFocus={i === 0 && true} */}
                   <div className="pokeList-imgContainer">
                     <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img" onDragStart={(e)=>e.preventDefault()}/>
                   </div>
@@ -92,29 +87,6 @@ const PokeList = ({show, name})=>{
               )
             })
             }
-
-            {/* {show === 'type' 
-                ? searchType.map((pokemon, i)=>{
-              return(
-                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name).toLowerCase())} className="pokeList-item">
-                  <div className="pokeList-imgContainer">
-                    <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img"/>
-                  </div>
-                  
-                  <h2 className="pokeList-title">{pokemon.name}</h2>
-                </button>
-              )
-            }) : pokemons.map((pokemon, i)=>{
-              return(
-                <button key={i} onClick={()=> setMainPokemon(()=>(pokemon.name).toLowerCase())} className="pokeList-item">
-                  <div className="pokeList-imgContainer">
-                    <img src={pokemon.img} alt={`Imagen de ${pokemon.name}`} className="pokeList-img"/>
-                  </div>
-                  <h2 className="pokeList-title">{pokemon.name}</h2>
-                </button>
-              )
-            })
-            } */}
         </aside>
     )
 }

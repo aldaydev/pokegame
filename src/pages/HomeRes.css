@@ -1,0 +1,125 @@
+@media screen and (max-width: 1440px) {
+
+
+    .welcome-text {
+        font-size: 1.2rem;
+    }
+
+    .home-howItWorks {
+        margin: 0 auto;
+        width: 85%;
+    }
+
+    .howItWorks-img {
+        max-width: 100px;
+    }
+
+    .howItWorks-text {
+        background-color: var(--color-yellow-light);
+        border-radius: 15px;
+        padding: 15px;
+        margin: 0 auto;
+        width: 80%;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    .App-main--home{
+        width: 95%;
+    }
+
+    .home-welcome{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+
+}
+
+@media screen and (max-width: 860px) {
+
+    .welcome-textArticle{
+        padding-right: 0;
+    }
+
+    .welcome-text {
+        font-size: 1rem;
+    }
+
+    .welcome-img {
+        max-width: 200px;
+        animation: trackingRigth .5s .2s ease-in-out both, fundido .5s .3s ease-in-out both;
+    }
+
+    .home-howItWorks {
+        width: 100%
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .howItWorks-list {
+        flex-direction: column;
+        margin: 30px 30px;
+    }
+
+    .howItWorks-item {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+    }
+
+    .home-welcome {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .welcome-imageArticle {
+        position: relative;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .welcome-text {
+        text-align: center;
+    }
+
+    .welcome-textArticle {
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 460px) {
+
+    .howItWorks-img {
+        max-width: 60px;
+    }
+
+    .howItWorks-text{
+        font-size: 0.9rem;
+    }
+
+    .howItWorks-list {
+        flex-direction: column;
+        margin: 20px 20px;
+        margin-bottom: 0;
+    }
+
+    .App-main-title--home{
+        margin-bottom: 0;
+    }
+
+    .home-welcome{
+        margin-top: 0;
+    }
+
+    .welcome-imageArticle::after {
+        display: none;
+    }
+}
+

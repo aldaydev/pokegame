@@ -1,17 +1,6 @@
-import { useEffect, useState } from 'react';
 import pokeball2_icon from '../assets/img/pokeball2_icon.svg';
 
 const AppButton = ({text, type, className, img, imgClass, onClick, id})=>{
-
-    // const [equalImg, setEqualImg] = useState(false);
-
-    // useEffect(()=>{
-    //     if(img === pokeball2_icon){
-    //         setEqualImg(true);
-    //     }else{
-    //         setEqualImg(false);
-    //     }
-    // }, [img])
 
     const dragItem = (e)=>{
         if(img === pokeball2_icon){

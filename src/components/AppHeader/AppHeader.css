@@ -21,6 +21,12 @@
     gap: 10px;
 }
 
+.nav-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .nav-pagesList{
     list-style: none;
     display: flex;
@@ -33,6 +39,7 @@
 }
 
 .nav-pagesItem--drop{
+    width: 100%;
     position: relative;
     z-index: 999;
     background-color: var(--color-yellow);
@@ -79,7 +86,7 @@
     flex-direction: column;
 }
 
-.nav-pagesItem--drop:hover
+.nav-pagesItem--drop
 .pagesItem-dropList{
     visibility:visible;
     opacity: 1;
@@ -239,7 +246,7 @@
 }
 
 .nav-pokemons{
-    margin-top: 8px;
+    margin-top: 10px;
     width: 45px;
     max-height: 38px;
     filter: drop-shadow(-1px -1px 0 black) 
@@ -249,7 +256,7 @@
 }
 
 .nav-user{
-    margin-top: 7px;
+    margin-top: 9px;
     width: 45px;
     max-height: 40px;
     filter: drop-shadow(-1px -1px 0 black) 
@@ -357,6 +364,10 @@
     padding: 10px 20px;
     border-radius: 10px;
     animation: showCountDown 8s ease-in-out both;
+}
+
+.nav-menuToggle{
+    display: none;
 }
 
 

@@ -1,4 +1,5 @@
 import './Loggin.css';
+import './LogginRes.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
 import FormInput from "./FormInput";
@@ -8,17 +9,17 @@ import { validateEmail, validatePass } from '../../../../utils/validations';
 
 const Login = ()=>{
 
-    const { loggedIn, signIn, loginError, signUp } = useContext(AuthContext);
+    const { signIn, loginError, signUp } = useContext(AuthContext);
 
     const [emailError, setEmailError] = useState([false, 'type', 'msg']);
     const [passError, setPassError] = useState([false, 'type', 'msg']);
 
+    //VALIDACIÓN DE SIGNIN
     const validateSignIn = (e, type)=>{
         e.preventDefault();
 
         const emailValue = e.target[0].value;
         const passValue = e.target[1].value;
-        console.log(emailValue, passValue)
 
         const emailFormat = validateEmail(emailValue);
         const passFormat = validatePass(passValue);
@@ -41,7 +42,7 @@ const Login = ()=>{
     }
 
     return(
-        <main className="App-main App-main--short">
+        <main className="App-main App-main--short App-main--login">
             <hgroup>
                 <h1 className="App-main-title">ACCEDE</h1>
                 <h2 className="App-main-sutitle">¡PODRÁS CAZAR POKEMONS Y GUARDARLOS EN TU POKEDEX!</h2>

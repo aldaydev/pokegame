@@ -10,6 +10,7 @@
     width: 90%;
     margin: 0 auto;
     margin-bottom: 30px;
+    margin-top: 10px;
     
 }
 
@@ -100,4 +101,12 @@
     font-size: 1.2rem;
     list-style: none;
     text-wrap: ballance;
+}
+
+.videoPresentation-container{
+    aspect-ratio: 16 / 9;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    margin-top: 40px;
 }

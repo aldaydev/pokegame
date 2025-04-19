@@ -23,8 +23,8 @@ export const PokeProvider = ({ children }) => {
   //COMPROBAR SI EL USUARIO TIENE EL MAIN POKEMON
   async function testingPoke(pokeName){
     
-    if(localStorage.user && JSON.parse(localStorage.user).data.pokemons){
-      const userPokes = JSON.parse(localStorage.user).data.pokemons;
+    if(sessionStorage.user && JSON.parse(sessionStorage.user).data.pokemons){
+      const userPokes = JSON.parse(sessionStorage.user).data.pokemons;
 
       const testing = await userPokes.some((userPoke)=>{
       return userPoke.name.toLowerCase() === pokeName.toLowerCase()
@@ -115,8 +115,8 @@ export const PokeProvider = ({ children }) => {
           const response = await fetch(pokemon.url);
           const poke = await response.json();
 
-          if (index === 0) {
-            setMainPokemon(poke.id);
+          if (!searchPoke) {
+            index === 0 && setMainPokemon(poke.id);
           }
           return {
             id: poke.id,
@@ -279,7 +279,7 @@ export const PokeProvider = ({ children }) => {
         }else{
           setMainPokemon(testPokemon.name);
           setSearchError(null);
-          setSearchPoke(null);
+          setSearchPoke(testPokemon.name);
         }
       }
       getPokemones();
@@ -296,8 +296,6 @@ export const PokeProvider = ({ children }) => {
         searchType, //Devuelvo los pokemon de un tipo
         pokemons, //Devuelve los 151 pokemon
         typeList, //Devuelve el listado de tipos (viebe de setTypeList que se ejecuta al iniciar)
-        // typeName,
-        // setTypeName,
         showAllPoke,
         setShowAllPoke,
         setMainPokemon,

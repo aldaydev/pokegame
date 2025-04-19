@@ -4,13 +4,15 @@ import loading_spinner from '../../../assets/img/loading_spinner.svg'
 import AppButton from "../../../components/AppButton";
 import pokeball2_icon from '../../../assets/img/pokeball2_icon.svg'
 import pokeuser_icon from '../../../assets/img/pokeuser_icon.svg'
+import hunted_img from '../../../assets/img/hunted_img.svg'
+import noHunted_img from '../../../assets/img/noHunted_img.svg'
 import { AuthContext } from "../../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const MainPoke = (show, name)=>{
 
     const { showMainPoke, pokeProb, testPoke, setTestPoke } = useContext(PokeContext);
-    const { loggedIn, setUserPokeballs, userPokeballs, setUserPokemons, userPokemons, setUserPokeCount, userPokeCount, startGlobalHunt, setStartGlobalHunt } = useContext(AuthContext);
+    const { loggedIn, setUserPokeballs, userPokeballs, setUserPokemons, userPokemons, setUserPokeCount, userPokeCount, setStartGlobalHunt } = useContext(AuthContext);
 
     const [ huntResult, setHuntResult ] = useState('initial');
     const [ startHunt, setStartHunt ] = useState(null);
@@ -26,17 +28,14 @@ const MainPoke = (show, name)=>{
             console.log('¿TIENES EL POKEMON?', testPoke);
             if(startHunt === null){
                 if(testPoke){
-                    // console.log('Tipo de botón: Ir a Pokedex');
                     setHuntBtn(<Link to='/account'>
                         <AppButton text='¡LO TIENES EN TU POKEDEX!' className='huntBtn huntBtn-green' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
                         </Link>)
                 }else{
                     if(userPokeballs === 0){
-                        // console.log('Tipo de botón: Sin pokeballs');
                         setHuntBtn( 
                             <AppButton text='¡NO TE QUEDAN POKEBALLS!' className='huntBtn huntBtn-red' img={pokeball2_icon} imgClass='huntBtn-img'/>)
                     }else if(userPokeballs > 0){
-                        // console.log('Tipo de botón: Lanzar Pokeball');
                         setHuntBtn(<AppButton text='LANZAR POKEBALL' className='huntBtn' img={pokeball2_icon} imgClass='huntBtn-img'onClick={()=>{
                             setStartHunt(true);
                             setStartGlobalHunt(true);
@@ -52,9 +51,9 @@ const MainPoke = (show, name)=>{
                 <AppButton text='REGÍSTRATE Y CÁZALO' className='huntBtn huntBtn-red' img={pokeuser_icon} imgClass='huntBtn-img-loggin'/>
             </Link>)
         }
-    },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]) //He quitado "changeBtn"
-    //testPoke, loggedIn, userPokeballs,
+    },[loggedIn, testPoke,  userPokeballs, startHunt, showMainPoke]);
 
+    //CALCULA SI EL POKEMON SERÁ CAZADO O NO
     useEffect(()=>{
             if(pokeProb && !testPoke && loggedIn){
                 console.log('---- CALCULA SI SERÁ CAZADO ----');
@@ -76,12 +75,13 @@ const MainPoke = (show, name)=>{
     },[showMainPoke ,resetHunt])
     
 
+    //PROCESO DE CAZADO
     useEffect(()=>{
 
         if(startHunt !== null && userPokeballs > 0){
             console.log('----- PROCESO DE CAZADO-----')
 
-            console.log('1. Animación Pokeball');
+            console.log('1. Animación Pokeball - Primer timeOut');
             const timeOut = ()=>setTimeout(()=>{
                 if(huntResult === true){
 
@@ -98,10 +98,10 @@ const MainPoke = (show, name)=>{
                     setUserPokemons(allHuntedPokemons);
 
                     console.log('Mensaje de ATRAPADO')
-                    setHuntMsg(['¡POKEMON ATRAPADO!', 'Se ha añadido a tu Pokedex' ,'huntMsgWin'])
+                    setHuntMsg(['¡POKEMON ATRAPADO!', 'Se ha añadido a tu Pokedex' ,'huntMsgWin', hunted_img, 'Image de pokemon cazado'])
                 }else if(huntResult === false){
                     console.log('Mensaje de ESCAPADO')
-                    setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose']);
+                    setHuntMsg(['¡EL POKEMON HA ESCAPADO!', 'Pero seguro que pronto lo consigues','huntMsgLoose', noHunted_img, 'Imagen de pokemon no cazado']);
                 }
 
                 console.log('Resta una pokeball');
@@ -116,17 +116,11 @@ const MainPoke = (show, name)=>{
                         setStartGlobalHunt(null);
                         setResetHunt(resetHunt === true ? false : true);
                         setChangeBtn(changeBtn + 1);
-                    }, 3000)
+                    }, 4000)
                 }
 
-                // if(userPokeballs === 0){
-                //     setCountDown();
-                // }
-                console.log('Entra segundo timeOut');
+                console.log('2. Mensaje en pantalla y reset - segundo timeOut');
                 timeOut2();
-                // if(userPokeballs === 0){
-                //     setCountDown();
-                // }
                 
             },5000)
             
@@ -134,13 +128,7 @@ const MainPoke = (show, name)=>{
         }
     },[startHunt])
 
-    
-
-    const dragOver = (e)=>{
-        e.preventDefault();
-        // setReleaseImg(true);
-    }
-
+    //SOLTAR LA POKEBALL SOBRE EL POKEMON
     const dragArea = (e)=>{
         console.log('SOLTADO');
         const idToHunt = e.dataTransfer.getData("text/plain", e.target.id);
@@ -181,8 +169,9 @@ const MainPoke = (show, name)=>{
                         {(startHunt && huntMsg) && 
                             <div className='huntMsgPosition'>
                                 <div className={`huntMsgContainer ${huntMsg[2]}`}>
-                                    <h2 className='huntMsg'>{huntMsg[0]}</h2>
-                                    <p>{huntMsg[1]}</p>
+                                    <h2 className='huntMsg-title'>{huntMsg[0]}</h2>
+                                    <p className='huntMsg-text'>{huntMsg[1]}</p>
+                                    <img src={huntMsg[3]} alt={huntMsg[4]} className="huntMsg-img"/>
                                 </div>
                             </div>
                         }

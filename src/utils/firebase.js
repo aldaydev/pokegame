@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 import { getFirestore, collection, setDoc, doc, getDoc, deleteDoc, getDocs  } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -14,58 +14,71 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-
 const db = getFirestore(app);
 
-export async function setSignUpData(email){
+//SIGN UP
+export async function fireBaseSignUp(email, password) {
+
+    //Creating new account with email and password
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    //Creating new doc for new user
     const signUpData = {
         pokeballs: 3,
         pokemons: [],
         pokeCount: 0,
-        achievements: [0]
+        achievements: [0],
+        email: email
     }
-    await setDoc(doc(db, 'users', email), signUpData)
+    await setDoc(doc(db, 'users', user.uid), signUpData);
 
-    const constlocalLogged = {
+    //Setting up user data on sessionStorage
+    const sessionStorageData = {
         connected: true,
-        email: email,
+        uid: user.uid,
+        email: user.email,
         data: signUpData
     }
-    localStorage.user = JSON.stringify(constlocalLogged);
+    sessionStorage.user = JSON.stringify(sessionStorageData);
+
     return 'HAS RECIBIDO 3 POKEBALLS POR REGISTRARTE';
 }
 
+//ACTUALIZR DATOS DEL USUARIO
 export async function updateData(newData){
-    if(localStorage.user){
-        const email = JSON.parse(localStorage.user).email;
-        await setDoc(doc(db, 'users', email), newData)
+    if(sessionStorage.user){
+        const uid = JSON.parse(sessionStorage.user).uid;
+        await setDoc(doc(db, 'users', uid), newData);
     }
 }
 
-export async function loadData(email){
-
-    if(localStorage.user){
-        email = JSON.parse(localStorage.user).email;
-    }
-
-    const docRef = doc(db, 'users', email);
+//SIGN IN
+export async function fireBaseSignIn(email, password){
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    
+    const docRef = doc(db, 'users', user.uid);
     const docSnap = await getDoc(docRef);
 
-    const localLogged = {
+    const sessionStorageData = {
         connected: true,
         email: email,
+        uid: user.uid,
         data: {pokeballs: docSnap.data().pokeballs, pokeCount: docSnap.data().pokeCount, pokemons: docSnap.data().pokemons, achievements: docSnap.data().achievements}
     }
-    localStorage.user = JSON.stringify(localLogged);
-} 
 
-export async function removeAllData(email) {
+    sessionStorage.user = JSON.stringify(sessionStorageData);
+}
+
+//ELIMINAR DATOS DEL USUARIO (ELIMINAR CUENTA)
+export async function removeAllData(uid) {
     const user = auth.currentUser;
     if (user) {
         try {
+            await deleteDoc(doc(db, 'users', uid));
             await user.delete();
-            await deleteDoc(doc(db, 'users', email));
-            localStorage.removeItem('user');
+            sessionStorage.removeItem('user');
             return 'Cuenta eliminada correctamente';
         } catch (error) {
             return 'Error al eliminar la cuenta. Reinicia la sesión y prueba de nuevo'
@@ -76,6 +89,7 @@ export async function removeAllData(email) {
 
 }
 
+//OBTENER EL LISTADO DE LOGROS
 export async function getAchievements(){
     const querySnapshot = await getDocs(collection(db, "achievements"));
 

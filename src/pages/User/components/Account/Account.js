@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
 
 import './Account.css';
+import './AccountRes.css';
 import user_icon from '../../../../assets/img/pokeuser_icon.svg';
 import pokeball2_icon from '../../../../assets/img/pokeball2_icon.svg';
 import star_icon from '../../../../assets/img/star_icon.svg';
@@ -20,42 +21,44 @@ const Account = ()=>{
     const [showBin, setShowBin] = useState(false);
     const [releaseImg, setReleaseImg] = useState(false);
 
+    //Cerrar sesión
     const closeSession = ()=>{
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         window.location.reload();
     }
 
+    //Arrastrar un pokemon de la pokedex
     const dragItem = (e)=>{
         setShowBin(true);
         e.dataTransfer.setData("text/plain", e.target.id);
     }
 
+    //Colocar el pokemon sobre el candado
     const dragOver = (e)=>{
         e.preventDefault();
         setReleaseImg(true);
     }
 
+    //Soltar el pokemon sobre el candado (librar)
     const dragArea = (e)=>{
-        // e.preventDefault();
-        console.log('DROPPED');
         const idToDelete = e.dataTransfer.getData("text/plain", e.target.id);
-        console.log(idToDelete);
-        const getLocalStorage = JSON.parse(localStorage.user);
-        const getLocalPokeList = JSON.parse(localStorage.user).data.pokemons;
+        const getSessionStorage = JSON.parse(sessionStorage.user);
+        const getLocalPokeList = JSON.parse(sessionStorage.user).data.pokemons;
 
         getLocalPokeList.splice(idToDelete,1);
-        getLocalStorage.data.pokemons = getLocalPokeList;
-        getLocalStorage.data.pokeCount -= 1;
-        console.log(getLocalStorage, getLocalPokeList);
+        getSessionStorage.data.pokemons = getLocalPokeList;
+        getSessionStorage.data.pokeCount -= 1;
+        console.log(getSessionStorage, getLocalPokeList);
 
-        localStorage.user = JSON.stringify(getLocalStorage);
+        sessionStorage.user = JSON.stringify(getSessionStorage);
 
         window.location.reload();
 
     }
 
+    //Mostrar el mensaje cuando creas la cuenta y cumplit primer logro
     useEffect(()=>{
-        localStorage.user && JSON.parse(localStorage.user).data.achievements.length === 1 && signUpMsg && setFirstMsg(signUpMsg);
+        sessionStorage.user && JSON.parse(sessionStorage.user).data.achievements.length === 1 && signUpMsg && setFirstMsg(signUpMsg);
 
         const timeOut = ()=>{
             setTimeout(()=>{
@@ -64,11 +67,11 @@ const Account = ()=>{
             },4000)
         }
         timeOut();
-        localStorage.user && setUserEmail(JSON.parse(localStorage.user).email);
+        sessionStorage.user && setUserEmail(JSON.parse(sessionStorage.user).email);
     },[])
     
     return(
-        <main className="App-main">
+        <main className="App-main App-main-account">
             <h1 className="App-main-title">TU ÁREA DE USUARIO</h1>
             <div className="account-container">
                 <section className={`account-userSect ${noSticky && noSticky}`}>
@@ -149,7 +152,7 @@ const Account = ()=>{
                                 {achList && achList.map((ach, i)=>{
                                     return(
                                         <div className={`ach-container ach-container--ach ${
-                                            localStorage.user && (JSON.parse(localStorage.user).data.achievements).includes(i) && 'ach-container--green'
+                                            sessionStorage.user && (JSON.parse(sessionStorage.user).data.achievements).includes(i) && 'ach-container--green'
                                         }`} key={i} >
                                             <h3 className="ach-left">{ach.achievement}</h3>
                                             <div className="ach-right">

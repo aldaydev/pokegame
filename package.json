@@ -1,6 +1,7 @@
 {
-  "name": "daw_react_c26-1_ex-2",
+  "name": "pokegame",
   "version": "0.1.0",
+  "homepage": "https://pokegame.alday.es",
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +38,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chromedriver": "^134.0.5",
+    "geckodriver": "^5.0.0",
+    "gh-pages": "^6.3.0",
+    "selenium-webdriver": "^4.30.0"
   }
 }
